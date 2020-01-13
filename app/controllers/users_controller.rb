@@ -13,9 +13,9 @@ class UsersController < ApplicationController
     # Authenticate (not the same as validate) - through email/password combo
     if @user.authenticate(params[:password])
       session[:your_session] = @user.id
-      redirect "users/#{@user.id}"
+      redirect "projects/#{@user.id}"
     else
-
+      redirect '/signup'
     end
   end
 
@@ -25,15 +25,19 @@ class UsersController < ApplicationController
     erb :signup
   end
 
-  post '/users' do
+  post '/projects' do
     if params[:username] != "" && params[:first_name] != "" && params[:email] != "" && params[:password] != ""
       @user = User.create(params)
+      redirect "/projects/#{@user.id}"
+      erb :'/projects/index'
     else
+      redirect '/signup'
+    end
   end
 
-  #user SHOW route
-  get '/users/:id' do
-    "this will be the users show route"
+  #projects for a user (same as SHOW)
+  get '/projects/:id' do
+    "this will be the users project index"
   end
 
 end
