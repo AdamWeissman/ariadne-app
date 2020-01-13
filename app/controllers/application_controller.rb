@@ -13,4 +13,15 @@ class ApplicationController < Sinatra::Base
     erb :welcome
   end
 
+  helpers do
+
+    def logged_in?
+      !!current_user #!! converts variable to its boolean value
+    end
+
+    def current_user
+      @current_user ||= User.find_by(id: session[:work_hard]) #variable is created and assigned, if user is found
+    end
+  end
+
 end
