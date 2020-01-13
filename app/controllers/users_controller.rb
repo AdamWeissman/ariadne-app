@@ -1,7 +1,13 @@
 class UsersController < ApplicationController
 
-  #routes necessary for login
+  #route necessary for login
   get '/login' do
+    erb :login
+  end
+
+  #this route receives the login form, finds the user and logs the user in
+  #it creates a session
+  post '/login' do
     erb :login
   end
 
