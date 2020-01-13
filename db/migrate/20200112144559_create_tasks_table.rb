@@ -14,5 +14,6 @@ class CreateTasksTable < ActiveRecord::Migration
       t.float "user_rank"
 
       t.timestamps null: false
+    end
   end
 end

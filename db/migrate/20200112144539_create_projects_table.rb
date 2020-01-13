@@ -15,5 +15,6 @@ class CreateProjectsTable < ActiveRecord::Migration
       t.integer "current_phase"
 
       t.timestamps null: false
+    end
   end
 end

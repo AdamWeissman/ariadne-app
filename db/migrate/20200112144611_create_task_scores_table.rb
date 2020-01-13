@@ -13,5 +13,6 @@ class CreateTaskScoresTable < ActiveRecord::Migration
       t.float "easy_or_hard_score"
 
       t.timestamps null: false
+    end
   end
 end

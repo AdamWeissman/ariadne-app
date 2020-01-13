@@ -8,5 +8,6 @@ class CreateUsersTable < ActiveRecord::Migration
       t.datetime "created_at"
 
       t.timestamps null: false
+    end
   end
 end
