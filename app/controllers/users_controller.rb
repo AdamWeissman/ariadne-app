@@ -12,7 +12,7 @@ class UsersController < ApplicationController
     @user = User.find_by(email: params[:email]) # it's looking up the email key and passing the param entered in the email
     # Authenticate (not the same as validate) - through email/password combo
     if @user.authenticate(params[:password])
-      session[:work_hard] = @user.id
+      session[:your_session] = @user.id
       redirect "users/#{@user.id}"
     else
 

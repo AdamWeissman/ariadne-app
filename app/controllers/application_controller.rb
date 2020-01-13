@@ -20,7 +20,7 @@ class ApplicationController < Sinatra::Base
     end
 
     def current_user
-      @current_user ||= User.find_by(id: session[:work_hard]) #variable is created and assigned, if user is found
+      @current_user ||= User.find_by(id: session[:your_session]) #variable is created and assigned, if user is found
     end
   end
 
