@@ -16,4 +16,14 @@ class ProjectsController < ApplicationController
     erb :'/projects/index'
   end
 
+  post '/new_project' do
+    if params[:project_name] != "" && params[:project_summary] != ""
+      @project = Project.create(params)
+      redirect "/projects/#{@user.id}"
+      erb :'/projects/index'
+    else
+      erb :'/projects/index'
+    end
+  end
+
 end
