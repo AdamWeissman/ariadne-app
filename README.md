@@ -19,5 +19,6 @@ PART II
 https://www.youtube.com/watch?time_continue=21&v=U5glnUNaJPs&feature=emb_logo
 PART III
 https://www.youtube.com/watch?time_continue=2&v=Xc02QEeYrcs&feature=emb_logo
+36:17
 
 https://instruction.learn.co/student/video_lectures#/353
