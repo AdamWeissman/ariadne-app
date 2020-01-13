@@ -13,7 +13,7 @@ class UsersController < ApplicationController
     # Authenticate (not the same as validate) - through email/password combo
     if @user.authenticate(params[:password])
       session[:your_session] = @user.id
-      redirect "projects/#{@user.id}"
+      redirect "user_home/#{@user.id}"
     else
       redirect '/signup'
     end
@@ -28,6 +28,25 @@ class UsersController < ApplicationController
   get 'logout' do
     session.clear
     redirect '/'
+
+  post '/users' do
+    if params[:username] != "" && params[:first_name] != "" && params[:email] != "" && params[:password] != ""
+      @user = User.create(params)
+      redirect "/users/#{@user.id}"
+      erb :'/users/user_home'
+    else
+      redirect '/signup'
+    end
+  end
+
+    #projects for a user (same as SHOW)
+    get '/user_home/:id' do
+      @user = User.find_by(id: params[:id])
+      erb :'/users/user_home'
+    endd
+
+
+
   end
 
 end
