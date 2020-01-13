@@ -11,11 +11,11 @@ class UsersController < ApplicationController
     # Find the user
     @user = User.find_by(email: params[:email]) # it's looking up the email key and passing the param entered in the email
     # Authenticate (not the same as validate) - through email/password combo
-    if @user.authenticate(params[:password])
+    if @user && @user.authenticate(params[:password])
       session[:your_session] = @user.id
-      redirect "user_home/#{@user.id}"
+      redirect "users/#{@user.id}"
     else
-      redirect '/signup'
+      redirect to "/signup"
     end
   end
 
@@ -25,9 +25,14 @@ class UsersController < ApplicationController
     erb :signup
   end
 
+  post '/signup' do
+    erb :signup
+  end
+
   get 'logout' do
     session.clear
-    redirect '/'
+    redirect '/login'
+  end
 
   post '/users' do
     if params[:username] != "" && params[:first_name] != "" && params[:email] != "" && params[:password] != ""
@@ -35,18 +40,14 @@ class UsersController < ApplicationController
       redirect "/users/#{@user.id}"
       erb :'/users/user_home'
     else
-      redirect '/signup'
+      redirect "/signup"
     end
   end
 
-    #projects for a user (same as SHOW)
-    get '/user_home/:id' do
-      @user = User.find_by(id: params[:id])
-      erb :'/users/user_home'
-    endd
-
-
-
+    #users show page
+  get '/users/:id' do
+    @user = User.find_by(id: params[:id])
+    erb :'/users/user_home'
   end
 
 end
