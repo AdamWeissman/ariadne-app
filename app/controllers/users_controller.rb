@@ -8,7 +8,15 @@ class UsersController < ApplicationController
   #this route receives the login form, finds the user and logs the user in
   #it creates a session
   post '/login' do
-    erb :login
+    # Find the user
+    @user = User.find_by(email: params[:email]) # it's looking up the email key and passing the param entered in the email
+    # Authenticate (not the same as validate) - through email/password combo
+    if @user.authenticate(params[:password])
+
+
+    else
+
+    end
   end
 
   #routes necessary for signup
