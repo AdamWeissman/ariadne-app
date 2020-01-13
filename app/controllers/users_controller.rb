@@ -25,19 +25,4 @@ class UsersController < ApplicationController
     erb :signup
   end
 
-  post '/projects' do
-    if params[:username] != "" && params[:first_name] != "" && params[:email] != "" && params[:password] != ""
-      @user = User.create(params)
-      redirect "/projects/#{@user.id}"
-      erb :'/projects/index'
-    else
-      redirect '/signup'
-    end
-  end
-
-  #projects for a user (same as SHOW)
-  get '/projects/:id' do
-    "this will be the users project index"
-  end
-
 end
