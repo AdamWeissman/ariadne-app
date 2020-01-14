@@ -40,7 +40,7 @@ class UsersController < ApplicationController
       redirect "/users/#{@user.id}"
       erb :'/users/user_home'
     else
-      redirect "/signup"
+      #
     end
   end
 

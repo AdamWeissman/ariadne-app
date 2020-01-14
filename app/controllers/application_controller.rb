@@ -10,7 +10,7 @@ class ApplicationController < Sinatra::Base
   end
 
   get "/" do
-    erb :login
+    erb :fake_start
   end
 
   helpers do
@@ -24,4 +24,10 @@ class ApplicationController < Sinatra::Base
     end
   end
 
+end
+
+__END__
+
+@@fake_start
+  erb :fake_start
 end
