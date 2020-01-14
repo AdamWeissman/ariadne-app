@@ -35,18 +35,73 @@ class FakeController < ApplicationController
     erb :'/a_bunch_of_fakes/the_fake_contact'
   end
 
-# NOW PROJECT STUFF
+# PROJECT STUFF MAIN MENU
   get '/projects' do
     erb :'/a_bunch_of_fakes/fake_projects/fake_projects_home'
   end
 
-  get '/new_project' do
+  get '/create_a_new_project' do
     erb :'/a_bunch_of_fakes/fake_projects/new_project'
   end
 
-  get '/old_project' do
-    erb :'/a_bunch_of_fakes/fake_projects/fake_projects_home'
+  get '/edit_a_project' do
+    erb :'/a_bunch_of_fakes/fake_projects/edit_a_project'
   end
+
+  get '/delete_a_project' do
+    erb :'/a_bunch_of_fakes/fake_projects/delete_a_project'
+  end
+
+  get '/delete_a_project_for_real' do
+    erb :'/a_bunch_of_fakes/fake_projects/delete_a_project_for_real'
+  end
+
+# PROJECT STUFF PHASE I (NEW PROJECT) -- starts with create_a_new_project
+
+  get '/phase_1_preview' do
+    erb :'/a_bunch_of_fakes/fake_projects/phase_1/the_phase_1_preview'
+  end
+
+  get '/phase_1_saved' do
+    erb :'/a_bunch_of_fakes/fake_projects/phase_1/phase_1_complete_with_data'
+  end
+
+  get '/phase_1_preview_something_sucked_let_me_fix_it' do
+    erb :'/a_bunch_of_fakes/fake_projects/phase_1/phase_1_fix_the_preview'
+  end
+
+# PHASE II
+
+  get '/phase_2' do
+    erb :'/a_bunch_of_fakes/fake_projects/phase_2/phase_2_first_iteration'
+  end
+
+  get '/phase_2_saved' do
+    erb :'/a_bunch_of_fakes/fake_projects/phase_2/phase_2_complete_with_data'
+  end
+
+# PHASE III
+
+  get '/phase_3' do
+    erb :'/a_bunch_of_fakes/fake_projects/phase_3/phase_3_first_iteration'
+  end
+
+  get '/phase_3_saved' do
+    erb :'/a_bunch_of_fakes/fake_projects/phase_3/phase_3_complete_with_data'
+  end
+
+# PHASE IV
+
+  get '/phase_4' do
+    erb :'/a_bunch_of_fakes/fake_projects/phase_4/phase_4_first_iteration'
+  end
+
+  get '/phase_4_saved' do
+    erb :'/a_bunch_of_fakes/fake_projects/phase_4/phase_4_complete_with_data'
+  end
+
+# PHASE V YOU ARE HERE...
+
 
 
 end
