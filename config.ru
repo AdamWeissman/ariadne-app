@@ -8,7 +8,5 @@ end
 use Rack::MethodOverride
 
 # here is where I will mount other controllers with 'use'
-#use UsersController
-#use FakeController #to get a sense of the entire project flow JUST GETS
-use InsideTheMazeController #working in post requests
+use ApplicationController
 run ApplicationController
