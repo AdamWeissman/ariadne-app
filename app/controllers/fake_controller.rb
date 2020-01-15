@@ -102,6 +102,13 @@ class FakeController < ApplicationController
 
 # PHASE V YOU ARE HERE...
 
+  get '/phase_5' do
+    erb :'/a_bunch_of_fakes/fake_projects/phase_5/phase_5_first_iteration'
+  end
+
+  get '/phase_5_saved' do
+    erb :'/a_bunch_of_fakes/fake_projects/phase_5/phase_5_complete_with_data'
+  end
 
 
 end
