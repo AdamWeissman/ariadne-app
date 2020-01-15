@@ -9,8 +9,8 @@ class ApplicationController < Sinatra::Base
     set :session_secret, "enter_the_labyrinth"
   end
 
-  get "/" do
-    erb :fake_start
+  get '/' do
+    erb :'/inside_the_maze/fake_start'
   end
 
   helpers do
@@ -24,10 +24,4 @@ class ApplicationController < Sinatra::Base
     end
   end
 
-end
-
-__END__
-
-@@fake_start
-  erb :fake_start
 end

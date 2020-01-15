@@ -19,6 +19,11 @@ class UsersController < ApplicationController
     end
   end
 
+
+
+
+
+
   #routes necessary for signup
 
   get '/signup' do
