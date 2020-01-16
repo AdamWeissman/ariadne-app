@@ -10,56 +10,110 @@ class ApplicationController < Sinatra::Base
   end
 
   get '/' do
-    erb :'/outside_the_maze/start'
+    if logged_in?
+      redirect '/account_home'
+    else
+      erb :'/outside_the_maze/start'
+    end
   end
 
   helpers do
 
-    def logged_in?
-      !!current_user #!! converts variable to its boolean value
+    def current_user
+      @current_user ||= User.find(session[:your_session])
     end
 
-    def current_user
-      @current_user ||= User.find_by(id: session[:your_session]) #variable is created and assigned, if user is found
+    def logged_in?
+      !!session[:your_session] #!! converts variable to its boolean value
     end
+
   end
 
 # THE WHOLE ENCHILADA
 
-#logged in is fake_account_home, logged out is fake_start
-
-  get '/account_home/:id' do
-    @user = User.find_by(id: params[:id])
-    erb :'/inside_the_maze/account_home'
-  end
-
-#logged out is sans the numeral ... if there's a 2 it means logged in
-
   get '/about' do
-    erb :'/outside_the_maze/about'
+    if logged_in?
+      redirect '/about2'
+    else
+      erb :'/outside_the_maze/about'
+    end
   end
 
   get '/about2' do
-    erb :'/inside_the_maze/about2'
+    if logged_in?
+      erb :'/inside_the_maze/about2'
+    else
+      redirect '/about'
+    end
   end
 
 # these three are related
 
-  get '/login' do
-    erb :'/outside_the_maze/login'
+  get '/signup' do
+    if !session[:your_session]
+      erb :'/outside_the_maze/signup'
+    else
+      redirect '/you_signedup'
+    end
   end
 
-  get '/signup' do
-    erb :'/outside_the_maze/signup'
+  get '/you_signedup' do
+    erb :'/outside_the_maze/you_signedup'
+  end
+
+  post '/you_signedup' do
+    @user = User.create(params)
+    erb :'/outside_the_maze/you_signedup'
+  end
+
+  get '/login' do
+    if !session[:your_session]
+      erb :'/outside_the_maze/login'
+    else
+      redirect '/account_home'
+    end
+  end
+
+  post '/login' do
+    @user = User.find_by(email: params[:email])
+    if @user && @user.authenticate(params[:password])
+      session[:your_session] = @user.id
+      redirect '/account_home'
+    else
+      erb :'/outside_the_maze/minotaur'
+    end
+  end
+
+  get '/account_home' do
+    if logged_in?
+      @user = current_user
+      erb :'/inside_the_maze/account_home'
+    else
+      redirect '/login'
+    end
   end
 
   get '/logout' do
-    erb :'/inside_the_maze/logout'
+    if logged_in?
+      @user = current_user
+      @user = nil
+      session.destroy
+      erb :'/inside_the_maze/logout'
+    else
+      erb :'/inside_the_maze/logout'
+    end
   end
+
+#EVERYTHING ABOVE THIS LINE SORT OF MOSTLY WORKS...
 
 # CONTACT is only available if you are logged in
   get '/contact' do
-    erb :'/inside_the_maze/contact'
+    if logged_in?
+      @user = current_user
+      erb :'/inside_the_maze/contact'
+    else
+      erb :'/outside_the_maze/contact'
+    end
   end
 
 # PROJECT STUFF MAIN MENU
@@ -117,7 +171,7 @@ class ApplicationController < Sinatra::Base
     erb :'/inside_the_maze/adventures/phase_3/phase_3_complete_with_data'
   end
 
-# PHASE IV
+  # PHASE IV
 
   get '/phase_4' do
     erb :'/inside_the_maze/adventures/phase_4/phase_4_first_iteration'
@@ -127,7 +181,7 @@ class ApplicationController < Sinatra::Base
     erb :'/inside_the_maze/adventures/phase_4/phase_4_complete_with_data'
   end
 
-# PHASE V YOU ARE HERE...
+  # PHASE V YOU ARE HERE...
 
   get '/phase_5' do
     erb :'/inside_the_maze/adventures/phase_5/phase_5_first_iteration'
@@ -136,7 +190,5 @@ class ApplicationController < Sinatra::Base
   get '/phase_5_saved' do
     erb :'/inside_the_maze/adventures/phase_5/phase_5_complete_with_data'
   end
-
-
 
 end

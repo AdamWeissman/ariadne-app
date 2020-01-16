@@ -1,22 +1,18 @@
-<h1>>SIGN UP (You're logged out)</h1>
-
-<form class="" action="/account_home" method="post">
-  <label for="username">USERNAME: </label><br>
-  <input type="string" name="username" value="this is a default"><br><br>
-
+<h1>SIGN UP (You're logged out)</h1>
+<a href="/" title="Home">Home</a> | <a href="/login" title="Login">Login</a> | <a href="/about" title="About">About</a><br>
+<br>
+<form class="" action="/you_signedup" method="post">
   <label for="first_name">FIRST NAME: </label><br>
-  <input type="string" name="first_name" value=""><br><br>
+  <input type="string" name="first_name" value="Type Your First Name" size="30"><br><br>
 
   <label for="email">EMAIL: </label><br>
-  <input type="string" name="email" value=""><br><br>
+  <input type="string" name="email" value="Type Your Email" size="30"><br><br>
 
   <label for="password">PASSWORD: </label><br>
-  <input type="string" name="password" value=""><br><br>
+  <input type="string" name="password" value="Type Your Password" size="30"><br><br>
 
   <input type="submit" value="CREATE USER">
 </form>
+<br><br>
 
-<li><a href="/account_home" title="Home">LOGGED IN - ACCOUNT HOME</a></li>
-
-Don't want to sign up? <br>
-<li><a href="/" title="Home">Home</a></li>
+Don't want to sign up afterall?  It's okay.  GO <a href="/" title="Home">HOME!</a>

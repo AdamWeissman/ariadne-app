@@ -17,6 +17,7 @@ ActiveRecord::Schema.define(version: 20200112144658) do
     t.integer  "user_id"
     t.integer  "project_id"
     t.integer  "phase_number"
+    t.string   "message_category"
     t.string   "message_or_quote"
     t.string   "author"
     t.datetime "created_at",       null: false
@@ -59,7 +60,6 @@ ActiveRecord::Schema.define(version: 20200112144658) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.string   "username"
     t.string   "password_digest"
     t.string   "email"
     t.string   "first_name"

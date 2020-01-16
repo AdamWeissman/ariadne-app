@@ -1,17 +1,17 @@
-<h1>Login (You're LOGGED OUT)</h1>
+<h1>LOGIN</h1>
 <br>
-<li><a href="/" title="Home">Home</a></li>
-<li><a href="/about" title="About">About</a></li>
-<li><a href="/signup" title="Signup">Signup</a></li>
+<a href="/" title="Home">Home</a> | <a href="/signup" title="Signup">Signup</a> | <a href="/about" title="About">About</a><br>
+<br>
+<form action="/login" method="post">
+  <label for="email">EMAIL: </label>
+  <input type="text" name="email" id="email" value="type your email to login" size="30"/>
 
-<h2>LOGIN</h2>
+  <br></br>
 
-<form class="" action="/account_home" method="POST">
-  <label for="email">EMAIL: </label><br>
-  <input type="string" name="email" value=""><br><br>
+  <label for="password">Password:</label>
+  <input type="text" name="password" id="password" value="type your password to login" size="30"/>
 
-  <label for="password">PASSWORD: </label><br>
-  <input type="string" name="password" value=""><br><br>
+  <br></br>
 
-  <input type="submit" value="LOGIN">
+  <input type="submit" value="Log In"/>
 </form>

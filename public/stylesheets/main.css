@@ -11,6 +11,7 @@
     width: 100%;
   }
 
+
   /* --- Welcome Page Styles --- */
   body {
     background-color: lightblue;
@@ -28,6 +29,10 @@
     max-width: 960px;
     padding: 2.25%; /* 18px / 800px */
     width: 85%;
+  }
+
+  .flex-container {
+    display: flex;
   }
 
   h1 {

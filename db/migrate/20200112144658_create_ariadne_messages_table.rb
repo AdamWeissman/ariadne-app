@@ -5,6 +5,8 @@ class CreateAriadneMessagesTable < ActiveRecord::Migration
       t.integer "project_id"
       t.integer "phase_number"
 
+      t.string "message_category"
+
       t.string "message_or_quote"
       t.string "author"
 
