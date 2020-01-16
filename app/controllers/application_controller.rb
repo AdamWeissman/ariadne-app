@@ -143,9 +143,15 @@ class ApplicationController < Sinatra::Base
     erb :'/inside_the_maze/adventures/phase_1/the_phase_1_preview'
   end
 
+#NOTE MAY NEED TO EMBED RUBY IN POST
+#TUTORIAL EXAMPLE: <form class="" action="/posts/<%= @post.id %>" method="post">
+
 #you've done the routes above HERE 1/16/20 at 1:20AM
 # as of 1:47AM also ran some tests to see if I could parse text.
 # I CAN!!!!! time to go to sleep.
+#t.datetime "created_at",                          null: false
+#t.datetime "updated_at",
+
 
   get '/edit_a_project' do
     if logged_in?

@@ -3,11 +3,9 @@
 <a href="/account_home" title="Home">Home</a> | <a href="/projects" title="Projects"><strong>Projects</strong></a> | <a href="/about" title="About">About</a> | <a href="/contact" title="Contact">Contact</a> | <a href="/logout" title="Logout">Logout</a><br>
 <br>
 
-
-
 <form class="" action="/create_a_new_project" method="post">
   <label for="project_name">PROJECT NAME: </label><br>
-  <input type="string" name="project_name" value="Type in the name of your project" size="30"ß><br><br>
+  <input type="string" name="project_name" value="Type in the name of your project" size="30"><br><br>
   <label for="project_summary">PROJECT SUMMARY: </label><br>
   <input type="string" name="project_summary" value="Type in a project summary" size="80"><br><br>
   <label for="the_initial_blob_to_parse">PHASE I BLOB INPUT: </label><br>
@@ -15,8 +13,12 @@
     Use q:: if you're asking yourself a rhetorical question perhaps something to get your subconscious going...&#10;&#13;For example...&#10;&#13;if you type out
      t::this is a task t::this is also a task t:: this IS ALSO a task q:: this just a comment t:: and here is another task... what you'll get is &#10;&#13;
    this is a task&#13;this is also a task&#10;&#13;this IS ALSO a task&#10;&#13;and here is another task on the following page.</textarea><br>
+   <input type="hidden" name="user_id" value=<%=@user.id%>>
+   <input type="hidden" name="current_phase" value="1"> #stuck hard coding for now...
   <input type="submit" value="PHASE I PREVIEW">
 </form>
 <br><br>
+
+
 
 <center>a message from ariadne</center>
