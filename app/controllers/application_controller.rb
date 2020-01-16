@@ -23,13 +23,16 @@ class ApplicationController < Sinatra::Base
       @current_user ||= User.find(session[:your_session])
     end
 
+    def current_project
+      @current_project || Project.find(session[:your_session])
+    end
+
     def logged_in?
       !!session[:your_session] #!! converts variable to its boolean value
     end
 
   end
 
-# THE WHOLE ENCHILADA
 
   get '/about' do
     if logged_in?
@@ -46,8 +49,6 @@ class ApplicationController < Sinatra::Base
       redirect '/about'
     end
   end
-
-# these three are related
 
   get '/signup' do
     if !session[:your_session]
@@ -104,7 +105,6 @@ class ApplicationController < Sinatra::Base
     end
   end
 
-# CONTACT is only available if you are logged in
   get '/contact' do
     if logged_in?
       @user = current_user
@@ -114,28 +114,38 @@ class ApplicationController < Sinatra::Base
     end
   end
 
-#EVERYTHING ABOVE THIS LINE SORT OF MOSTLY WORKS...
-
-  get '/no_access'
+  get '/no_access' do
     erb :'/outside_the_maze/minotaur2'
   end
 
-# PROJECT STUFF MAIN MENU
+
   get '/projects' do
     if logged_in?
+      @user = current_user
       erb :'/inside_the_maze/adventures/projects_home'
     else
-      redirect 'no_access'
+      redirect '/no_access'
     end
   end
 
   get '/create_a_new_project' do
     if logged_in?
+      @user = current_user
       erb :'/inside_the_maze/adventures/new_project'
     else
       redirect '/no_access'
     end
   end
+
+  post '/create_a_new_project' do
+    @user = current_user
+    @project = Project.create(params)
+    erb :'/inside_the_maze/adventures/phase_1/the_phase_1_preview'
+  end
+
+#you've done the routes above HERE 1/16/20 at 1:20AM
+# as of 1:47AM also ran some tests to see if I could parse text.
+# I CAN!!!!! time to go to sleep.
 
   get '/edit_a_project' do
     if logged_in?
