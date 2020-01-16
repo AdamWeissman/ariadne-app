@@ -9,12 +9,10 @@ Greetings <%= @user.first_name %>eus<br><br>
   PROJECT UPDATED AT :<%= project.updated_at %>... MOST RECENT PHASE: <%= project.current_phase.to_s %><br>
   PROJECT NAME: <%= project.project_name %><br>
   PROJECT SUMMARY: <%= project.project_summary %><br>
-  Would be better to send all these projects into a TEMPORARY hash where the key is updated_at, and then all the keys are put into an array... and then you sort the keys, and then post keys and data.  Maybe there's an easier less confusing way. 
+  Would be better to send all these projects into a TEMPORARY hash where the key is updated_at, and then all the keys are put into an array... and then you sort the keys, and then post keys and data.  Maybe there's an easier less confusing way.
 <% end %>
 
-there's a list of ALL or NONE of your projects<br>
 if you have projects, they're sorted by most recent to oldest.<br>
-they also have the <strong>PROJECT TITLE</strong> and <strong>PROJECT SUMMARY</strong><br><br>
 
 You can do the following:<br><br>
 <a href="/create_a_new_project" title="CREATE A PROJECT">Create a New Project</a> | <a href="/edit_a_project" title="EDIT A PROJECT">Edit a Project</a> | <a href="/delete_a_project" title="DELETE A PROJECT">Delete a Project</a>

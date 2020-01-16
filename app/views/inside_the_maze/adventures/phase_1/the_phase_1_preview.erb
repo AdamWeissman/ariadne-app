@@ -2,20 +2,15 @@
 
 <%= @user.first_name %> this is what you've got so far.<br>
 
-<%= @project.project_name %><br>
-<%= @project.project_summary %><br>
-<%= @project.the_initial_blob_to_parse.split("t::") %><br> this is a mess but the right idea.
-
-<h3>Project Name INPUT FROM PREVIOUS PAGE... can edit here</h3>
-<h3>Project Summary INPUT FROM PREVOIUS PAGE... can edit here</h3>
-<h3>Phase I Blob INPUT FROM PREVOIUS PAGE</h3>
-
-<h4>IT LISTS ALL THE TASKS</h4>
-<h4>IT LISTS ALL THE TASKS</h4>
-<h4>IT LISTS ALL THE TASKS</h4>
-<h4>IT LISTS ALL THE TASKS</h4>
-<h4>IT LISTS ALL THE TASKS</h4>
-
+<form class="" action="/phase_1_preview" method="post">
+<label for="project_name">PROJECT NAME: </label>
+<input type="string" name="project_name" value=<%= @project.project_name %> size="30"><br>
+<label for="project_summary">PROJECT SUMMARY: </label>
+<input type="string" name="project_summary" value=<%= @project.project_summary %> size="80"><br>
+<label for="the_initial_blob_to_parse">PHASE I BLOB INPUT UNPARSED: </label><br>
+<textarea rows="34" cols="89" type="text" name="the_initial_blob_to_parse"><%= @project.the_initial_blob_to_parse%></textarea><br>
+<input type="submit" value="UPDATE IN PLACE">
+</form>
 
 <center>a message from ariadne</center>
 

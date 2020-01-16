@@ -144,14 +144,49 @@ class ApplicationController < Sinatra::Base
   end
 
 #NOTE MAY NEED TO EMBED RUBY IN POST
+#SECOND NOTE... createing a new post seemd to work without passing the whatever.id into the post method
 #TUTORIAL EXAMPLE: <form class="" action="/posts/<%= @post.id %>" method="post">
 
-#you've done the routes above HERE 1/16/20 at 1:20AM
-# as of 1:47AM also ran some tests to see if I could parse text.
-# I CAN!!!!! time to go to sleep.
-#t.datetime "created_at",                          null: false
-#t.datetime "updated_at",
+  get '/phase_1_preview' do
+    if logged_in?
+      @user = current_user
+      @project = current_project
+      erb :'/inside_the_maze/adventures/phase_1/the_phase_1_preview'
+    else
+      redirect '/no_access'
+    end
+  end
 
+  post '/phase_1_preview' do
+    if logged_in?
+      @user = current_user
+      @project = current_project
+      erb :'/inside_the_maze/adventures/phase_1/the_phase_1_preview'
+    else
+      redirect '/no_access'
+    end
+  end
+
+  get '/phase_1_preview_something_sucked_let_me_fix_it' do
+    if logged_in?
+      erb :'/inside_the_maze/adventures/phase_1/phase_1_fix_the_preview'
+    else
+      redirect '/no_access'
+    end
+  end
+
+
+  get '/phase_1_saved' do
+    if logged_in?
+      erb :'/inside_the_maze/adventures/phase_1/phase_1_complete_with_data'
+    else
+      redirect '/no_access'
+    end
+  end
+
+# YOU ARE CURRENTLY WORKING ON PHASE I PREVIEW GETS AND POSTS AS TO BE CREATED
+# (SEE ABOVE) 1/16/20 7:32AM...
+# WANT TO MAKE PREVIEW AND EDIT POSSIBLE...
 
   get '/edit_a_project' do
     if logged_in?
@@ -177,31 +212,7 @@ class ApplicationController < Sinatra::Base
     end
   end
 
-# PROJECT STUFF PHASE I (NEW PROJECT) -- starts with create_a_new_project
-
-  get '/phase_1_preview' do
-    if logged_in?
-      erb :'/inside_the_maze/adventures/phase_1/the_phase_1_preview'
-    else
-      redirect '/no_access'
-    end
-  end
-
-  get '/phase_1_saved' do
-    if logged_in?
-      erb :'/inside_the_maze/adventures/phase_1/phase_1_complete_with_data'
-    else
-      redirect '/no_access'
-    end
-  end
-
-  get '/phase_1_preview_something_sucked_let_me_fix_it' do
-    if logged_in?
-      erb :'/inside_the_maze/adventures/phase_1/phase_1_fix_the_preview'
-    else
-      redirect '/no_access'
-    end
-  end
+# DO NOT DO WORK BELOW THIS LINE UNTIL ALL ABOVE ARE WORKING.
 
 # PHASE II
 
