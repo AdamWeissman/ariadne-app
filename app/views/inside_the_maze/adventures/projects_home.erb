@@ -1,15 +1,46 @@
+<style>
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+</style>
+
+
 <h1>WELCOME TO PROJECTS HOME</h1>
 
 <a href="/account_home" title="Home">Home</a> | <a href="/projects" title="Projects">About</a> | <a href="/about" title="About">About</a> | <a href="/contact" title="Contact">Contact</a> | <a href="/logout" title="Logout">Logout</a><br>
 <br>
 Greetings <%= @user.first_name %>eus<br><br>
 
+<table>
+  <tr>
+    <th>Current Phase</th>
+    <th>Project Name</th>
+    <th>Project Summary</th>
+    <th></th>
+    <th></th>
+  </tr>
 <% @user.projects.each do |project| %>
-  <br>
-  PROJECT UPDATED AT :<%= project.updated_at %>... MOST RECENT PHASE: <%= project.current_phase.to_s %><br>
-  PROJECT NAME: <%= project.project_name %><br>
-  PROJECT SUMMARY: <%= project.project_summary %><br>
+  <tr>
+  <td><%= project.current_phase %></td>
+  <td><%= project.project_name %></td>
+  <td><%= project.project_summary %></td>
+  <td><center><a href="/edit_a_project/#{project.id}" title="EDIT A PROJECT">edit dont work yet</a></center></td>
+  <td><center><a href="/delete_a_project/#{project.id}" title="DELETE A PROJECT">DELETE</a></center></td>
+  </tr>
 <% end %>
-
+</table>
+<br>
 You can do the following:<br><br>
-<a href="/create_a_new_project" title="CREATE A PROJECT">Create a New Project</a> | <a href="/edit_a_project" title="EDIT A PROJECT">Edit a Project</a> | <a href="/delete_a_project" title="DELETE A PROJECT">Delete a Project</a>
+<a href="/create_a_new_project" title="CREATE A PROJECT">Create a New Project</a>

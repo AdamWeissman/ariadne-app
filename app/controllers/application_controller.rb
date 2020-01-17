@@ -137,18 +137,14 @@ class ApplicationController < Sinatra::Base
     end
   end
 
-#HEY!!!! YOU!!!! - THIS RIGHT HERE!!!!!!!!!!!!!!!!!!!!!!!!!!!!
   post '/create_a_new_project' do
     @user = current_user
     @project = Project.create(params)
-    redirect '/phase_1_preview/#{project.id}'
+    redirect "/phase_1_preview/#{@project.id}"
   #erb :'/inside_the_maze/adventures/phase_1/the_phase_1_preview'
   end
-
-#SECOND NOTE... createing a new post seemd to work without passing the whatever.id into the post method
 #TUTORIAL EXAMPLE: <form class="" action="/posts/<%= @post.id %>" method="post">
 
-#HEY YOU!!!!!!!!! - AND THIS RIGHT HERE!!!!!!!!!!!!!!!!!!!!!
   get '/phase_1_preview/:id' do #this should be a dynamic route
     if logged_in?
       @user = current_user
@@ -158,8 +154,6 @@ class ApplicationController < Sinatra::Base
       redirect '/no_access'
     end
   end
-
-  #MOST RECENT CHANGES HERE
 
   post '/phase_1_preview' do
     if logged_in?
