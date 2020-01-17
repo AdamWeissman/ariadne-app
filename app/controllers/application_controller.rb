@@ -137,31 +137,35 @@ class ApplicationController < Sinatra::Base
     end
   end
 
+#HEY!!!! YOU!!!! - THIS RIGHT HERE!!!!!!!!!!!!!!!!!!!!!!!!!!!!
   post '/create_a_new_project' do
     @user = current_user
     @project = Project.create(params)
-    erb :'/inside_the_maze/adventures/phase_1/the_phase_1_preview'
+    redirect '/phase_1_preview/#{project.id}'
+  #erb :'/inside_the_maze/adventures/phase_1/the_phase_1_preview'
   end
 
-#NOTE MAY NEED TO EMBED RUBY IN POST
 #SECOND NOTE... createing a new post seemd to work without passing the whatever.id into the post method
 #TUTORIAL EXAMPLE: <form class="" action="/posts/<%= @post.id %>" method="post">
 
-  get '/phase_1_preview' do
+#HEY YOU!!!!!!!!! - AND THIS RIGHT HERE!!!!!!!!!!!!!!!!!!!!!
+  get '/phase_1_preview/:id' do #this should be a dynamic route
     if logged_in?
       @user = current_user
-      @project = current_project
+      @project = Project.find(params[:id])
       erb :'/inside_the_maze/adventures/phase_1/the_phase_1_preview'
     else
       redirect '/no_access'
     end
   end
 
+  #MOST RECENT CHANGES HERE
+
   post '/phase_1_preview' do
     if logged_in?
       @user = current_user
-      @project = current_project
-      erb :'/inside_the_maze/adventures/phase_1/the_phase_1_preview'
+      redirect '/phase_1_preview/:#{@project.id}'
+      #erb :'/inside_the_maze/adventures/phase_1/the_phase_1_preview'
     else
       redirect '/no_access'
     end
@@ -174,7 +178,6 @@ class ApplicationController < Sinatra::Base
       redirect '/no_access'
     end
   end
-
 
   get '/phase_1_saved' do
     if logged_in?
