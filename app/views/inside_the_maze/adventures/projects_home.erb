@@ -19,7 +19,7 @@ tr:nth-child(even) {
 
 <h1>WELCOME TO PROJECTS HOME</h1>
 
-<a href="/account_home" title="Home">Home</a> | <a href="/projects" title="Projects">About</a> | <a href="/about" title="About">About</a> | <a href="/contact" title="Contact">Contact</a> | <a href="/logout" title="Logout">Logout</a><br>
+<a href="/account_home" title="Home">Home</a> | <a href="/projects" title="Projects">Projects</a> | <a href="/about2" title="About">About</a> | <a href="/contact" title="Contact">Contact</a> | <a href="/logout" title="Logout">Logout</a><br>
 <br>
 Greetings <%= @user.first_name %>eus<br><br>
 
@@ -36,8 +36,21 @@ Greetings <%= @user.first_name %>eus<br><br>
   <td><%= project.current_phase %></td>
   <td><%= project.project_name %></td>
   <td><%= project.project_summary %></td>
-  <td><center><a href="/edit_a_project/#{project.id}" title="EDIT A PROJECT">edit dont work yet</a></center></td>
-  <td><center><a href="/delete_a_project/#{project.id}" title="DELETE A PROJECT">DELETE</a></center></td>
+  <td>
+    <center>
+    <form class="" action="/edit_a_project" method="get">
+    <input type="hidden" name="project_id" value=<%=project.id%>>
+    <input type="submit" value="EDIT">
+    </form>
+    </center>
+  </td>
+  <td>
+    <center>
+    <form class="" action="/delete_a_project" method="get">
+    <input type="hidden" name="project.id" value=<%=project.id%>>
+    <input type="submit" value="DELETE">
+    </form>
+    </center></td>
   </tr>
 <% end %>
 </table>

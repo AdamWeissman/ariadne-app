@@ -16,33 +16,33 @@
   body {
    background-color: black;
    background-image: linear-gradient(black, midnightblue, indigo, midnightblue, black);
-   color: gold;
+   color: black;
    font-family: Sans-Serif;
    line-height: 18px;
  }
 
  /* unvisited link */
   a:link {
-    color: hotpink;
+    color: indigo;
   }
 
   /* visited link */
   a:visited {
-    color: hotpink;
+    color: indigo;
   }
 
   /* mouse over link */
   a:hover {
-    color: gold;
+    color: hotpink;
   }
 
   /* selected link */
   a:active {
-    color: hotpink;
+    color: indigo;
   }
 
  .wrapper {
-   background-color: indigo;
+   background-color: white;
    -moz-box-shadow: 0px 0px 10px gold;
    -webkit-box-shadow: 0px 0px 10px gold;
    box-shadow: 0px 0px 10px gold;
@@ -56,16 +56,16 @@
 @keyframes shadow-pulse
 {
   0% {
-    box-shadow: 0 0 0 1px rgba(255, 0, 167, 0.9);
+    box-shadow: 0 0 0 1px rgba(0, 191, 255, 0.9);
   }
   100% {
-    box-shadow: 0 0 0 2px rgba(255, 0, 167, 0.8);
+    box-shadow: 0 0 0 2px rgba(0, 191, 255, 0.7);
   }
 }
 
   .wrapper2 {
     background-color: indigo;
-    background-image: linear-gradient(to bottom right, midnightblue, indigo);
+    background-image: linear-gradient(to bottom right, indigo, hotpink, white);
     -moz-box-shadow: 0px 0px 10px gold;
     -webkit-box-shadow: 0px 0px 10px gold;
     box-shadow: 0px 0px 10px gold;
@@ -78,10 +78,10 @@
 @keyframes shadow-pulse2
   {
     0% {
-      box-shadow: 0 0 0 2px rgba(0, 191, 255, 0.8);
+      box-shadow: 0 0 0 2px rgba(255, 105, 180, 0.7);
     }
     100% {
-      box-shadow: 0 0 0 1px rgba(0, 191, 255, 0.9);
+      box-shadow: 0 0 0 1px rgba(255, 105, 180, 0.9);
     }
   }
 
@@ -104,12 +104,12 @@
  }
 
  h3 {
-   font-size: 18px;
+   font-size: 20px;
    line-height: 36px;
  }
 
  p {
-   font-size: 16px;
+   font-size: 18px;
    margin-bottom: 18px;
  }
 

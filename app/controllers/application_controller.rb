@@ -145,7 +145,16 @@ class ApplicationController < Sinatra::Base
   end
 #TUTORIAL EXAMPLE: <form class="" action="/posts/<%= @post.id %>" method="post">
 
-  get '/phase_1_preview/:id' do #this should be a dynamic route
+  post '/phase_1_preview' do
+    if logged_in?
+      @user = current_user
+      redirect "/phase_1_preview/:#{@project.id}"
+    else
+      redirect '/no_access'
+    end
+  end
+
+  get '/phase_1_preview/:id' do
     if logged_in?
       @user = current_user
       @project = Project.find(params[:id])
@@ -155,15 +164,12 @@ class ApplicationController < Sinatra::Base
     end
   end
 
-  post '/phase_1_preview' do
-    if logged_in?
-      @user = current_user
-      redirect '/phase_1_preview/:#{@project.id}'
-      #erb :'/inside_the_maze/adventures/phase_1/the_phase_1_preview'
-    else
-      redirect '/no_access'
-    end
+  post '/update_in_place/' do
+    @user = current_user
+    redirect 'phase_1_saved'
   end
+
+
 
   get '/phase_1_preview_something_sucked_let_me_fix_it' do
     if logged_in?
@@ -181,29 +187,50 @@ class ApplicationController < Sinatra::Base
     end
   end
 
-# YOU ARE CURRENTLY WORKING ON PHASE I PREVIEW GETS AND POSTS AS TO BE CREATED
-# (SEE ABOVE) 1/16/20 7:32AM...
-# WANT TO MAKE PREVIEW AND EDIT POSSIBLE...
-
-  get '/edit_a_project' do
+  get '/delete_a_project/:id' do
     if logged_in?
-      erb :'/inside_the_maze/adventures/edit_a_project'
-    else
-      redirect '/no_access'
-    end
-  end
-
-  get '/delete_a_project' do
-    if logged_in?
+      @user = current_user
+      @project = project.id
       erb :'/inside_the_maze/adventures/delete_a_project'
     else
       redirect '/no_access'
     end
   end
 
-  get '/delete_a_project_for_real' do
+  delete '/delete_a_project_for_real/:id' do
     if logged_in?
+      @user = current_user
+      @project = Project.find(params[:id])
+      @project.destroy
       erb :'/inside_the_maze/adventures/delete_a_project_for_real'
+    else
+      redirect '/no_access'
+    end
+  end
+
+  get '/edit_a_project/:id' do
+    if logged_in?
+      @user = current_user
+      @project = Project.find(params[:id])
+      if @project.current_phase.to_i == 1
+        redirect "/phase_1_preview/#{@project_id}"
+      elsif @project.current_phase.to_i == 2
+        redirect '/phase_2_preview/:id'
+      elsif @project.current_phase.to_i == 3
+        redirect '/phase_3_preview/:id'
+      elsif @project.current_phase.to_i == 4
+        redirect '/phase_4_preview/:id'
+      elsif @project.current_phase.to_i == 5
+        redirect '/phase_5_preview/:id'
+      end
+    else
+      redirect '/no_access'
+    end
+  end
+
+  get '/edit_a_project' do
+    if logged_in?
+      erb :'/inside_the_maze/adventures/edit_a_project'
     else
       redirect '/no_access'
     end

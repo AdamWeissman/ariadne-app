@@ -1,15 +1,14 @@
-<h1>DELETE THAT PROJECT, FOR REAL?</h1>
+<h1>DELETE "<%= project.project_name.upcase %>"" FOR REAL?</h1>
 
-<li><a href="/account_home" title="Home General">Home Main</a></li>
-<li><a href="/projects" title="PROJECTS">PROJECTS HOME</a></li>
-<li><a href="/about2" title="About">About</a></li>
-<li><a href="/logout" title="LOGOUT"><strong>LOGOUT</strong></a></li>
-<li><a href="/contact" title="Contact">Contact</a></li>
+<a href="/account_home" title="Home">Home</a> | <a href="/projects" title="Projects"><strong>Projects</strong></a> | <a href="/about2" title="About">About</a> | <a href="/contact" title="Contact">Contact</a> | <a href="/logout" title="Logout">Logout</a><br>
 
-
+<form class="" action="/delete_a_project_for_real/<%@project.id%>" method="delete">
+  <input type="hidden" id="hidden" name="_method" value="DELETE">
+  <input type="submit" value="DELETE, IF YOU MEAN IT.">
+</form>
+<br><br>
+<form class="" action="/projects" method="get">
+  <input type="submit" value="Let's call the whole thing off.  Go back.">
+</form>
+<br><br>
 <center>a message from ariadne</center><br><br>
-YO!  You serious?!  You really want to delete this?<br><br>
-IF NO (takes you back a level)<br>
-<li><a href="/projects" title="PROJECTS">PROJECTS HOME</a></li>
-IF YES it deletes for real.<br>
-<li><a href="/delete_a_project_for_real" title="Now you've done it">DELETE FOR REAL</a></li>
