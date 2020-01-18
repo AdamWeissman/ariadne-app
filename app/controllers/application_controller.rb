@@ -23,10 +23,6 @@ class ApplicationController < Sinatra::Base
       @current_user ||= User.find(session[:your_session])
     end
 
-    def current_project
-      @current_project || Project.find(session[:your_session])
-    end
-
     def logged_in?
       !!session[:your_session] #!! converts variable to its boolean value
     end
@@ -143,16 +139,6 @@ class ApplicationController < Sinatra::Base
     redirect "/phase_1_preview/#{@project.id}"
   #erb :'/inside_the_maze/adventures/phase_1/the_phase_1_preview'
   end
-#TUTORIAL EXAMPLE: <form class="" action="/posts/<%= @post.id %>" method="post">
-
-  post '/phase_1_preview' do
-    if logged_in?
-      @user = current_user
-      redirect "/phase_1_preview/:#{@project.id}"
-    else
-      redirect '/no_access'
-    end
-  end
 
   get '/phase_1_preview/:id' do
     if logged_in?
@@ -164,10 +150,31 @@ class ApplicationController < Sinatra::Base
     end
   end
 
+
   post '/update_in_place/' do
-    @user = current_user
-    redirect 'phase_1_saved'
+    if logged_in?
+      @user = current_user
+      @project = Project.update(params)
+      redirect "/phase_1_preview/#{@project.id}"
+    else
+      redirect '/no_access'
+    end
   end
+#TUTORIAL EXAMPLE: <form class="" action="/posts/<%= @post.id %>" method="post">
+#EVERYTHING UNDER THIS TEXT IS BROKEN
+
+  post '/phase_1_preview' do
+    if logged_in?
+      @user = current_user
+      redirect "/phase_1_preview/#{@project.id}"
+    else
+      redirect '/no_access'
+    end
+  end
+
+
+
+
 
 
 
@@ -187,10 +194,10 @@ class ApplicationController < Sinatra::Base
     end
   end
 
-  get '/delete_a_project/:id' do
+  get '/delete_a_project/' do
     if logged_in?
       @user = current_user
-      @project = project.id
+      @project = current_user.projects.find_by_id(id params[:id])
       erb :'/inside_the_maze/adventures/delete_a_project'
     else
       redirect '/no_access'
@@ -200,7 +207,7 @@ class ApplicationController < Sinatra::Base
   delete '/delete_a_project_for_real/:id' do
     if logged_in?
       @user = current_user
-      @project = Project.find(params[:id])
+      @project = current_user.projects.find_by_id(params[:id])
       @project.destroy
       erb :'/inside_the_maze/adventures/delete_a_project_for_real'
     else
