@@ -1,23 +1,45 @@
-<h1> this is your preview, DON'T GO BACK OR YOU'LL LOSE YOUR DATA. probably.</h1>
-
-<%= @user.first_name %> this is what you've got so far.<br>
+<h1>PHASE I - PREVIEW - <%= @user.first_name %> CHECK YOUR DATA</h1>
 
 <form class="" action="/update_in_place" method="post">
-<label for="project_name">PROJECT NAME: </label>
-<input type="string" name="project_name" value="<%= @project.project_name.to_s %>" size="80"><br>
-<label for="project_summary">PROJECT SUMMARY: </label>
-<input type="string" name="project_summary" value="<%= @project.project_summary.to_s %>" size="80"><br>
-<label for="the_initial_blob_to_parse">PHASE I BLOB INPUT UNPARSED: </label><br>
-<textarea rows="34" cols="89" type="text" name="the_initial_blob_to_parse"><%= @project.the_initial_blob_to_parse.to_s %></textarea><br>
-<input type="submit" value="UPDATE IN PLACE">
+  <input type="hidden" name="_method" value="post">
+  <label for="project_name">PROJECT NAME: </label>
+  <input type="string" name="project_name" value="<%= @project.project_name.to_s %>" size="80"><br>
+  <label for="project_summary">PROJECT SUMMARY: </label>
+  <input type="string" name="project_summary" value="<%= @project.project_summary.to_s %>" size="80"><br>
+  <label for="the_initial_blob_to_parse">PHASE I BLOB INPUT UNPARSED: </label><br>
+  <textarea rows="34" cols="89" type="text" name="the_initial_blob_to_parse"><%= @project.the_initial_blob_to_parse.to_s %></textarea><br>
+  <input type="hidden" name="user_id" value=<%=@user.id%>>
+  <input type="hidden" name="project_id" value=<%=@project.id%>>
+  <input type="hidden" name="current_phase" value="1">
+  <input type="submit" value="UPDATE IN PLACE">
 </form>
 
 <center>a message from ariadne</center>
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <h3>IF YOU'RE MISSING SOMETHING MAKE SURE YOU DID YOU t:: and q:: CORRECTLY</h3>
 <li><a href="/phase_1_preview_something_sucked_let_me_fix_it" title="basically new project but with the previous data persisted/unaltered">Go back and fix it</a></li>
 
-<h3>NAHHH, EVERYTHING LOOKED KOSHER.  SAVE IT FOR NOW and COME BACK LATER.</h3>
+<h3>EVERYTHING LOOKED GOOD.  SAVE IT FOR NOW and COME BACK LATER.</h3>
 <li><a href="/phase_1_saved" title="Your data persists">SAVE IT FOR NOW.</a></li>
 
 <h3>I'M ON A ROLL.  SAVE IT AND CONTINUE TO PHASE II</h3>

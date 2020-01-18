@@ -140,6 +140,14 @@ class ApplicationController < Sinatra::Base
   #erb :'/inside_the_maze/adventures/phase_1/the_phase_1_preview'
   end
 
+  post '/update_in_place' do #THIS IS THE ONE THAT'S KILLING ME!
+    @user = current_user
+    #@project = Project.find_by(user: params[:user_id]) this line works sort of
+    #@project = Project.find_by(user: params[:user_id], id: params[:project_id]) this also works
+    @project = Project.find_by(user: params[:user_id], id: params[:project_id])
+    redirect "/phase_1_preview/#{@project.id}"
+  end
+
   get '/phase_1_preview/:id' do
     if logged_in?
       @user = current_user
@@ -151,15 +159,6 @@ class ApplicationController < Sinatra::Base
   end
 
 
-  post '/update_in_place/' do
-    if logged_in?
-      @user = current_user
-      @project = Project.update(params)
-      redirect "/phase_1_preview/#{@project.id}"
-    else
-      redirect '/no_access'
-    end
-  end
 #TUTORIAL EXAMPLE: <form class="" action="/posts/<%= @post.id %>" method="post">
 #EVERYTHING UNDER THIS TEXT IS BROKEN
 
