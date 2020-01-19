@@ -39,7 +39,7 @@
   /* selected link */
   a:active {
     color: indigo;
-  }
+  }s
 
  .wrapper {
    background-color: white;
@@ -58,31 +58,26 @@
   0% {
     box-shadow: 0 0 0 1px rgba(0, 191, 255, 0.9);
   }
-  100% {
-    box-shadow: 0 0 0 2px rgba(0, 191, 255, 0.7);
-  }
 }
 
   .wrapper2 {
     background-color: indigo;
-    background-image: linear-gradient(to bottom right, indigo, hotpink, white);
-    -moz-box-shadow: 0px 0px 10px gold;
-    -webkit-box-shadow: 0px 0px 10px gold;
-    box-shadow: 0px 0px 10px gold;
-    margin: 50px auto;
+    background-image: linear-gradient(to bottom right, beige, white);
+    -moz-box-shadow: 0px 5px 55px 0px rgba(0, 191, 255, 0.9);
+    -webkit-box-shadow: 0px 5px 55px 0px rgba(0, 191, 255, 0.9);
+    box-shadow: 0px 5px 55px 0px rgba(0, 191, 255, 0.9), inset 0px 0px 144px 0px white);
+    margin: 144px auto;
     max-width: 960px;
     padding: 1%; /* 18px / 800px */
     width: 95%;
-    animation: shadow-pulse2 1s infinite;
+    animation: shadow-pulse2 20s infinite;
   }
 @keyframes shadow-pulse2
   {
-    0% {
-      box-shadow: 0 0 0 2px rgba(255, 105, 180, 0.7);
+    25% {
+      box-shadow: 0 -3px 89px 0px rgba(255, 105, 180, 0.9), inset 0px 0px 89px 0px rgba(255, 215, 0, 1);
     }
-    100% {
-      box-shadow: 0 0 0 1px rgba(255, 105, 180, 0.9);
-    }
+
   }
 
 
