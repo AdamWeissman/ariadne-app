@@ -114,39 +114,16 @@ class ApplicationController < Sinatra::Base
     erb :'/outside_the_maze/minotaur2'
   end
 
-
-  get '/projects' do
-    if logged_in?
-      @user = current_user
-      erb :'/inside_the_maze/adventures/projects_home'
-    else
-      redirect '/no_access'
-    end
-  end
-
-  get '/create_a_new_project' do
-    if logged_in?
-      @user = current_user
-      erb :'/inside_the_maze/adventures/new_project'
-    else
-      redirect '/no_access'
-    end
-  end
-
-  post '/create_a_new_project' do
+  patch '/update_in_place/:id' do #THIS IS THE ONE THAT'S KILLING ME!
     @user = current_user
-    @project = Project.create(params)
-    redirect "/phase_1_preview/#{@project.id}"
-  #erb :'/inside_the_maze/adventures/phase_1/the_phase_1_preview'
-  end
-
-  post '/update_in_place' do #THIS IS THE ONE THAT'S KILLING ME!
-    @user = current_user
+    @project = Project.find(params[:id])
     #@project = Project.find_by(user: params[:user_id], id: params[:project_id])
-    #@project = Project.find_by(user: params[:user_id]) this line works sort of
-    #@project = Project.find_by(user: params[:user_id], id: params[:project_id]) this also works
-    @project.update(params)
-    redirect "/phase_1_preview/#{@project.id}"
+    @project.project_name = params[:project_name]
+    @project.project_summary = params[:project_summary]
+    @project.the_initial_blob_to_parse = params[:the_initial_blob_to_parse]
+    @project.save
+    erb :'/inside_the_maze/adventures/phase_1/the_phase_1_preview'
+    #redirect "/phase_1_preview/#{@project.id}"
   end
 
   get '/phase_1_preview/:id' do
@@ -159,24 +136,18 @@ class ApplicationController < Sinatra::Base
     end
   end
 
-
-#TUTORIAL EXAMPLE: <form class="" action="/posts/<%= @post.id %>" method="post">
-#EVERYTHING UNDER THIS TEXT IS BROKEN
-
-  post '/phase_1_preview' do
+  post '/phase_1_saved/:id' do
     if logged_in?
       @user = current_user
-      redirect "/phase_1_preview/#{@project.id}"
+      @project = Project.find(params[:id])
+      @project.project_name = params[:project_name]
+      @project.project_summary = params[:project_summary]
+      @project.the_initial_blob_to_parse = params[:the_initial_blob_to_parse]
+      erb :'/inside_the_maze/adventures/phase_1/phase_1_complete_with_data'
     else
       redirect '/no_access'
     end
   end
-
-
-
-
-
-
 
   get '/phase_1_preview_something_sucked_let_me_fix_it' do
     if logged_in?
@@ -186,69 +157,17 @@ class ApplicationController < Sinatra::Base
     end
   end
 
-  get '/phase_1_saved' do
-    if logged_in?
-      erb :'/inside_the_maze/adventures/phase_1/phase_1_complete_with_data'
-    else
-      redirect '/no_access'
-    end
-  end
 
-  get '/delete_a_project/' do
-    if logged_in?
-      @user = current_user
-      @project = current_user.projects.find_by_id(id params[:id])
-      erb :'/inside_the_maze/adventures/delete_a_project'
-    else
-      redirect '/no_access'
-    end
-  end
 
-  delete '/delete_a_project_for_real/:id' do
-    if logged_in?
-      @user = current_user
-      @project = current_user.projects.find_by_id(params[:id])
-      @project.destroy
-      erb :'/inside_the_maze/adventures/delete_a_project_for_real'
-    else
-      redirect '/no_access'
-    end
-  end
-
-  get '/edit_a_project/:id' do
-    if logged_in?
-      @user = current_user
-      @project = Project.find(params[:id])
-      if @project.current_phase.to_i == 1
-        redirect "/phase_1_preview/#{@project_id}"
-      elsif @project.current_phase.to_i == 2
-        redirect '/phase_2_preview/:id'
-      elsif @project.current_phase.to_i == 3
-        redirect '/phase_3_preview/:id'
-      elsif @project.current_phase.to_i == 4
-        redirect '/phase_4_preview/:id'
-      elsif @project.current_phase.to_i == 5
-        redirect '/phase_5_preview/:id'
-      end
-    else
-      redirect '/no_access'
-    end
-  end
-
-  get '/edit_a_project' do
-    if logged_in?
-      erb :'/inside_the_maze/adventures/edit_a_project'
-    else
-      redirect '/no_access'
-    end
-  end
 
 # DO NOT DO WORK BELOW THIS LINE UNTIL ALL ABOVE ARE WORKING.
 
 # PHASE II
 
-  get '/phase_2' do
+  get '/phase_2/:id' do
     if logged_in?
+      @user = current_user
+      @project = Project.find(params[:id])
       erb :'/inside_the_maze/adventures/phase_2/phase_2_first_iteration'
     else
       redirect '/no_access'
