@@ -1,7 +1,7 @@
 <h1>PHASE I - PREVIEW - <%= @user.first_name %> CHECK YOUR DATA</h1>
 
-<form class="" action="/update_in_place" method="post">
-  <input type="hidden" name="_method" value="post">
+<form class="" action="/update_in_place/#{@project.id}" method="post">
+  <input type="hidden" name="_method" value="put">
   <label for="project_name">PROJECT NAME: </label>
   <input type="string" name="project_name" value="<%= @project.project_name.to_s %>" size="80"><br>
   <label for="project_summary">PROJECT SUMMARY: </label>

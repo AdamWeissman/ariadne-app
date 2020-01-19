@@ -142,9 +142,10 @@ class ApplicationController < Sinatra::Base
 
   post '/update_in_place' do #THIS IS THE ONE THAT'S KILLING ME!
     @user = current_user
+    #@project = Project.find_by(user: params[:user_id], id: params[:project_id])
     #@project = Project.find_by(user: params[:user_id]) this line works sort of
     #@project = Project.find_by(user: params[:user_id], id: params[:project_id]) this also works
-    @project = Project.find_by(user: params[:user_id], id: params[:project_id])
+    @project.update(params)
     redirect "/phase_1_preview/#{@project.id}"
   end
 
