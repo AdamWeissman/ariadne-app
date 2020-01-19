@@ -1,14 +1,9 @@
-<h1>DELETE "<%= project.project_name%>"" FOR REAL?</h1>
-
+<h1>DELETE?  FOR REALS?</h1>
 <a href="/account_home" title="Home">Home</a> | <a href="/projects" title="Projects"><strong>Projects</strong></a> | <a href="/about2" title="About">About</a> | <a href="/contact" title="Contact">Contact</a> | <a href="/logout" title="Logout">Logout</a><br>
-
-<form class="" action="/delete_a_project_for_real/<%@project.id%>" method="delete">
-  <input type="hidden" id="hidden" name="_method" value="DELETE">
-  <input type="submit" value="DELETE, IF YOU MEAN IT.">
-</form>
 <br><br>
-<form class="" action="/projects" method="get">
-  <input type="submit" value="Let's call the whole thing off.  Go back.">
+Are you sure you'd like to delete <font color="red"><%= @project.project_name.gsub(/\w+/) do |word|
+  word.capitalize end%></font>?<br><br>
+<form class="" action="/delete_a_project_for_real/<%=@project.id%>" method="post">
+  <input type="hidden" name="_method" value="delete">
+  <input type="submit" value="DELETE">
 </form>
-<br><br>
-<center>a message from ariadne</center><br><br>

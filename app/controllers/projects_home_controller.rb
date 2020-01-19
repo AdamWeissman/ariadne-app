@@ -25,12 +25,10 @@ class ProjectsHomeController < ApplicationController
   #erb :'/inside_the_maze/adventures/phase_1/the_phase_1_preview'
   end
 
-  #ABOVE THIS COMMENT WORKS, BELOW THIS COMMENT DOES NOT
-
-  get '/delete_a_project/' do
+  get '/delete_a_project/:id' do
     if logged_in?
       @user = current_user
-      @project = current_user.projects.find_by_id(id params[:id])
+      @project = Project.find(params[:id])
       erb :'/inside_the_maze/adventures/delete_a_project'
     else
       redirect '/no_access'
@@ -40,13 +38,15 @@ class ProjectsHomeController < ApplicationController
   delete '/delete_a_project_for_real/:id' do
     if logged_in?
       @user = current_user
-      @project = current_user.projects.find_by_id(params[:id])
+      @project = Project.find(params[:id])
       @project.destroy
-      erb :'/inside_the_maze/adventures/delete_a_project_for_real'
+      redirect '/projects'
     else
       redirect '/no_access'
     end
   end
+
+#ABOVE THIS COMMENT WORKS, BELOW THIS COMMENT DOES NOT ... waiting to finish parser.
 
   get '/edit_a_project/:id' do
     if logged_in?
