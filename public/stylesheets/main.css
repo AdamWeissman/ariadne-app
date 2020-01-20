@@ -83,6 +83,25 @@
    display: flex;
  }
 
+ .glow {
+  font-size: 80px;
+  color: #fff;
+  text-align: center;
+  -webkit-animation: glow 20s ease-in-out infinite alternate;
+  -moz-animation: glow 20s ease-in-out infinite alternate;
+  animation: glow 20s ease-in-out infinite alternate;
+}
+
+@-webkit-keyframes glow {
+  from {
+    text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px white, 0 0 40px white, 0 0 50px white, 0 0 60px white, 0 0 70px white;
+  }
+
+  to {
+    text-shadow: 0 0 20px #fff, 0 0 30px #FFE7CF, 0 0 40px #FFE7CF, 0 0 50px gold, 0 0 60px #FFE7CF, 0 0 70px #FFE7CF, 0 0 80px #FFE7CF;
+  }
+}
+
  h1 {
    font-size: 36px;
    line-height: 54px;
