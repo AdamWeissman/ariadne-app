@@ -109,3 +109,16 @@ Hex: #F7EFF1
 Hex: #F9F3F5
 Hex: #FBF7F8
 Hex: #FDFBFC
+
+COMPLENTARY COLOR HEX TINTS SAME order
+hex: #d7ebe5
+hex: #dbede7
+hex: #dfefea
+hex: #e3f1ec
+hex: #e7f3ef
+hex: #ebf5f2
+hex: #eff7f4
+hex: #f3f9f7
+hex: #f7fbf9
+hex: #fbfdfc
+hex: #ffffff

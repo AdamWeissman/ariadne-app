@@ -21,23 +21,36 @@
  }
 
  /* unvisited link */
+
   a:link {
-    color: #165396;
+    color: ivory;
+    font-size: 21px;
+    text-shadow: 0 0 8px violet;
+    padding: 8px;
   }
 
   /* visited link */
   a:visited {
-    color: #165396;
+    color: ivory;
+    font-size: 21px;
+    text-shadow: 0 0 8px violet;
+    padding: 8px;
   }
 
   /* mouse over link */
   a:hover {
-    color: #a4bc26;
+    color: snow;
+    font-size: 21px;
+    text-shadow: 0 0 8px hotpink;
+    padding: 8px;
   }
 
   /* selected link */
   a:active {
-    color: #a4bc26;
+    color: ivory;
+    font-size: 21px;
+    text-shadow: 0 0 8px violet;
+    padding: 8px;
   }
 
   .wrapper {
@@ -85,7 +98,7 @@
  }
 
  .glow {
-  font-size: 20px;
+  font-size: 89px;
   color: #FDFEFE;
   text-align: center;
   -webkit-animation: glow 20s ease-in-out infinite alternate;
@@ -95,13 +108,32 @@
 
 @-webkit-keyframes glow {
   from {
-    text-shadow: 0 0 8px #FDFEFE, 0 0 13px #FDFEFE, 0 0 21px #F3F7F9, 0 0 34px #E8EBF6, 0 0 55px #F9FBFC, 0 0 89px #FBF3F3, 0 0 144px #EBD7DD;
+    text-shadow: 0 0 8px #FDFEFE, 0 0 13px ##FDFEFE, 0 0 21px #EFDFE4, 0 0 34px #E8EBF6, 0 0 55px #F9FBFC, 0 0 89px #FBF3F3, 0 0 144px #EBD7DD;
   }
 
   to {
-    text-shadow: 0 0 13px #FDFEFE, 0 0 21px #FBFCFD, 0 0 34px #F1F3F9, 0 0 55px #DFEAF2, 0 0 89px #FEFCFC, 0 0 144px #F1E3E7, 0 0 233px #d7ebe5;
+    text-shadow: 0 0 13px #FDFEFE, 0 0 21px #F8E8E8, 0 0 34px #F1F3F9, 0 0 55px #DFEAF2, 0 0 89px #FEFCFC, 0 0 144px #F1E3E7, 0 0 233px #d7ebe5;
   }
 }
+
+  .glowsmall {
+   font-size: 34px;
+   color: #ffffff;
+   text-align: center;
+   -webkit-animation: glow 8s ease-in-out infinite alternate;
+   -moz-animation: glow 8s ease-in-out infinite alternate;
+   animation: glow 8s ease-in-out infinite alternate;
+  }
+
+  @-webkit-keyframes glowsmall {
+   from {
+     text-shadow: 0 0 21px #ffffff, 0 0 21px #f7fbf9, 0 0 21px #eff7f4, 0 0 55px #e7f3ef, 0 0 21px #ebf5f2, 0 0 21px #f3f9f7, 0 0 34px #fbfdfc;
+   }
+
+   to {
+     text-shadow: 0 0 34px #FDFBFC, 0 0 34px #F9F3F5, 0 0 34px #F5EBEE, 0 0 34px #F1E3E7, 0 0 13px #EDDBE0, 0 0 34px #EBD7DD, 0 0 55px #d7ebe5;
+   }
+  }
 
  h1 {
    font-size: 36px;
