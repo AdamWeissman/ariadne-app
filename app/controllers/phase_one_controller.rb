@@ -6,7 +6,7 @@ class PhaseOneController < ApplicationController
     #@project = Project.find_by(user: params[:user_id], id: params[:project_id])
     @project.project_name = params[:project_name]
     @project.project_summary = params[:project_summary]
-    #@project.the_initial_blob_to_parse = params[:the_initial_blob_to_parse]
+    @project.the_initial_blob_to_parse = params[:the_initial_blob_to_parse]
     @project.save
     erb :'/inside_the_maze/adventures/phase_1/the_phase_1_preview'
     #redirect "/phase_1_preview/#{@project.id}"
@@ -16,6 +16,7 @@ class PhaseOneController < ApplicationController
     if logged_in?
       @user = current_user
       @project = Project.find(params[:id])
+      #@project_parsed = @project.the_initial_blob_to_parse.upcase!
       erb :'/inside_the_maze/adventures/phase_1/the_phase_1_preview'
     else
       redirect '/no_access'
