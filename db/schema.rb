@@ -53,6 +53,7 @@ ActiveRecord::Schema.define(version: 20200112144658) do
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
     t.string   "the_action_description"
+    t.string   "comment_or_measure"
     t.string   "segment"
     t.float    "base_rank"
     t.float    "calculated_rank"

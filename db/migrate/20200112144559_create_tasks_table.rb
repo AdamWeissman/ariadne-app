@@ -6,6 +6,7 @@ class CreateTasksTable < ActiveRecord::Migration
       t.datetime "updated_at"
 
       t.string "the_action_description"
+      t.string "comment_or_measure"
 
       t.string "segment"
 

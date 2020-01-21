@@ -1,12 +1,12 @@
 class PhaseOneController < ApplicationController
 
-  patch '/update_in_place/:id' do #THIS IS THE ONE THAT'S KILLING ME!
+  patch '/update_in_place/:id' do
     @user = current_user
     @project = Project.find(params[:id])
     #@project = Project.find_by(user: params[:user_id], id: params[:project_id])
     @project.project_name = params[:project_name]
     @project.project_summary = params[:project_summary]
-    @project.the_initial_blob_to_parse = params[:the_initial_blob_to_parse]
+    #@project.the_initial_blob_to_parse = params[:the_initial_blob_to_parse]
     @project.save
     erb :'/inside_the_maze/adventures/phase_1/the_phase_1_preview'
     #redirect "/phase_1_preview/#{@project.id}"

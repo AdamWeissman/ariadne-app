@@ -7,7 +7,7 @@
   <label for="project_summary">PROJECT SUMMARY: </label>
   <input type="string" name="project_summary" value="<%= @project.project_summary %>" size="80"><br>
   <label for="the_initial_blob_to_parse">PHASE I BLOB INPUT UNPARSED: </label><br>
-  <textarea rows="34" cols="89" type="text" name="the_initial_blob_to_parse"><%= @project.the_initial_blob_to_parse %></textarea><br>
+  <textarea rows="34" cols="80" type="text" name="the_initial_blob_to_parse"><%= @project.the_initial_blob_to_parse %></textarea><br>
   <input type="hidden" name="user_id" value=<%=@user.id%>>
   <input type="hidden" name="project_id" value=<%=@project.id%>>
   <input type="hidden" name="current_phase" value="1">
