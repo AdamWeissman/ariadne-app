@@ -3,6 +3,8 @@ require_all 'lib'
 
 class ApplicationController < Sinatra::Base
 
+#USE THIS /\b(t:)(.*?)(:e)\b/i for parsing my regex -- to t: and :e ... caps irrelevant https://rubular.com/
+
   configure do
     set :public_folder, 'public'
     set :views, 'app/views'
