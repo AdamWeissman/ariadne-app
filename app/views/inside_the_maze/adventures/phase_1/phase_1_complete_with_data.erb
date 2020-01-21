@@ -1,16 +1,7 @@
 <h1><%= @user.first_name %> YOUR ALMOST DONE WITH PHASE I</h1>
+<br>
 
-<form class="" action="THIS IS BROKEN<%=@project.id%>" method="THIS NEED TO BE CHOSEN">
-  <label for="project_name">PROJECT NAME: </label>
-  <input type="string" name="project_name" value="<%= @project.project_name %>" size="80"><br>
-  <label for="project_summary">PROJECT SUMMARY: </label>
-  <input type="string" name="project_summary" value="<%= @project.project_summary %>" size="80"><br>
-  <label for="the_initial_blob_to_parse">WHAT YOUR BLOB LOOKS LIKE: </label><br>
-    <textarea rows="34" cols="80" type="text" name="the_initial_blob_to_parse"><%= @project.the_initial_blob_to_parse=%></textarea><br>
-  <input type="hidden" name="user_id" value=<%=@user.id%>>
-  <input type="hidden" name="project_id" value=<%=@project.id%>>
-  <input type="hidden" name="current_phase" value="1">
-  <input type="submit" value="YOU SHOULD BE ABLE TO UPDATE IN PLACE OR MAYBE ADD COMMENTS ON THIS PAGE">
-</form>
+<textarea rows="34" cols="80" type="text" name="the_initial_blob_to_parse"><%= @project.the_initial_blob_to_parse %></textarea>
 <br>
 <br>
+ THIS IS UNFINISHED.

@@ -13,9 +13,14 @@
   <input type="submit" value="DID YOU FORGET A 'T' OR AN 'E'? FIX IT HERE.">
 </form>
 <br>
-<br>
-<form class="" action="/phase_1_saved/<%=@project.id>" method="post">
-  <input type="submit" value="IF EVERYTHING IS PERFECT... SAVE THE TASKS AND CONTINUE">
+<form class="" action="/phase_1_saved/<%=@project.id%>" method="post">
+  <input type="hidden" name="_method" value="patch">
+  <input type="hidden" name="the_initial_blob_to_parse" value=<%= @project.the_initial_blob_to_parse %>>
+  <input type="hidden" name="user_id" value=<%=@user.id%>>
+  <input type="hidden" name="project_id" value=<%=@project.id%>>
+  <input type="hidden" name="project_name" value=<%=@project.project_name%>>
+  <input type="hidden" name="project_summary" value=<%=@project.project_summary%>>
+  <input type="submit" value="IF EVERYTHING IS PERFECT... SAVE THE TASKS AND CONTINUE.  IF YOU CHANGE SOMETHING ON THE ABOVE FORM IT WILL NOT PASS.">
 </form>
 
 <center>a message from ariadne</center>
