@@ -11,9 +11,7 @@ IN SHORT:
   or...
 -You can treat your finished project outline as the basis for a new iteration.
 
-THESE ARE THE COLORS I WANT TO USE
-
-
+COLORS RESOURCE
 Name: Anti-Flash White
 Hex: #EBF5F7
 RGB: (235, 245, 247)
@@ -122,3 +120,19 @@ hex: #f3f9f7
 hex: #f7fbf9
 hex: #fbfdfc
 hex: #ffffff
+
+hex #96FFCD (150,255,205)
+hex #96FFFF (150,255,255)
+hex #96DCFF (150,220,255)
+hex #B4BEFF (180,190,255)
+hex #8CA0FF (140,160,255)
+hex #B29FFC (150,150,255)
+hex #BE96FF (190,150,255)
+
+hex #64CD9B (100,205,155)
+hex #64CDCD (100,205,205)
+hex #64AACD (100,170,205)
+hex #828CCD (130,140,205)
+hex #5A6ECD (90,110,205)
+hex #5A64CD (90,100,205)
+hex #8C64CD (140,100,205)

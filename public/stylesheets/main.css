@@ -25,7 +25,7 @@
   a:link {
     color: ivory;
     font-size: 21px;
-    text-shadow: 0 0 8px violet;
+    text-shadow: 0 0 8px navy;
     padding: 8px;
   }
 
@@ -33,7 +33,7 @@
   a:visited {
     color: ivory;
     font-size: 21px;
-    text-shadow: 0 0 8px violet;
+    text-shadow: 0 0 8px navy;
     padding: 8px;
   }
 
@@ -41,7 +41,7 @@
   a:hover {
     color: snow;
     font-size: 21px;
-    text-shadow: 0 0 8px hotpink;
+    text-shadow: 0 0 8px navy;
     padding: 8px;
   }
 
@@ -49,7 +49,7 @@
   a:active {
     color: ivory;
     font-size: 21px;
-    text-shadow: 0 0 8px violet;
+    text-shadow: 0 0 8px navy;
     padding: 8px;
   }
 
@@ -76,9 +76,9 @@
   .wrapper-frame {
     background-color: #EBD7DD;
     background-image: linear-gradient(to bottom right, #EBD7DD, #d7ebe5);
-    -moz-box-shadow: 0px 0px 89px 0px rgba(215,235,229, 0.5);
-    -webkit-box-shadow: 0px 0px 89px 0px rgba(215,235,229, 0.5);
-    box-shadow: 0px 0px 89px 0px rgba(215,235,229, 0.5), inset 0px 0px 34px 0px rgba(215, 229, 235, 0.5);
+    -moz-box-shadow: 0px 0px 89px 0px rgba(215,235,229, 0.8);
+    -webkit-box-shadow: 0px 0px 89px 0px rgba(215,235,229, 0.8);
+    box-shadow: 0px 0px 89px 0px rgba(215,235,229, 0.8), inset 0px 0px 34px 0px rgba(215, 229, 235, 0.8);
     margin: 144px auto;
     max-width: 960px;
     padding: 5%; /* 18px / 800px */
@@ -89,7 +89,7 @@
 @keyframes frame-pulse
     {
       50% {
-        box-shadow: 0 -3px 144px 0px rgba(235, 245, 247, 0.5), inset 0px 0px 55px 0px rgba(209, 215, 236, 0.5);
+        box-shadow: 0 -3px 144px 0px rgba(235, 245, 247, 0.8), inset 0px 0px 55px 0px rgba(209, 215, 236, 0.8);
       }
     }
 
@@ -103,7 +103,7 @@
   text-align: center;
   -webkit-animation: glow 20s ease-in-out infinite alternate;
   -moz-animation: glow 20s ease-in-out infinite alternate;
-  animation: glow 20s ease-in-out infinite alternate;
+  animation: glow 10s ease-in-out infinite alternate;
 }
 
 @-webkit-keyframes glow {
@@ -127,11 +127,11 @@
 
   @-webkit-keyframes glowsmall {
    from {
-     text-shadow: 0 0 21px #ffffff, 0 0 21px #f7fbf9, 0 0 21px #eff7f4, 0 0 55px #e7f3ef, 0 0 21px #ebf5f2, 0 0 21px #f3f9f7, 0 0 34px #fbfdfc;
+     text-shadow: 0 0 34px #96FFCD, 0 0 21px #96FFFF, 0 0 55px #96DCFF, 0 0 21px #B4BEFF, 0 0 13px #8CA0FF, 0 0 89px #B29FFC, 0 0 34px #BE96FF;
    }
 
    to {
-     text-shadow: 0 0 34px #FDFBFC, 0 0 34px #F9F3F5, 0 0 34px #F5EBEE, 0 0 34px #F1E3E7, 0 0 13px #EDDBE0, 0 0 34px #EBD7DD, 0 0 55px #d7ebe5;
+     text-shadow: 0 0 21px #64CD9B, 0 0 55px #64CDCD, 0 0 21px #64AACD, 0 0 34px #828CCD, 0 0 89px #5A6ECD, 0 0 34px #5A64CD, 0 0 55px #8C64CD;
    }
   }
 
