@@ -30,16 +30,6 @@ class PhaseOneController < ApplicationController
     erb :'/inside_the_maze/adventures/phase_1/the_phase_1_preview'
   end
 
-  get '/phase_1_saved/:id' do
-    if logged_in?
-      @user = current_user
-      @project = Project.find(params[:id])
-      erb :'/inside_the_maze/adventures/phase_1/phase_1_complete_with_data'
-    else
-      redirect '/no_access'
-    end
-  end
-
   post '/phase_1_saved/:id' do
     @user = current_user
     @project = Project.find(params[:id])
@@ -47,10 +37,16 @@ class PhaseOneController < ApplicationController
       @array_of_tasks = []
       @array_of_tasks << the_content.to_s
       @array_of_tasks.each do |x|
-        Task.create(:the_action_description => x)
+        Task.create(:the_action_description => "#{x}")
       end
     end
-    redirect "/phase_1_saved/#{@project.id}"
+    erb :'/inside_the_maze/adventures/phase_1/phase_1_complete_with_data'
+  end
+
+  get '/phase_1_saved/:id' do
+      @user = current_user
+      @project_tasks = Project.find(params[:id]).tasks
+      erb :'/inside_the_maze/adventures/phase_1/phase_1_complete_with_data'
   end
 
 end
