@@ -45,6 +45,7 @@ class PhaseOneController < ApplicationController
     @project = Project.find(params[:id])
     @project.project_name = params[:project_name]
     @project.project_summary = params[:project_summary]
+    @project.the_initial_blob_to_parse = params[:the_initial_blob_to_parse]
     @project.save
     erb :'/inside_the_maze/adventures/phase_1/phase_1_complete_with_data'
   end

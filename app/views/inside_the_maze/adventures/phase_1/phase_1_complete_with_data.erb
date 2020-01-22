@@ -1,7 +1,7 @@
 <h1><%= @user.first_name %> YOUR ALMOST DONE WITH PHASE I</h1>
 <br>
 
-<textarea rows="34" cols="80" type="text" name="the_initial_blob_to_parse"><%= @project.the_initial_blob_to_parse %></textarea>
+<textarea type='text' style="resize: none" rows="30" cols="83" name="the_initial_blob_to_parse"><%= @project.the_initial_blob_to_parse.scan(/\b(t:)(.*?)(:e)\b/i).collect {|the_task, the_content, the_end| the_content}.join("&#10;") %></textarea>
 <br>
 <br>
  THIS IS UNFINISHED.

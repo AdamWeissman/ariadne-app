@@ -1,15 +1,15 @@
 <h1>CLEAN UP YOUR MESS! <%= @user.first_name %></h1>
 <br>
-<h1>MIND YOUR Ts and Es</h1>
+MIND YOUR Ts and Es.
 <br>
 <form class="" action="/phase_1_preview/<%=@project.id%>" method="post">
   <input type="hidden" name="_method" value="patch">
-  <label for="project_name">PROJECT NAME: </label>
-  <input type="string" name="project_name" value="<%= @project.project_name %>" size="80"><br>
+  <label for="project_name">PROJECT NAME: </label><br>
+  <input type="string" name="project_name" value="<%= @project.project_name %>" size="84"><br>
   <label for="project_summary">PROJECT SUMMARY: </label>
-  <input type="string" name="project_summary" value="<%= @project.project_summary %>" size="80"><br>
+  <input type="string" name="project_summary" value="<%= @project.project_summary %>" size="84"><br>
   <label for="the_initial_blob_to_parse">PHASE I BLOB INPUT UNPARSED: </label><br>
-    <textarea rows="34" cols="80" type="text" name="the_initial_blob_to_parse"><%= @project.the_initial_blob_to_parse%></textarea><br>
+    <textarea rows="30" cols="83" type="text" name="the_initial_blob_to_parse" style="resize: none"><%= @project.the_initial_blob_to_parse%></textarea><br>
   <input type="hidden" name="user_id" value=<%=@user.id%>>
   <input type="hidden" name="project_id" value=<%=@project.id%>>
   <input type="hidden" name="current_phase" value="1">
