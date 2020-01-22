@@ -37,10 +37,8 @@ tr:nth-child(even) {
 }
 </style>
 
-
-<h1>WELCOME TO PROJECTS HOME</h1>
-
 <div class="glowsmall"><center>
+  <br>
 <a href="/account_home" title="Home">Home</a> | <a href="/projects" title="Projects">Projects</a> | <a href="/about2" title="About">About</a> | <a href="/contact" title="Contact">Contact</a> | <a href="/logout" title="Logout">Logout</a><br>
 </center></div><br>
 Greetings <%= @user.first_name %>eus<br><br>
@@ -76,5 +74,6 @@ Greetings <%= @user.first_name %>eus<br><br>
 <% end %>
 </table>
 <br>
-You can do the following:<br><br>
-<a href="/create_a_new_project" title="CREATE A PROJECT">Create a New Project</a>
+<center>
+<a href="/create_a_new_project" class="glowblue" title="CREATE A PROJECT">Create a New Project</a>
+<center>

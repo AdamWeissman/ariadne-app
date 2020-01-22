@@ -14,8 +14,8 @@
 
   /* --- Welcome Page Styles --- */
   body {
-   background-color: #EBD7DD;
-   color: navy;
+   background-color: #e3f6ff;
+   color: black;
    font-family: Sans-Serif;
    line-height: 18px;
  }
@@ -82,9 +82,9 @@
   .wrapper-frame {
     background-color: #EBD7DD;
     background-image: linear-gradient(to bottom right, #EBD7DD, #d7ebe5);
-    -moz-box-shadow: 0px 0px 89px 0px rgba(215,235,229, 0.8);
-    -webkit-box-shadow: 0px 0px 89px 0px rgba(215,235,229, 0.8);
-    box-shadow: 0px 0px 89px 0px rgba(215,235,229, 0.8), inset 0px 0px 34px 0px rgba(215, 229, 235, 0.8);
+    -moz-box-shadow: 0px 0px 89px 0px rgba(235, 215, 221, 0.9);
+    -webkit-box-shadow: 0px 0px 89px 0px rgba(235, 215, 221, 0.9);
+    box-shadow: 0px 0px 89px 0px rgba(235, 215, 221, 0.9), inset 0px 0px 34px 0px rgba(215, 229, 235, 0.8);
     margin: 144px auto;
     max-width: 960px;
     padding: 5%; /* 18px / 800px */
@@ -95,7 +95,7 @@
 @keyframes frame-pulse
     {
       50% {
-        box-shadow: 0 -3px 144px 0px rgba(235, 245, 247, 0.8), inset 0px 0px 55px 0px rgba(209, 215, 236, 0.8);
+        box-shadow: 0 -5px 233px 0px rgba(255, 206, 216, 1), inset 0px 0px 55px 0px rgba(209, 215, 236, 0.8);
       }
     }
 
@@ -114,7 +114,7 @@
 
 @-webkit-keyframes glow {
   from {
-    text-shadow: 0 0 8px #FDFEFE, 0 0 13px ##FDFEFE, 0 0 21px #EFDFE4, 0 0 34px #E8EBF6, 0 0 55px #F9FBFC, 0 0 89px #FBF3F3, 0 0 144px #EBD7DD;
+    text-shadow: 0 0 8px #FDFEFE, 0 0 13px #F6E2E2, 0 0 21px #EFDFE4, 0 0 34px #F6E2E2, 0 0 55px #F9FBFC, 0 0 89px #F6E2E2, 0 0 144px #EBD7DD;
   }
 
   to {
@@ -126,9 +126,9 @@
    font-size: 34px;
    color: #ffffff;
    text-align: center;
-   -webkit-animation: glow 8s ease-in-out infinite alternate;
-   -moz-animation: glow 8s ease-in-out infinite alternate;
-   animation: glow 8s ease-in-out infinite alternate;
+   -webkit-animation: glowsmall 4s ease-in-out infinite alternate;
+   -moz-animation: glowsmall 4s ease-in-out infinite alternate;
+   animation: glowsmall 4s ease-in-out infinite alternate;
   }
 
   @-webkit-keyframes glowsmall {
@@ -137,7 +137,26 @@
    }
 
    to {
-     text-shadow: 0 0 21px #64CD9B, 0 0 55px #64CDCD, 0 0 21px #64AACD, 0 0 34px #828CCD, 0 0 89px #5A6ECD, 0 0 34px #5A64CD, 0 0 55px #8C64CD;
+     text-shadow: 0 0 34px #FDFBFC, 0 0 34px #F9F3F5, 0 0 34px #F5EBEE, 0 0 34px #F1E3E7, 0 0 13px #EDDBE0, 0 0 34px #EBD7DD, 0 0 55px #d7ebe5;
+   }
+  }
+
+  .glowblue {
+   font-size: 34px;
+   color: white;
+   text-align: center;
+   -webkit-animation: glowblue 8s ease-in-out infinite alternate;
+   -moz-animation: glowblue 8s ease-in-out infinite alternate;
+   animation: glowblue 8s ease-in-out infinite alternate;
+  }
+
+  @-webkit-keyframes glowblue {
+   from {
+     text-shadow: 0 0 34px #baf0ff, 0 0 21px #adedff, 0 0 55px #baf0ff, 0 0 21px #d6f6ff, 0 0 13px #4ad7ff, 0 0 89px #d6f6ff, 0 0 34px #4ad7ff;
+   }
+
+   to {
+     text-shadow: 0 0 21px #30d1ff, 0 0 55px #30eeff, 0 0 21px #14ecff, 0 0 34px #1cb3ff, 0 0 89px #adedff, 0 0 34px #80d4ff, 0 0 55px #0df7ff;
    }
   }
 

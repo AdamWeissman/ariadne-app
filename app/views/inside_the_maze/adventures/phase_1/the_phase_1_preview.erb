@@ -1,57 +1,27 @@
-<h1>PHASE I - PREVIEW</h1>
-<%= @user.first_name %> CHECK YOUR DATA!
-<br><br>
+<h1>PHASE I - PREVIEW - CHECK YOUR DATA!</h1>
 <form class="" action="/phase_1_preview_something_sucked_let_me_fix_it/<%=@project.id%>" method="get">
-  PROJECT NAME: <%= @project.project_name %><br><br>
-  PROJECT SUMMARY: <%= @project.project_summary %><br><br>
-  THE PARSED BLOB: <br><%= @project.the_initial_blob_to_parse.scan(/\b(t:)(.*?)(:e)\b/i).collect {|the_task, the_content, the_end| the_content}.join("<br>") %><br><br>
+  PROJECT NAME:<br><%= @project.project_name %><br><br>
+  PROJECT SUMMARY:<br><%= @project.project_summary %><br><br>
+  THE PARSED BLOB:<br><%= @project.the_initial_blob_to_parse.scan(/\b(t:)(.*?)(:e)\b/i).collect {|the_task, the_content, the_end| the_content}.join("<br>") %><br><br>
   <input type="hidden" name="the_initial_blob_to_parse" value=<%= @project.the_initial_blob_to_parse %>>
   <input type="hidden" name="user_id" value=<%=@user.id%>>
   <input type="hidden" name="project_id" value=<%=@project.id%>>
   <input type="hidden" name="current_phase" value="1">
   <input type="hidden" name="project_name" value=<%=@project.project_name%>>
   <input type="hidden" name="project_summary" value=<%=@project.project_summary%>>
-  <input type="submit" value="DID YOU FORGET A 'T' OR AN 'E'? FIX IT HERE.">
+  <center><label>DOES SOMETHING LOOK LIKE IT'S MISSING?</label><br>
+  <input type="submit" value="FIX YOUR BLOB"></center>
 </form>
 <br>
 <form class="" action="/phase_1_saved/<%=@project.id%>" method="post">
-  <input type="hidden" name="_method" value="patch">
-  <input type="hidden" name="the_initial_blob_to_parse" value=<%= @project.the_initial_blob_to_parse.scan(/\b(t:)(.*?)(:e)\b/i).collect {|the_task, the_content, the_end| the_content}.join("&#10;") %>
+  <input type="hidden" name="the_initial_blob_to_parse" value=<%= @project.the_initial_blob_to_parse %>>
   <input type="hidden" name="user_id" value=<%=@user.id%>>
   <input type="hidden" name="project_id" value=<%=@project.id%>>
   <input type="hidden" name="current_phase" value="1">
   <input type="hidden" name="project_name" value=<%=@project.project_name%>>
   <input type="hidden" name="project_summary" value=<%=@project.project_summary%>>
-  <input type="submit" value="IF EVERYTHING IS PERFECT... SAVE THE TASKS AND CONTINUE.  IF YOU CHANGE SOMETHING ON THE ABOVE FORM IT WILL NOT PASS.">
+  <center>
+    <label>IF EVERYTHING LOOKS GOOD...</label><br><input type="submit" value="CONTINUE."></center>
 </form>
-
+<br><br>
 <center>a message from ariadne</center>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<h3>IF YOU'RE MISSING SOMETHING MAKE SURE YOU DID YOU t:: and q:: CORRECTLY</h3>
-<li><a href="/phase_1_preview_something_sucked_let_me_fix_it" title="basically new project but with the previous data persisted/unaltered">Go back and fix it</a></li>
-
-<h3>EVERYTHING LOOKED GOOD.  SAVE IT FOR NOW and COME BACK LATER.</h3>
-<li><a href="/phase_1_saved" title="Your data persists">SAVE IT FOR NOW.</a></li>
-
-<h3>I'M ON A ROLL.  SAVE IT AND CONTINUE TO PHASE II</h3>
-<li><a href="/phase_2" title="Your data persists">ON TO PHASE 2.</a></li>

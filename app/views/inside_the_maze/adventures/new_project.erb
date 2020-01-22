@@ -1,7 +1,9 @@
-<h1>NEW PROJECT PHASE I</h1>
-
-<a href="/account_home" title="Home">Home</a> | <a href="/projects" title="Projects"><strong>Projects</strong></a> | <a href="/about2" title="About">About</a> | <a href="/contact" title="Contact">Contact</a> | <a href="/logout" title="Logout">Logout</a><br>
 <br>
+<h1 class="glow">PHASE I</h1>
+<br>
+<div class="glowsmall"><br>
+<a href="/account_home" title="Home">Home</a> | <a href="/projects" title="Projects"><strong>Projects</strong></a> | <a href="/about2" title="About">About</a> | <a href="/contact" title="Contact">Contact</a> | <a href="/logout" title="Logout">Logout</a><br>
+</div><br>
 
 <form class="" action="/create_a_new_project" method="post">
   <label for="project_name">PROJECT NAME: </label><br>
@@ -14,7 +16,7 @@
      t::this is a task t::this is also a task t:: this IS ALSO a task q:: this just a comment t:: and here is another task... what you'll get is &#10;&#13;
    this is a task&#13;this is also a task&#10;&#13;this IS ALSO a task&#10;&#13;and here is another task on the following page.</textarea><br>
    <input type="hidden" name="user_id" value=<%=@user.id%>>
-   <input type="hidden" name="current_phase" value="1"> #stuck hard coding for now...
+   <input type="hidden" name="current_phase" value="1">
    <input type="submit" value="PHASE I PREVIEW">
 </form>
 <br><br>

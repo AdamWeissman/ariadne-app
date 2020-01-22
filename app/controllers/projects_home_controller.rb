@@ -77,14 +77,4 @@ class ProjectsHomeController < ApplicationController
   end
 
 
-    #post '/phase_1_preview' do
-    #  if logged_in?
-    #    @user = current_user
-    #    redirect "/phase_1_preview/#{@project.id}"
-    #  else
-    #    redirect '/no_access'
-    #  end
-    #end
-
-
 end

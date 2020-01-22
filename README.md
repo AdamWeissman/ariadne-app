@@ -11,6 +11,7 @@ IN SHORT:
   or...
 -You can treat your finished project outline as the basis for a new iteration.
 
+
 COLORS RESOURCE
 Name: Anti-Flash White
 Hex: #EBF5F7

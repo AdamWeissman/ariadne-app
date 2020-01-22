@@ -1,7 +1,11 @@
-<h1>CLEAN UP YOUR MESS! <%= @user.first_name %></h1>
 <br>
-MIND YOUR Ts and Es.
-<br>
+<center>
+<h2>the correct format is...<br><strong class="glowblue">T:</strong> your task here <strong class="glowblue">:E</strong><br>
+<strong class="glowblue">T:</strong> your task here <strong class="glowblue">:e</strong><br>
+<strong class="glowblue">t:</strong> your task here <strong class="glowblue">:e</strong><br>
+<strong class="glowblue">t:</strong> your task here <strong class="glowblue">:E</strong></h2>
+</center>
+<br><br>
 <form class="" action="/phase_1_preview/<%=@project.id%>" method="post">
   <input type="hidden" name="_method" value="patch">
   <label for="project_name">PROJECT NAME: </label><br>
@@ -13,7 +17,7 @@ MIND YOUR Ts and Es.
   <input type="hidden" name="user_id" value=<%=@user.id%>>
   <input type="hidden" name="project_id" value=<%=@project.id%>>
   <input type="hidden" name="current_phase" value="1">
-  <input type="submit" value="MAKE SURE IT'S CORRECT">
+  <input type="submit" value="PREVIEW">
 </form>
 
 <center>a message from ariadne</center>
