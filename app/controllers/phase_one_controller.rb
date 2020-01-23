@@ -38,7 +38,7 @@ class PhaseOneController < ApplicationController
       @array_of_tasks_to_be << the_content.to_s
     end
     @array_of_unmade_tasks.each do |make_this_a_task|
-      Task.create(project_id: @project.id, the_action_description: "#{make_this_a_task}")
+      Task.find_or_create_by(project_id: @project.id, the_action_description: "#{make_this_a_task}")
     end
     erb :'/inside_the_maze/adventures/phase_1/phase_1_complete_with_data'
   end
