@@ -46,35 +46,20 @@ class ProjectsHomeController < ApplicationController
     end
   end
 
-#ABOVE THIS COMMENT WORKS, BELOW THIS COMMENT DOES NOT ... waiting to finish parser.
-
   get '/edit_a_project/:id' do
     if logged_in?
       @user = current_user
       @project = Project.find(params[:id])
-      if @project.current_phase.to_i == 1
-        redirect "/phase_1_preview/#{@project_id}"
-      elsif @project.current_phase.to_i == 2
-        redirect '/phase_2_preview/:id'
-      elsif @project.current_phase.to_i == 3
-        redirect '/phase_3_preview/:id'
-      elsif @project.current_phase.to_i == 4
-        redirect '/phase_4_preview/:id'
-      elsif @project.current_phase.to_i == 5
-        redirect '/phase_5_preview/:id'
+      if @project.current_phase == 1
+        redirect "/phase_1_saved/#{@project.id}"
+      else
+        redirect "/projects"
       end
     else
       redirect '/no_access'
     end
   end
 
-  get '/edit_a_project' do
-    if logged_in?
-      erb :'/inside_the_maze/adventures/edit_a_project'
-    else
-      redirect '/no_access'
-    end
-  end
 
 
 end

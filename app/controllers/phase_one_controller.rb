@@ -45,8 +45,12 @@ class PhaseOneController < ApplicationController
 
   get '/phase_1_saved/:id' do
       @user = current_user
-      @project_tasks = Project.find(params[:id]).tasks
-      erb :'/inside_the_maze/adventures/phase_1/phase_1_complete_with_data'
+      @project = Project.find(params[:id])
+      if @project.tasks.count >= 1
+        erb :'/inside_the_maze/adventures/phase_1/phase_1_complete_with_data'
+      else
+        redirect '/projects'
+      end
   end
 
 end

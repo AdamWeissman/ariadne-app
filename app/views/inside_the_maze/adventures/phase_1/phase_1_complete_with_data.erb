@@ -1,3 +1,11 @@
+<center class="glowsmall"><%= @user.first_name.upcase %>EUS, YOU HAVE COMPLETED:<br><br></center>
+<h1 class="glow">PHASE I</h1><br>
+
+<div class="glowsmall"><center>
+  <br>
+ <a href="/projects" title="Projects">Projects</a> | <a href="/about2" title="About">About</a> | <a href="/contact" title="Contact">Contact</a> | <a href="/logout" title="Logout">Logout</a><br>
+</center></div><br>
+
 <%= @user.id %>
 <br>
 <%= @project.id %>
@@ -6,3 +14,7 @@
 <br>
 <%= @project.tasks.count %>
 <br>
+<% @project.tasks.each do |task| %>
+  <% task_display = task.the_action_description%>
+  <%= task_display.gsub(/(\[" )|( "]|\[")|("])/, '') %><br>
+<% end%>

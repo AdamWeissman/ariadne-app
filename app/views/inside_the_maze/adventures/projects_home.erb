@@ -61,8 +61,7 @@ tr:nth-child(even) {
   <td><%= project.project_summary %></td>
   <td>
     <center>
-    <form class="" action="/edit_a_project" method="get">
-    <input type="hidden" name="project_id" value=<%=project.id%>>
+    <form class="" action="/edit_a_project/<%= project.id %>" method="get">
     <input type="submit" value="EDIT">
     </form>
     </center>
