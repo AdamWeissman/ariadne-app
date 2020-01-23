@@ -33,12 +33,12 @@ class PhaseOneController < ApplicationController
   post '/phase_1_saved/:id' do
     @user = current_user
     @project = Project.find(params[:id])
-    @project.the_initial_blob_to_parse.scan(/\b(t:)(.*?)(:e)\b/i).each do |the_task, the_content, the_end|
-      @array_of_tasks = []
-      @array_of_tasks << the_content.to_s
-      @array_of_tasks.each do |x|
-        Task.create(:the_action_description => "#{x}")
-      end
+    @array_of_unmade_tasks = @project.the_initial_blob_to_parse.scan(/\b(t:)(.*?)(:e)\b/i).collect do |the_task, the_content, the_end|
+      @array_of_tasks_to_be = []
+      @array_of_tasks_to_be << the_content.to_s
+    end
+    @array_of_unmade_tasks.each do |make_this_a_task|
+      Task.create(project_id: @project.id, the_action_description: "#{make_this_a_task}")
     end
     erb :'/inside_the_maze/adventures/phase_1/phase_1_complete_with_data'
   end

@@ -1,20 +1,26 @@
 <br>
 <h1 class="glow">PHASE I</h1>
 <br>
-<div class="glowsmall"><br>
-<a href="/account_home" title="Home">Home</a> | <a href="/projects" title="Projects"><strong>Projects</strong></a> | <a href="/about2" title="About">About</a> | <a href="/contact" title="Contact">Contact</a> | <a href="/logout" title="Logout">Logout</a><br>
-</div><br>
 
 <form class="" action="/create_a_new_project" method="post">
-  <label for="project_name">PROJECT NAME: </label><br>
-  <input type="string" name="project_name" placeholder="Type in the name of your project" size="84"><br><br>
-  <label for="project_summary">PROJECT SUMMARY: </label><br>
-  <input type="string" name="project_summary" placeholder="Type in a project summary" size="84"><br><br>
-  <label for="the_initial_blob_to_parse">PHASE I BLOB INPUT: </label><br>
-  <textarea style="resize: none" rows="34" cols="83" type="text" name="the_initial_blob_to_parse">Soo... you can type freely in this text area.&#10;&#13;Use t:: and ariadne will parse that into a task.&#10;&#13;
-    Use q:: if you're asking yourself a rhetorical question perhaps something to get your subconscious going...&#10;&#13;For example...&#10;&#13;if you type out
-     t::this is a task t::this is also a task t:: this IS ALSO a task q:: this just a comment t:: and here is another task... what you'll get is &#10;&#13;
-   this is a task&#13;this is also a task&#10;&#13;this IS ALSO a task&#10;&#13;and here is another task on the following page.</textarea><br>
+  <center>
+  <input type="string" name="project_name" placeholder="Type in the name of your project" size="70"><br><br>
+  <input type="string" name="project_summary" placeholder="Type in a project summary" size="70"><br><br>
+  <textarea style="resize: none" rows="50" cols="68" type="text" name="the_initial_blob_to_parse">THESE ARE YOUR INSTRUCTIONS.&#10;&#13;
+  You can type whatever you want in here... have a conversation with yourself.  Get your subconscious A C T I V A T E D.
+  Let your words be as if AsTrEaMoFcOnScIoUsNeSs ..
+  You might ask yourself: "WHAT IS IT THAT I CAME HERE TO DO"&#10;
+  When you decide that T: i have come to tackle a goal.  Certain tasks must be completed in order to fulfill that goal :&#13;
+  You don't need to know the order of the tasks, nor do you need to be certain.&#13;
+  All you must do is t: make a list of the things that... if they are all accomplished fulfill your project :e
+  And you can make a list of other things associated with what the goal might be...&#13;
+  the order of things does not matter.  That comes later... but knowing things like:&#10;&#13;
+  T: "to accomplish the big goal, I need this LITTLE TASK here" :e&#10;&#13;
+  t: I also NEED this mid-size task completed :e&#10;&#13;
+  t: I should probably complete this task/goal as well :E&#10;&#13;
+  t: this task also e: t: and some ill defined task 'right here' :e T: and this task also :E&#13;
+  The only thing that matters is you follow the t and e format above.  Although, they are not case sensitive.
+</textarea><br>
    <input type="hidden" name="user_id" value=<%=@user.id%>>
    <input type="hidden" name="current_phase" value="1">
    <input type="submit" value="PHASE I PREVIEW">

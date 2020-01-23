@@ -61,7 +61,8 @@ class ApplicationController < Sinatra::Base
 
   post '/you_signedup' do
     @user = User.create(params)
-    erb :'/outside_the_maze/you_signedup'
+    redirect '/login'
+    #erb :'/outside_the_maze/you_signedup'
   end
 
   get '/login' do
@@ -76,7 +77,7 @@ class ApplicationController < Sinatra::Base
     @user = User.find_by(email: params[:email])
     if @user && @user.authenticate(params[:password])
       session[:your_session] = @user.id
-      redirect '/account_home'
+      redirect '/projects'
     else
       erb :'/outside_the_maze/minotaur'
     end

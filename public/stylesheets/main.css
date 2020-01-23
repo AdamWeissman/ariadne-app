@@ -14,7 +14,7 @@
 
   /* --- Welcome Page Styles --- */
   body {
-   background-color: #e3f6ff;
+   background-color: #d6daff;
    color: black;
    font-family: Sans-Serif;
    line-height: 18px;
@@ -133,11 +133,11 @@
 
   @-webkit-keyframes glowsmall {
    from {
-     text-shadow: 0 0 34px #96FFCD, 0 0 21px #96FFFF, 0 0 55px #96DCFF, 0 0 21px #B4BEFF, 0 0 13px #8CA0FF, 0 0 89px #B29FFC, 0 0 34px #BE96FF;
+     text-shadow: 0 0 34px #ffffff, 0 0 21px #d6daff, 0 0 55px #96DCFF, 0 0 21px #d6daff, 0 0 13px #8CA0FF, 0 0 89px #d6daff, 0 0 34px #BE96FF;
    }
 
    to {
-     text-shadow: 0 0 34px #FDFBFC, 0 0 34px #F9F3F5, 0 0 34px #F5EBEE, 0 0 34px #F1E3E7, 0 0 13px #EDDBE0, 0 0 34px #EBD7DD, 0 0 55px #d7ebe5;
+     text-shadow: 0 0 21px #d6daff, 0 0 34px #F9F3F5, 0 0 34px #d6daff, 0 0 34px #F1E3E7, 0 0 13px #d6daff, 0 0 34px #EBD7DD, 0 0 55px #d6daff;
    }
   }
 
