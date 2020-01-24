@@ -1,7 +1,7 @@
 <h1>DELETE?  FOR REALS?</h1>
 <a href="/account_home" title="Home">Home</a> | <a href="/projects" title="Projects"><strong>Projects</strong></a> | <a href="/about2" title="About">About</a> | <a href="/contact" title="Contact">Contact</a> | <a href="/logout" title="Logout">Logout</a><br>
 <br><br>
-Are you sure you'd like to delete <font color="red"><%= @project.project_name.gsub(/\w+/) do |word|
+<font color="red">Are you sure you'd like to delete <%= @project.project_name.gsub(/\w+/) do |word|
   word.capitalize end%></font>?<br><br>
 <form class="" action="/delete_a_project_for_real/<%=@project.id%>" method="post">
   <input type="hidden" name="_method" value="delete">
