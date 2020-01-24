@@ -53,4 +53,31 @@ class PhaseOneController < ApplicationController
       end
   end
 
+  delete '/phase_1_saved/:task_id/:project_id' do
+    if logged_in?
+      @user = current_user
+      @task = Task.find(params[:task_id])
+      @project = Project.find(params[:project_id])
+      @task.destroy
+      erb :'/inside_the_maze/adventures/phase_1/phase_1_complete_with_data'
+    else
+      redirect '/no_access'
+    end
+  end
+
+  patch '/phase_1_saved/:task_id/:project_id' do
+    if logged_in?
+      @user = current_user
+      @project = Project.find(params[:project_id])
+      @task = Task.find(params[:task_id])
+      @task.the_action_description = params[:the_action_description]
+      @task.save
+      erb :'/inside_the_maze/adventures/phase_1/phase_1_complete_with_data'
+    else
+      redirect '/no_access'
+    end
+  end
+
+
+
 end
