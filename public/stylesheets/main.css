@@ -14,7 +14,7 @@
 
   /* --- Welcome Page Styles  #d6daff --- */
   body {
-   background-color: #d6daff;
+   background-color: #020201;
    color: black;
    font-family: Sans-Serif;
    line-height: 18px;
@@ -80,8 +80,8 @@
   }
 
   .wrapper {
-    background-color: #EBF5F7;
-    background-image: linear-gradient(to bottom right, #EBF5F7, #D7E5EB);
+    background-color: #E4D8C3;
+    background-image: linear-gradient(to bottom right, #E4D8C3, #BEAD88);
     -moz-box-shadow: 0px 5px 55px 0px rgba(190, 212, 229, 0.8);
     -webkit-box-shadow: 0px 5px 55px 0px rgba(190, 212, 229, 0.8);
     box-shadow: 0px 5px 55px 0px rgba(190, 212, 229, 0.8), inset 0px 0px 55px 0px rgba(246, 226, 226, .8);
@@ -125,20 +125,20 @@
 
  .glow {
   font-size: 89px;
-  color: #FDFEFE;
+  color: #F9F5F1;
   text-align: center;
-  -webkit-animation: glow 20s ease-in-out infinite alternate;
-  -moz-animation: glow 20s ease-in-out infinite alternate;
-  animation: glow 10s ease-in-out infinite alternate;
+  -webkit-animation: glow 2s ease-in-out infinite alternate;
+  -moz-animation: glow 2s ease-in-out infinite alternate;
+  animation: glow 2s ease-in-out infinite alternate;
 }
 
 @-webkit-keyframes glow {
   from {
-    text-shadow: 0 0 8px #FDFEFE, 0 0 13px #F6E2E2, 0 0 21px #EFDFE4, 0 0 34px #F6E2E2, 0 0 55px #F9FBFC, 0 0 89px #F6E2E2, 0 0 144px #EBD7DD;
+    text-shadow: 0 0 21px #F9F5F1, 0 0 13px #EFE9E2, 0 0 21px #E5DCD2, 0 0 34px #E6D7B9, 0 0 21px #D6C5A1, 0 0 13px #B7A782, 0 0 21px #8F8264;
   }
 
   to {
-    text-shadow: 0 0 13px #FDFEFE, 0 0 21px #F8E8E8, 0 0 34px #F1F3F9, 0 0 55px #DFEAF2, 0 0 89px #FEFCFC, 0 0 144px #F1E3E7, 0 0 233px #d7ebe5;
+    text-shadow: 0 0 34px #EFE9E2, 0 0 21px #E5DCD2, 0 0 34px #E6D7B9, 0 0 21px #D6C5A1, 0 0 34px #B7A782, 0 0 34px #8F8264, 0 0 13px #F9F5F1;
   }
 }
 
