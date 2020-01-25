@@ -24,7 +24,7 @@ class PhaseTwoController < ApplicationController
     end
   end
 
-#BELOW HERE NOT WORKING
+#BELOW HERE NOT WORKING ... AND ABOVE THIS LINE I NEED TO FIX MY GET REQUEST TO HAVE LOGIC TO MOVE ON TO NEXT SECTION.
 
   get '/phase_2_saved' do
     if logged_in?
