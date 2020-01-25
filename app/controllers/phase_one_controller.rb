@@ -78,5 +78,16 @@ class PhaseOneController < ApplicationController
     end
   end
 
+  post '/phase_1_task_add/:project_id' do
+    if logged_in?
+      @user = current_user
+      @project = Project.find(params[:project_id])
+      Task.create(params)
+      redirect "/phase_1_saved/#{@project.id}"
+    else
+      redirect '/no_access'
+    end
+  end
+
 
 end

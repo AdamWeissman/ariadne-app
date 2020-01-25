@@ -61,14 +61,31 @@ tr:nth-child(even) {
       <textarea style="resize: none" rows="3" cols="60" type="text" name="the_action_description"><%= task.the_action_description.gsub(/(\[" )|( "]|\[")|("])/, '')%></textarea>
     </td>
     <td>
-    <input type="submit" value="SAVE">
+    <center><input type="submit" value="SAVE"></center>
     </form>
     </td>
     <td>
     <form class="" action="/phase_1_saved/<%=task.id%>/<%= @project.id %>" method="post">
       <input type="hidden" name="_method" value="delete">
-      <input type="submit" value="DELETE">
+      <center><input type="submit" value="DELETE"></center>
     </form>
     </td>
-<% end %>
+    </tr>
+    <% end %>
+    <tr>
+    <td>
+    <form class="" action="/phase_1_task_add/<%= @project.id %>" method="post">
+      <center><textarea style="resize: none" rows="3" cols="60" type="text" name="the_action_description"></textarea></center>
+      <input type="hidden" name="project_id" value=<%=@project.id%>>
+      <td>
+      <center class="glowblue"><input type="submit" value="ADD A TASK"></center>
+      </td>
+    </form>
+    </td>
+    <td>
+      <form class="" action="/phase_2/<%= @project.id %>" method="get">
+        <input type="hidden" name="project_id" value=<%=@project.id%>>
+        <center><input type="submit" value="PHASE II"></center>
+    </td>
+    </tr>
 </table>
