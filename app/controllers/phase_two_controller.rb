@@ -5,7 +5,12 @@ class PhaseTwoController < ApplicationController
       @user = current_user
       @project = Project.find(params[:project_id])
       @task = Task.find_by(project_id: params[:project_id], comment_or_measure: "you must change this to continue.")
-      erb :'/inside_the_maze/adventures/phase_2/phase_2_first_iteration'
+      if @task.blank?
+        @task = Task.find_by(project_id: params[:project_id])
+        redirect "/phase_2_question_time/#{@project.id}/#{@task.id}"
+      else
+        erb :'/inside_the_maze/adventures/phase_2/phase_2_first_iteration'
+      end
     else
       redirect '/no_access'
     end
@@ -18,19 +23,42 @@ class PhaseTwoController < ApplicationController
       @task = Task.find(params[:task_id])
       @task.comment_or_measure = params[:comment_or_measure]
       @task.save
+      TaskScore.find_or_create_by(task_id: @task.id, necessary_or_optional_for_form_rendering: "unknown", quick_or_slow_for_form_rendering: "unknown", easy_or_hard_for_form_rendering: "unknown")
       redirect "/phase_2/#{@project.id}"
     else
       redirect '/no_access'
     end
   end
 
-#BELOW HERE NOT WORKING ... AND ABOVE THIS LINE I NEED TO FIX MY GET REQUEST TO HAVE LOGIC TO MOVE ON TO NEXT SECTION.
-
-  get '/phase_2_saved' do
+  get '/phase_2_question_time/:project_id/:task_id' do
     if logged_in?
-      erb :'/inside_the_maze/adventures/phase_2/phase_2_complete_with_data'
+      @user = current_user
+      @project = Project.find(params[:project_id])
+      @task = Task.find(params[:task_id])
+      @task_score = TaskScore.find_by(task_id: @task.id, necessary_or_optional_for_form_rendering: "unknown", quick_or_slow_for_form_rendering: "unknown", easy_or_hard_for_form_rendering: "unknown")
+    erb :'/inside_the_maze/adventures/phase_2/phase_2_question_time'
     else
       redirect '/no_access'
     end
   end
+
+#BELOW THIS LINE ARE ROUTES THAT ARE NOT YET WORKING, ABOVE THIS LINE IS WORKING BUT MAYBE WITH PROBLEMS.
+
+#patch '/phase_2_question_time/:project_id/:task_id' do
+#  if logged_in?
+#    @user = current_user
+#    @project = Project.find(params[:project_id])
+#    @task = Task.find(params[:task_id])
+#    @task_score = TaskScore.find_by(task_id: @task.id)
+#    @task_score.necessary_or_optional_for_form_rendering = params[:necessary_or_optional_for_form_rendering]
+#    @task_score.quick_or_slow_for_form_rendering = params[:quick_or_slow_for_form_rendering]
+#    @task_score.easy_or_hard_for_form_rendering = params[:easy_or_hard_for_form_rendering]
+#    @task_score.save
+#    @task.save
+#    redirect "/phase_2_question_time/#{@project.id}/#{@task.id}"
+#  else
+#    redirect '/no_access'
+#  end
+#end
+
 end
