@@ -47,7 +47,7 @@
   a:link {
     color: white;
     font-size: 21px;
-    text-shadow: 0 0 8px navy;
+    text-shadow: 0 0 8px #8f8264;
     padding: 8px;
   }
 
@@ -55,7 +55,7 @@
   a:visited {
     color: white;
     font-size: 21px;
-    text-shadow: 0 0 8px navy;
+    text-shadow: 0 0 8px #8f8264;
     padding: 8px;
   }
 
@@ -63,7 +63,7 @@
   a:hover {
     color: ivory;
     font-size: 21px;
-    text-shadow: 0 0 8px navy;
+    text-shadow: 0 0 8px #8f8264;
     padding: 8px;
   }
 
@@ -71,7 +71,7 @@
   a:active {
     color: white;
     font-size: 21px;
-    text-shadow: 0 0 8px navy;
+    text-shadow: 0 0 8px #8f8264;
     padding: 8px;
   }
 
@@ -82,40 +82,40 @@
   .wrapper {
     background-color: #E4D8C3;
     background-image: linear-gradient(to bottom right, #E4D8C3, #BEAD88);
-    -moz-box-shadow: 0px 5px 55px 0px rgba(190, 212, 229, 0.8);
-    -webkit-box-shadow: 0px 5px 55px 0px rgba(190, 212, 229, 0.8);
-    box-shadow: 0px 5px 55px 0px rgba(190, 212, 229, 0.8), inset 0px 0px 55px 0px rgba(246, 226, 226, .8);
-    margin: 18px auto;
+    -moz-box-shadow: 0px 5px 55px 0px rgba(190, 212, 229, 0.5);
+    -webkit-box-shadow: 0px 5px 55px 0px rgba(190, 212, 229, 0.5);
+    box-shadow: 0px 5px 55px 0px rgba(190, 212, 229, 0.3), inset 0px 0px 55px 0px rgba(246, 226, 226, .5);
+    margin: 21px auto;
     max-width: 960px;
     padding: 2.25%; /* 18px / 800px */
     width: 95%;
-    animation: shadow-pulse2 20s infinite;
+    animation: shadow-pulse2 4s infinite;
   }
 
 @keyframes shadow-pulse2
   {
     50% {
-      box-shadow: 0 0px 89px 0px rgba(246, 226, 226, 0.8), inset 0px 0px 55px 0px rgba(235, 215, 221, .8);
+      box-shadow: 0 0px 89px 0px rgba(246, 226, 226, 0.5), inset 0px 0px 55px 0px rgba(235, 215, 221, .5);
     }
   }
 
   .wrapper-frame {
-    background-color: #EBD7DD;
-    background-image: linear-gradient(to bottom right, #EBD7DD, #d7ebe5);
-    -moz-box-shadow: 0px 0px 89px 0px rgba(235, 215, 221, 0.9);
-    -webkit-box-shadow: 0px 0px 89px 0px rgba(235, 215, 221, 0.9);
-    box-shadow: 0px 0px 89px 0px rgba(235, 215, 221, 0.9), inset 0px 0px 34px 0px rgba(215, 229, 235, 0.8);
-    margin: 144px auto;
+    background-color: #E4D8C3;
+    background-image: linear-gradient(to bottom right, #E4D8C3, #BEAD88);
+    -moz-box-shadow: 0px 5px 55px 0px rgba(190, 212, 229, 0.5);
+    -webkit-box-shadow: 0px 5px 55px 0px rgba(190, 212, 229, 0.5);
+    box-shadow: 0px 5px 55px 0px rgba(190, 212, 229, 0.8), inset 0px 0px 55px 0px rgba(246, 226, 226, .5);
+    margin: 55px auto;
     max-width: 960px;
-    padding: 5%; /* 18px / 800px */
-    width: 96%;
-    animation: frame-pulse 20s infinite;
+    padding: 2.25%; /* 18px / 800px */
+    width: 95%;
+    animation: shadow-pulse2 4s infinite;
   }
 
 @keyframes frame-pulse
     {
       50% {
-        box-shadow: 0 -5px 233px 0px rgba(255, 206, 216, 1), inset 0px 0px 55px 0px rgba(209, 215, 236, 0.8);
+        box-shadow: 0 -5px 233px 0px rgba(255, 206, 216, .5), inset 0px 0px 55px 0px rgba(209, 215, 236, .5);
       }
     }
 
@@ -152,11 +152,11 @@
 
   @-webkit-keyframes glowsmall {
    from {
-     text-shadow: 0 0 34px #ffffff, 0 0 21px #d6daff, 0 0 55px #96DCFF, 0 0 21px #d6daff, 0 0 13px #8CA0FF, 0 0 89px #d6daff, 0 0 34px #BE96FF;
+     text-shadow: 0 0 21px #F9F5F1, 0 0 13px #EFE9E2, 0 0 21px #E5DCD2, 0 0 34px #E6D7B9, 0 0 21px #D6C5A1, 0 0 13px #B7A782, 0 0 21px #8F8264;
    }
 
    to {
-     text-shadow: 0 0 21px #d6daff, 0 0 34px #F9F3F5, 0 0 34px #d6daff, 0 0 34px #F1E3E7, 0 0 13px #d6daff, 0 0 34px #EBD7DD, 0 0 55px #d6daff;
+     text-shadow: 0 0 34px #EFE9E2, 0 0 21px #E5DCD2, 0 0 34px #E6D7B9, 0 0 21px #D6C5A1, 0 0 34px #B7A782, 0 0 34px #8F8264, 0 0 13px #F9F5F1;
    }
   }
 

@@ -38,8 +38,9 @@ class PhaseOneController < ApplicationController
       @array_of_tasks_to_be << the_content.to_s
     end
     @array_of_unmade_tasks.each do |make_this_a_task|
-      Task.find_or_create_by(project_id: @project.id, the_action_description: "#{make_this_a_task}")
+      Task.find_or_create_by(project_id: @project.id, the_action_description: "#{make_this_a_task}", comment_or_measure: "you must change this to continue.")
     end
+
     erb :'/inside_the_maze/adventures/phase_1/phase_1_complete_with_data'
   end
 
@@ -71,6 +72,7 @@ class PhaseOneController < ApplicationController
       @project = Project.find(params[:project_id])
       @task = Task.find(params[:task_id])
       @task.the_action_description = params[:the_action_description]
+      @task.comment_or_measure = params[:comment_or_measure]
       @task.save
       erb :'/inside_the_maze/adventures/phase_1/phase_1_complete_with_data'
     else
@@ -82,7 +84,7 @@ class PhaseOneController < ApplicationController
     if logged_in?
       @user = current_user
       @project = Project.find(params[:project_id])
-      Task.create(params)
+      Task.find_or_create_by(params)
       redirect "/phase_1_saved/#{@project.id}"
     else
       redirect '/no_access'

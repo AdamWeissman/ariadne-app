@@ -38,28 +38,31 @@ tr:nth-child(even) {
 }
 </style>
 
-<br><br>
+<div class="glowsmall"><center><br>
+ <a href="/projects" title="Projects">Projects</a> | <a href="/about2" title="About">About</a> | <a href="/contact" title="Contact">Contact</a> | <a href="/logout" title="Logout">Logout</a><br>
+</center></div>
+<br>
+<br>
 <h3 class="glowblue"><div class="typewriter">GREETINGS <%= @user.first_name.upcase %>EUS, WELCOME TO:</div></h3>
   <br>
 
-<h1 class="glow">PROJECTS</h1><br>
+<h1 class="glow">PROJECTS</h1>
 
-<div class="glowsmall"><center>
-  <br>
- <a href="/projects" title="Projects">Projects</a> | <a href="/about2" title="About">About</a> | <a href="/contact" title="Contact">Contact</a> | <a href="/logout" title="Logout">Logout</a><br>
-</center></div><br>
+<center>
+  <br><br>
+<a href="/create_a_new_project" class="glowblue" title="CREATE A PROJECT">Create a New Project</a>
+</center>
+  <br><br>
 
 <table>
   <tr>
-    <th>Current Phase</th>
     <th>Project Name</th>
-    <th>Project Summary</th>
+    <th>What's the point?</th>
     <th></th>
     <th></th>
   </tr>
 <% @user.projects.each do |project| %>
   <tr>
-  <td><center><%= project.current_phase %></center></td>
   <td><%= project.project_name %></td>
   <td><%= project.project_summary %></td>
   <td>
@@ -79,6 +82,3 @@ tr:nth-child(even) {
 <% end %>
 </table>
 <br>
-<center>
-<a href="/create_a_new_project" class="glowblue" title="CREATE A PROJECT">Create a New Project</a>
-<center>

@@ -5,21 +5,25 @@
 <form class="" action="/create_a_new_project" method="post">
   <center>
   <input type="string" name="project_name" placeholder="Type in the name of your project" size="70"><br><br>
-  <input type="string" name="project_summary" placeholder="Type in a project summary" size="70"><br><br>
-  <textarea style="resize: none" rows="50" cols="68" type="text" name="the_initial_blob_to_parse">THESE ARE YOUR INSTRUCTIONS.&#10;&#13;
-  You can type whatever you want in here... have a conversation with yourself.  Get your subconscious A C T I V A T E D.
-  Let your words be as if AsTrEaMoFcOnScIoUsNeSs ..
-  You might ask yourself: "WHAT IS IT THAT I CAME HERE TO DO"&#10;
-  When you decide that T: i have come to tackle a goal.  Certain tasks must be completed in order to fulfill that goal :&#13;
-  You don't need to know the order of the tasks, nor do you need to be certain.&#13;
-  All you must do is t: make a list of the things that... if they are all accomplished fulfill your project :e
-  And you can make a list of other things associated with what the goal might be...&#13;
-  the order of things does not matter.  That comes later... but knowing things like:&#10;&#13;
-  T: "to accomplish the big goal, I need this LITTLE TASK here" :e&#10;&#13;
-  t: I also NEED this mid-size task completed :e&#10;&#13;
-  t: I should probably complete this task/goal as well :E&#10;&#13;
-  t: this task also e: t: and some ill defined task 'right here' :e T: and this task also :E&#13;
-  The only thing that matters is you follow the t and e format above.  Although, they are not case sensitive.
+  <input type="string" name="project_summary" placeholder="What's the point? This can be a summary or the 'WHY?' of what you're doing." size="70"><br><br>
+  <textarea style="resize: none" rows="50" cols="68" type="text" name="the_initial_blob_to_parse">
+    &#10;A NOTE FROM THE CREATOR OF ARIADNE:&#10;&#13;
+  &#9;I created this progam because I find that when you keep thoughts inside your head, it's very easy to become trapped in an internal thinking loop.  I find that if I'm typing the thing I intend to do, that I can ask myself questions about it...&#13;
+  &#9;The conscious act of carrying on a conversation with myself forces me to articulate and make concrete those things that I only THINK I understand.&#13;The almost magical thing that occurs as a result of this process is that it seems to drag my subconscious mind out of the nether and provide an "interface" for me to interact with it. Thus, I find myself able to be more creative and to do it more quickly.  Quite rapidly, I will discover all those things that are troubling me and name them.&#13;
+  &#9;If I'm working on a project, the BIGGEST BENEFIT is that I will end up identifying the tasks that I need to complete the project.&#13;
+  &#9;The biggest slog of this process is parsing out those gems into actionable tasks.&#13;
+  &#9;In the past, I would do this process by hand, with note cards, or using two plain text editors side by side.  The most efficient was using two plain text editors. I would grab the key tasks from my 'stream of conscious data dump' and cut and paste them into the secondary editor. As you might imagine doing that manually is quite a slog. Such a slog, that despite the benefit I knew I was reaping from this 'steam of subconscious style of list generation', I would often be lazy to do it.&#13;
+  &#9;Until now.&#13;
+  &#9;ENTER ARIADNE.&#13;
+  &#9;Now, I can have one place to name my projects, drop a "summary line" of "What's the Point/Why am I doing this" to keep me on track.&#13;
+  &#9;And what's more?  I now can easily parse my tasks without the drudgery.&#13;&#13;
+  &#9; T: all you need to do is put a T and an E around your task :E &#13;
+  &#9; t: this works too :e &#13;
+  &#9; T: so does this :E &#13;
+  &#9; T: and this this :E &#13;&#13;
+  &#9; Click on phase 1 preview and you'll see that only those things you specifically identify as tasks are parsed. Here's to collaborating with your subsconscious.&#13;&#13;
+  &#9;Best Wishes,&#13;
+  &#9;&#9;--Adam Weissman, 2020
 </textarea><br>
    <input type="hidden" name="user_id" value=<%=@user.id%>>
    <input type="hidden" name="current_phase" value="1">

@@ -44,7 +44,7 @@
  <a href="/projects" title="Projects">Projects</a> | <a href="/about2" title="About">About</a> | <a href="/contact" title="Contact">Contact</a> | <a href="/logout" title="Logout">Logout</a><br>
 </center></div><br>
 <center>
-<div class="typewriter"><br><h1 class="glow"><font color="red"> WARNING!!!</h1><br><br><h3 class="glowsmall"You MUST save each row after making changes.<br>If you attempt a mass edit, your data will be lost.<br></font></div></h3></center>
+<div class="typewriter"><br><h1 class="glow"><font color="red"> &#x26a0;WARNING&#x26a0;</font></h1><br><h3 class="glowsmall"><font color="red">You must <strong>SAVE</strong> each row after making changes.</font></h3></div></center>
   <br>
 <table>
   <tr>
@@ -58,12 +58,13 @@
     <center>
     <form class="" action="/phase_1_saved/<%=task.id%>/<%= @project.id %>" method="post">
       <input type="hidden" name="_method" value="patch">
+      <input type="hidden" name="comment_or_measure" value="you must change this to continue.">
       <textarea style="resize: none" rows="3" cols="60" type="text" name="the_action_description"><%= task.the_action_description.gsub(/(\[" )|( "]|\[")|("])/, '')%></textarea>
     </td>
     <td>
     <center><input type="submit" value="SAVE"></center>
-    </form>
     </td>
+    </form>
     <td>
     <form class="" action="/phase_1_saved/<%=task.id%>/<%= @project.id %>" method="post">
       <input type="hidden" name="_method" value="delete">
@@ -77,12 +78,13 @@
     <form class="" action="/phase_1_task_add/<%= @project.id %>" method="post">
       <center><textarea style="resize: none" rows="3" cols="60" type="text" name="the_action_description"></textarea></center>
       <input type="hidden" name="project_id" value=<%=@project.id%>>
-      <td>
+      <input type="hidden" name="comment_or_measure" value="you must change this to continue.">
+      <td style="background-color:red;">
       <center class="glowblue"><input type="submit" value="ADD A TASK"></center>
       </td>
     </form>
     </td>
-    <td>
+    <td style="background-color:black;">
       <form class="" action="/phase_2/<%= @project.id %>" method="get">
         <input type="hidden" name="project_id" value=<%=@project.id%>>
         <center><input type="submit" value="PHASE II"></center>
