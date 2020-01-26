@@ -15,24 +15,22 @@ TASK AND THE COMMENTS YOU JUST MADE</div>
 
 <%= @task.id %>
 
-<%= @task.project_id %>
-<%= @task_score.task_id %>
+<%= @task.project_id %> TASK PROJECT ID <br>
+<%= @task_score.task_id %> TASK SCORE TASK ID <br>
 <%= @task_score.necessary_or_optional_for_form_rendering %><br>
-<%= @task_score.id %> RIGHT HERE IS THE TASK ID
-
-
-<%= @project.id %>
-<% @project.tasks.each do |x|  %>
- <%= x.comment_or_measure %>
- <%= x.task_score.necessary_or_optional_for_form_rendering %>
- <%= x.task_score.id %>
-<% end %>
+<%= @task_score.quick_or_slow_for_form_rendering %><br>
+<%= @task_score.easy_or_hard_for_form_rendering %><br>
+<%= @task_score.id %> RIGHT HERE IS THE TASK ID<br>
 
 
 <form class="" action="/phase_2_question_time/<%=@task.id%>/<%=@project.id%>/<%=@task_score.id%>" method="post">
   <input type="hidden" name="_method" value="patch">
-  <input type="string" name="necessary_or_optional_for_form_rendering" placeholder=<%= @task_score.necessary_or_optional_for_form_rendering %>>
-  <input type="string" name="quick_or_slow_for_form_rendering" placeholder=<%= @task_score.quick_or_slow_for_form_rendering%>>
-  <input type="string" name="easy_or_hard_for_form_rendering" placeholder=<%=@task_score.easy_or_hard_for_form_rendering%>>
+  <input type="text" name="necessary_or_optional_for_form_rendering" value="<%= @task_score.necessary_or_optional_for_form_rendering %>">
+  <input type="text" name="quick_or_slow_for_form_rendering" value="<%= @task_score.quick_or_slow_for_form_rendering%>">
+  <input type="text" name="easy_or_hard_for_form_rendering" value="<%=@task_score.easy_or_hard_for_form_rendering%>">
   <input type="submit" value="LET'S CONTINUE.">
+</form>
+
+<form class="" action="/phase_2_question_time/<%=@project.id%>" method="get">
+<input type="submit" value="DID IT UPDATE AFTER A CYCLE.">
 </form>

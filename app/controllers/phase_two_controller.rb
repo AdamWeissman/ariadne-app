@@ -31,7 +31,7 @@ class PhaseTwoController < ApplicationController
 
   # these two sort of work...
 
-  get '/phase_2_question_time/:project_id/?:the_task_id_to_eliminate_from_the_search?' do
+  get '/phase_2_question_time/:project_id/?:the_task_to_eliminate_from_the_search?' do
     if logged_in?
       @user = current_user
       @project = Project.find(params[:project_id])
