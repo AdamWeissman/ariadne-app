@@ -12,8 +12,8 @@ ESPECIALLY  IN THE CONTEXT  OF YOUR<br>
 TASK AND THE COMMENTS YOU JUST MADE</div>
 </center>
 
-TASK SCORE ID
-<%= @task_score.task_id %><br>
+TASK SCORE ACTUAL ID
+<%= @task_score.id %><br>
 
 TASK NECESSARY OR OPTIONAL FOR RENDERING
 <%= @task_score.necessary_or_optional_for_form_rendering %> <br>
@@ -31,7 +31,7 @@ TASK COMMENT OR MEASURE
 <%= @task.comment_or_measure %><br>
 
 #THIS FORM IS NOT WORKING
-<form class="" action="/phase_2_question_time/<%= @project.id %>/<%=@task.id%>" method="post">
+<form class="" action="/phase_2_question_time/<%= @project.id %>/<%=@task.id%>/<%=@task_score.id%>" method="post">
     <input type="hidden" name="_method" value="patch">
     <input type="string" name="necessary_or_optional_for_form_rendering" placeholder="unknown" size="10"><br><br>
     <input type="string" name="quick_or_slow_for_form_rendering" placeholder="unknown" size="10"><br><br>
