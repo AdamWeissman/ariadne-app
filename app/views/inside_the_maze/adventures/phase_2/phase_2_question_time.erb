@@ -12,27 +12,14 @@ ESPECIALLY  IN THE CONTEXT  OF YOUR<br>
 TASK AND THE COMMENTS YOU JUST MADE</div>
 </center>
 
-TASK SCORE ACTUAL ID
-<%= @task_score.id %><br>
-
-TASK NECESSARY OR OPTIONAL FOR RENDERING
-<%= @task_score.necessary_or_optional_for_form_rendering %> <br>
-
-TASK QUICK OR SLOW FOR RENDERING
-<%= @task_score.quick_or_slow_for_form_rendering %> <br>
-
-TASK EASY OR HARD FOR RENDERING
-<%= @task_score.easy_or_hard_for_form_rendering %> <br>
-
-TASK ACTION DESCRIPTION
-<%= @task.the_action_description %><br>
-
-TASK COMMENT OR MEASURE
-<%= @task.comment_or_measure %><br>
+<%= @task_score.id %>
+<%= @task_score.necessary_or_optional_for_form_rendering %>
+<%= @task_score.quick_or_slow_for_form_rendering %>
+<%= @task_score.easy_or_hard_for_form_rendering %>
 
 #THIS FORM IS NOT WORKING
-<form class="" action="/phase_2_question_time/<%= @project.id %>/<%=@task.id%>/<%=@task_score.id%>" method="post">
-    <input type="hidden" name="_method" value="patch">
+<form class="" action="/phase_2_question_time/<%= @task_score.id %>" method="post">
+    <input type="hidden" name="_method" value="put">
     <input type="string" name="necessary_or_optional_for_form_rendering" placeholder="unknown" size="10"><br><br>
     <input type="string" name="quick_or_slow_for_form_rendering" placeholder="unknown" size="10"><br><br>
     <input type="string" name="easy_or_hard_for_form_rendering" placeholder="unknown" size="10"><br><br>
