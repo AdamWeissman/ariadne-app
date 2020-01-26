@@ -22,7 +22,7 @@ class PhaseTwoController < ApplicationController
       @task = Task.find(params[:the_task_id])
       @task.comment_or_measure = params[:comment_or_measure]
       @task.save
-      TaskScore.find_or_create_by(task_id: @task.id, necessary_or_optional_for_form_rendering: "unknown", quick_or_slow_for_form_rendering: "unknown", easy_or_hard_for_form_rendering: "unknown")
+      TaskScore.find_or_create_by(task_id: "#{@task.id}", necessary_or_optional_for_form_rendering: "unknown", quick_or_slow_for_form_rendering: "unknown", easy_or_hard_for_form_rendering: "unknown")
       redirect "/phase_2/#{@project.id}"
     else
       redirect '/no_access'
@@ -31,33 +31,37 @@ class PhaseTwoController < ApplicationController
 
   # these two sort of work...
 
-  get '/phase_2_question_time/:project_id/?:the_task_to_eliminate_from_the_search?' do
+  get '/phase_2_question_time/:project_id' do
     if logged_in?
       @user = current_user
       @project = Project.find(params[:project_id])
-      @task = @project.tasks.first
-      @task_score = @task.task_score
-      erb :'/inside_the_maze/adventures/phase_2/phase_2_question_time'
+      @task = Task.find_by(project_id: params[:project_id])
+      @task_score = TaskScore.find_by(task_id: "#{@task.id}", necessary_or_optional_for_form_rendering: "unknown", quick_or_slow_for_form_rendering: "unknown", easy_or_hard_for_form_rendering: "unknown")
+      if @task_score.blank?
+        redirect "/projects"
+      else
+        erb :'/inside_the_maze/adventures/phase_2/phase_2_question_time'
+      end
     else
       redirect '/no_access'
     end
   end
 
-  patch '/phase_2_question_time/:task_id/:project_id/:task_score_id' do
+  patch '/phase_2_question_time/:project_id/:the_task_id/:task_score_id' do
     if logged_in?
       @user = current_user
-      @task = Task.find(params[:task_id])
       @project = Project.find(params[:project_id])
-      @task_score = TaskScore.find_by(params[:task_score_id])
+      @task = Task.find(params[:the_task_id])
+      @task_score = TaskScore.find(params[:task_score_id])
       @task_score.necessary_or_optional_for_form_rendering = params[:necessary_or_optional_for_form_rendering]
       @task_score.quick_or_slow_for_form_rendering = params[:quick_or_slow_for_form_rendering]
       @task_score.easy_or_hard_for_form_rendering = params[:easy_or_hard_for_form_rendering]
       @task_score.save
-      erb :'/inside_the_maze/adventures/phase_2/phase_2_question_time'
-      #redirect "/phase_2_question_time/#{@project.id}/#{@task.id}"
+      redirect "/phase_2_question_time/#{@project.id}"
     else
       redirect '/no_access'
     end
   end
+
 
 end
