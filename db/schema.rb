@@ -58,6 +58,7 @@ ActiveRecord::Schema.define(version: 20200112144658) do
     t.float    "base_rank"
     t.float    "calculated_rank"
     t.float    "user_rank"
+    t.string   "golem"
   end
 
   create_table "users", force: :cascade do |t|

@@ -37,7 +37,7 @@ class PhaseTwoController < ApplicationController
       @project = Project.find(params[:project_id])
       @phantom = TaskScore.find_by(params[:task_score_id])
       #@task = Task.find_by(project_id: params[:project_id])
-      @task = Task.find_by(project_id: params[:project_id], base_rank: 0.0)
+      @task = Task.find_by(project_id: params[:project_id], golem: "questions incomplete")
       unless @task.nil?
         @task_score = TaskScore.find_by(task_id: "#{@task.id}".to_i) if ((@task.task_score.necessary_or_optional_for_form_rendering == "unknown") || (@task.task_score.quick_or_slow_for_form_rendering == "unknown") || (@task.task_score.easy_or_hard_for_form_rendering == "unknown"))
         erb :"/inside_the_maze/adventures/phase_2/phase_2_question_time"
@@ -60,10 +60,10 @@ class PhaseTwoController < ApplicationController
       @task_score.easy_or_hard_for_form_rendering = params[:easy_or_hard_for_form_rendering]
       @task_score.save
       if (@task_score.necessary_or_optional_for_form_rendering != "unknown") && (@task_score.quick_or_slow_for_form_rendering != "unknown") && (@task_score.easy_or_hard_for_form_rendering != "unknown")
-        @task.base_rank = 0.1
+        @task.golem = "questions complete"
         @task.save
       else
-        @task.base_rank = 0.0
+        @task.golem = "questions incomplete"
         @task.save
       end
       redirect "/phase_2_question_time/#{@project.id}/#{@task_score.id}"
