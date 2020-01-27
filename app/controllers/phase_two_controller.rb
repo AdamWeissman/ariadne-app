@@ -31,17 +31,15 @@ class PhaseTwoController < ApplicationController
 
   # these two sort of work...
 
-  get '/phase_2_question_time/:project_id' do
+  get '/phase_2_question_time/:project_id/?:task_score_id?' do
     if logged_in?
       @user = current_user
       @project = Project.find(params[:project_id])
-      @task = Task.find_by(project_id: params[:project_id]) 
+      @phantom = TaskScore.find_by(params[:task_score_id])
+      #@task = Task.find_by(project_id: params[:project_id]) THIS ONE WORKS
+      @task = Task.find_by(project_id: params[:project_id]) #this is the replacement test
       @task_score = TaskScore.find_by(task_id: "#{@task.id}".to_i) if ((@task.task_score.necessary_or_optional_for_form_rendering == "unknown") || (@task.task_score.quick_or_slow_for_form_rendering == "unknown") || (@task.task_score.easy_or_hard_for_form_rendering == "unknown"))
-      #@task_score = TaskScore.find_by(task_id: "#{@task.id}".to_i, necessary_or_optional_for_form_rendering: "unknown", quick_or_slow_for_form_rendering: "unknown", easy_or_hard_for_form_rendering: "unknown")
       if @task_score.nil?
-      #  @project.tasks.all.each do |task|
-      #    x = task.task_score if ((task.task_score.necessary_or_optional_score_for_form_rendering == "unknown") || (task.task_score.quick_or_slow_for_form_rendering == "unknown") || (task.task_score.easy_or_hard_for_form_rendering == "unknown"))
-      #    @task_score = x
         redirect "/projects"
       else
         erb :"/inside_the_maze/adventures/phase_2/phase_2_question_time"
@@ -60,7 +58,7 @@ class PhaseTwoController < ApplicationController
       @task_score.quick_or_slow_for_form_rendering = params[:quick_or_slow_for_form_rendering]
       @task_score.easy_or_hard_for_form_rendering = params[:easy_or_hard_for_form_rendering]
       @task_score.save
-      redirect "/phase_2_question_time/#{@project.id}"
+      redirect "/phase_2_question_time/#{@project.id}/#{@task_score.id}"
     else
       redirect '/no_access'
     end
