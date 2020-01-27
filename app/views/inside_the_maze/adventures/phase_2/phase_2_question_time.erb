@@ -15,7 +15,7 @@ TASK AND THE COMMENTS YOU JUST MADE</div>
 <%= @task.comment_or_measure %><br>
 <%= @task.the_action_description %><br>
 
-<form class="" action="/phase_2_question_time/<%=@project.id%>/<%=@task.id%>/<%=@task_score.id%>" method="post">
+<form class="" action="/phase_2_question_time/<%=@project.id%>/<%=@task_score.id%>" method="post">
   <input type="hidden" name="_method" value="patch">
   <input type="string" name="necessary_or_optional_for_form_rendering" value="<%= @task_score.necessary_or_optional_for_form_rendering %>">
   <input type="string" name="quick_or_slow_for_form_rendering" value="<%= @task_score.quick_or_slow_for_form_rendering%>">

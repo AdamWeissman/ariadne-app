@@ -5,7 +5,7 @@ class PhaseTwoController < ApplicationController
       @user = current_user
       @project = Project.find(params[:project_id])
       @task = Task.find_by(project_id: params[:project_id], comment_or_measure: "you must change this to continue.")
-      if @task.blank?
+      if @task.nil?
         redirect "/phase_2_question_time/#{@project.id}"
       else
         erb :'/inside_the_maze/adventures/phase_2/phase_2_first_iteration'
@@ -35,23 +35,26 @@ class PhaseTwoController < ApplicationController
     if logged_in?
       @user = current_user
       @project = Project.find(params[:project_id])
-      @task = Task.find_by(project_id: params[:project_id])
-      @task_score = TaskScore.find_by(task_id: "#{@task.id}", necessary_or_optional_for_form_rendering: "unknown", quick_or_slow_for_form_rendering: "unknown", easy_or_hard_for_form_rendering: "unknown")
-      if @task_score.blank?
+      @task = Task.find_by(project_id: params[:project_id]) 
+      @task_score = TaskScore.find_by(task_id: "#{@task.id}".to_i) if ((@task.task_score.necessary_or_optional_for_form_rendering == "unknown") || (@task.task_score.quick_or_slow_for_form_rendering == "unknown") || (@task.task_score.easy_or_hard_for_form_rendering == "unknown"))
+      #@task_score = TaskScore.find_by(task_id: "#{@task.id}".to_i, necessary_or_optional_for_form_rendering: "unknown", quick_or_slow_for_form_rendering: "unknown", easy_or_hard_for_form_rendering: "unknown")
+      if @task_score.nil?
+      #  @project.tasks.all.each do |task|
+      #    x = task.task_score if ((task.task_score.necessary_or_optional_score_for_form_rendering == "unknown") || (task.task_score.quick_or_slow_for_form_rendering == "unknown") || (task.task_score.easy_or_hard_for_form_rendering == "unknown"))
+      #    @task_score = x
         redirect "/projects"
       else
-        erb :'/inside_the_maze/adventures/phase_2/phase_2_question_time'
+        erb :"/inside_the_maze/adventures/phase_2/phase_2_question_time"
       end
     else
       redirect '/no_access'
     end
   end
 
-  patch '/phase_2_question_time/:project_id/:the_task_id/:task_score_id' do
+  patch '/phase_2_question_time/:project_id/:task_score_id' do
     if logged_in?
       @user = current_user
       @project = Project.find(params[:project_id])
-      @task = Task.find(params[:the_task_id])
       @task_score = TaskScore.find(params[:task_score_id])
       @task_score.necessary_or_optional_for_form_rendering = params[:necessary_or_optional_for_form_rendering]
       @task_score.quick_or_slow_for_form_rendering = params[:quick_or_slow_for_form_rendering]
