@@ -42,7 +42,7 @@ class PhaseTwoController < ApplicationController
         @task_score = TaskScore.find_by(task_id: "#{@task.id}".to_i) if ((@task.task_score.necessary_or_optional_for_form_rendering == "unknown") || (@task.task_score.quick_or_slow_for_form_rendering == "unknown") || (@task.task_score.easy_or_hard_for_form_rendering == "unknown"))
         erb :"/inside_the_maze/adventures/phase_2/phase_2_question_time"
       else
-        redirect "/projects"
+        redirect "/phase_2_complete"
       end
     else
       redirect '/no_access'
@@ -61,6 +61,8 @@ class PhaseTwoController < ApplicationController
       @task_score.save
       if (@task_score.necessary_or_optional_for_form_rendering != "unknown") && (@task_score.quick_or_slow_for_form_rendering != "unknown") && (@task_score.easy_or_hard_for_form_rendering != "unknown")
         @task.golem = "questions complete"
+        @project.current_phase = 2
+        @project.save
         @task.save
       else
         @task.golem = "questions incomplete"
@@ -72,5 +74,13 @@ class PhaseTwoController < ApplicationController
     end
   end
 
+  get '/phase_2_complete' do
+    if logged_in?
+      @user = current_user
+      erb :"/inside_the_maze/adventures/phase_2/phase_2_complete_with_data"
+    else
+      redirect '/no_access'
+    end
+  end
 
 end
