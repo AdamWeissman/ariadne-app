@@ -57,28 +57,31 @@ class PhaseTwoController < ApplicationController
       @task_score = TaskScore.find(params[:task_score_id])
 
       @task_score.necessary_or_optional_for_form_rendering = params[:necessary_or_optional_for_form_rendering]
-      #if @task_score.necessary_or_optional_for_form_rendering matches "necessary" which is a default
-        #@task_score.necessary_or_optional_score = 0.0
-      #elsif @task_score.necessary_or_optional_for_form_rendering matches "optional"
-        #@task_score.necessary_or_optional_score = 50.0
-      #else
-        #@task_score.necessary_or_optional_score = 25.0
+        if @task_score.necessary_or_optional_for_form_rendering == "necessary"
+          @task_score.necessary_or_optional_score = 0.0
+        elsif @task_score.necessary_or_optional_for_form_rendering == "optional"
+          @task_score.necessary_or_optional_score = 50.0
+        else
+          @task_score.necessary_or_optional_score = 25.0
+        end
 
       @task_score.quick_or_slow_for_form_rendering = params[:quick_or_slow_for_form_rendering]
-      #if @task_score.quick_or_slow_for_form_rendering matches "quick"
-        #@task_score.quick_or_slow_score = 1.0
-      #elsif @task_score.quick_or_slow_for_form_rendering matches "slow"
-          #@task_score.quick_or_slow_score = 2.0
-      #else
-        #@task_score.quick_or_slow_score = 10.0
+        if @task_score.quick_or_slow_for_form_rendering == "quick"
+          @task_score.quick_or_slow_score = 1.0
+        elsif @task_score.quick_or_slow_for_form_rendering == "slow"
+          @task_score.quick_or_slow_score = 2.0
+        else
+          @task_score.quick_or_slow_score = 10.0
+        end
 
       @task_score.easy_or_hard_for_form_rendering = params[:easy_or_hard_for_form_rendering]
-      #if @task_score.easy_or_hard_for_form_rendering matches "easy"
-        #@task_score.easy_or_hard_score = 4.0
-      #elsif @task_score.easy_or_hard_for_form_rendering matches "necessary"
-          #@task_score.easy_or_hard_score = 7.0
-      #else
-        #@task_score.easy_or_hard_score = 10.0
+        if @task_score.easy_or_hard_for_form_rendering == "easy"
+          @task_score.easy_or_hard_score = 4.0
+        elsif @task_score.easy_or_hard_for_form_rendering == "difficult"
+          @task_score.easy_or_hard_score = 7.0
+        else
+          @task_score.easy_or_hard_score = 10.0
+        end
 
       @task_score.save
       if (@task_score.necessary_or_optional_for_form_rendering != "unknown") && (@task_score.quick_or_slow_for_form_rendering != "unknown") && (@task_score.easy_or_hard_for_form_rendering != "unknown")
