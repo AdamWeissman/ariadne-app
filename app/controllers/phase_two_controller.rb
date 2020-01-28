@@ -108,6 +108,7 @@ class PhaseTwoController < ApplicationController
       @user = current_user
       @project = Project.find(params[:project_id])
       erb :"/inside_the_maze/adventures/phase_2/phase_2_complete_with_data"
+      # better to just redirect to phase 3... especially if all data is populating
     else
       redirect '/no_access'
     end

@@ -1,3 +1,42 @@
+<style>
+  table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+  }
+
+  td, th {
+    border: 1px solid #F9F5F1;
+    text-align: left;
+    padding: 8px;
+  }
+
+  tr:nth-child(odd) {
+    background-color: #E5DCD2;
+    animation: odd-cell 15s infinite;
+  }
+
+  @keyframes odd-cell
+    {
+      50% {
+        background-color: #E6D7B9;
+      }
+    }
+
+  tr:nth-child(even) {
+    background-color: #E6D7B9;
+    animation: even-cell 15s infinite;
+  }
+
+  @keyframes even-cell
+    {
+      50% {
+        background-color: #E5DCD2;
+      }
+    }
+  }
+</style>
+
 <br>
 <h1 class="glow">QUESTION TIME.</h1>
 <br>
@@ -5,20 +44,48 @@
   <br>
  <a href="/projects" title="Projects">Projects</a> | <a href="/about2" title="About">About</a> | <a href="/contact" title="Contact">Contact</a> | <a href="/logout" title="Logout">Logout</a><br>
 </center></div><br>
-<center class="glowsmall">
-<div class="typewriter"><br>
-STRONGLY  CONSIDER  THESE QUESTIONS<br>
-ESPECIALLY  IN THE CONTEXT  OF YOUR<br>
-TASK AND THE COMMENTS YOU JUST MADE</div>
+<center class="glowsmall"><br>
+CONSIDER YOUR TASK AND ANSWER THE QUESTIONS BELOW...<br>
 </center>
-
-<%= @task.comment_or_measure %><br>
-<%= @task.the_action_description %><br>
+<h2 class="glowblue"><%= @task.the_action_description %></h2>
+<br>
+<br>
 
 <form class="" action="/phase_2_question_time/<%=@project.id%>/<%=@task.id%>/<%=@task_score.id%>" method="post">
   <input type="hidden" name="_method" value="patch">
-  <input type="string" name="necessary_or_optional_for_form_rendering" value="<%= @task_score.necessary_or_optional_for_form_rendering %>">
-  <input type="string" name="quick_or_slow_for_form_rendering" value="<%= @task_score.quick_or_slow_for_form_rendering%>">
-  <input type="string" name="easy_or_hard_for_form_rendering" value="<%=@task_score.easy_or_hard_for_form_rendering%>">
-  <input type="submit" value="LET'S CONTINUE.">
+  <table>
+    <tr>
+      <th><center>how fast can you get this done?</center></th>
+      <th><center>how much effort might this take?</center></th>
+      <th><center>how important is it?</center></th>
+    </tr>
+    <tr>
+    <td>
+      <input type="hidden" name="quick_or_slow_for_form_rendering" value="<%= @task_score.quick_or_slow_for_form_rendering%>">
+      <INPUT type="radio" name="quick_or_slow_for_form_rendering" value="quick"> I can do this quickly!<br><br>
+      <INPUT type="radio" name="quick_or_slow_for_form_rendering" value="slow"> This could take a while.<br><br>
+      <INPUT type="radio" name="quick_or_slow_for_form_rendering" value="uncertain"> I'm not sure.<br><br>
+    </td>
+    <td>
+      <input type="hidden" name="easy_or_hard_for_form_rendering" value="<%=@task_score.easy_or_hard_for_form_rendering%>">
+      <INPUT type="radio" name="easy_or_hard_for_form_rendering" value="easy"> This is probably easy.<br><br>
+      <INPUT type="radio" name="easy_or_hard_for_form_rendering" value="difficult"> This may be difficult.<br><br>
+      <INPUT type="radio" name="easy_or_hard_for_form_rendering" value="uncertain"> It's hard to say.<br><br>
+    </td>
+    <td>
+      <input type="hidden" name="necessary_or_optional_for_form_rendering" value="<%= @task_score.necessary_or_optional_for_form_rendering %>">
+      <INPUT type="radio" name="necessary_or_optional_for_form_rendering" value="necessary"> This is absolutely necessary.<br><br>
+      <INPUT type="radio" name="necessary_or_optional_for_form_rendering" value="optional"> It would be nice if there's time.<br><br>
+      <INPUT type="radio" name="necessary_or_optional_for_form_rendering" value="uncertain"> I can't tell.<br><br>
+    </td>
+  </table>
+  <center>
+    <br>
+  <input type="submit" value="LET'S CONTINUE."></center>
 </form>
+<br>
+<center class="glowsmall">
+IF YOU'RE HAVING TROUBLE DECIDING, REFLECT BELOW...<br>
+</center>
+<h3 class="glowblue"><%= @task.comment_or_measure %></h3>
+<br>
