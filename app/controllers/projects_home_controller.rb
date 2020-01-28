@@ -52,6 +52,8 @@ class ProjectsHomeController < ApplicationController
       @project = Project.find(params[:id])
       if @project.current_phase == 1
         redirect "/phase_1_saved/#{@project.id}"
+      elsif @project.current_phase == 2
+        redirect "/phase_2_complete/#{@project.id}"
       else
         redirect "/projects"
       end
