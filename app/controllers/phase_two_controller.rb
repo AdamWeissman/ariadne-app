@@ -84,6 +84,10 @@ class PhaseTwoController < ApplicationController
         end
 
       @task_score.save
+
+      @task.calculated_rank = @task_score.easy_or_hard_score + @task_score.quick_or_slow_score + @task_score.necessary_or_optional_score
+      @task.save
+
       if (@task_score.necessary_or_optional_for_form_rendering != "unknown") && (@task_score.quick_or_slow_for_form_rendering != "unknown") && (@task_score.easy_or_hard_for_form_rendering != "unknown")
         @task.golem = "questions complete"
         @project.current_phase = 2
