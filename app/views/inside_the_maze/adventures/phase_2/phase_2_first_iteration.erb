@@ -7,25 +7,15 @@
 
 <form class="" action="/phase_2/<%= @project.id %>/<%= @task.id%>" method="post">
     <input type="hidden" name="_method" value="patch">
-    <center> What could possibly go wrong with this task?<br>
+    <h3>What could possibly go wrong with this task?<br>
     Is there anything you haven't considered?<br>
     Will it be obvious when you've completed this task?<br>
     Can it be measured?<br>
-    Or is it not worthy of further consideration?<br>
+    Or is it not worthy of further consideration?<br></h3>
   </center>
     <textarea style="resize: none" rows="3" cols="60" type="string" name="comment_or_measure"><%= @task.comment_or_measure %></textarea>
 <center class="glowblue"><input type="submit" value="SUBMIT THIS COMMENT"></center>
 </form>
 
-ACTION/DESCRIPTION        |   OPTIONAL? |   EASY?  | QUICK? | BUTTONS<br>
-parsed task from phase 1  |   Dropdown  | Dropdown |Dropdown| add row above task AND delete<br>
-parsed task from phase 1  |   Dropdown  | Dropdown |Dropdown| add row above task AND delete<br>
-parsed task from phase 1  |   Dropdown  | Dropdown |Dropdown| add row above task AND delete<br>
-parsed task from phase 1  |   Dropdown  | Dropdown |Dropdown| add row above task AND delete<br>
-parsed task from phase 1  |   Dropdown  | Dropdown |Dropdown| add row above task AND delete<br>
-parsed task from phase 1  |   Dropdown  | Dropdown |Dropdown| add row above task AND delete<br>
-parsed task from phase 1  |   Dropdown  | Dropdown |Dropdown| add row above task AND delete<br>
-parsed task from phase 1  |   Dropdown  | Dropdown |Dropdown| add row above task AND delete<br>
-                                                              add a new row at bottom<br>
 <br>
 <center>a message from ariadne</center><br>
