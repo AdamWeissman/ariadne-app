@@ -55,9 +55,31 @@ class PhaseTwoController < ApplicationController
       @project = Project.find(params[:project_id])
       @task = Task.find(params[:task_id])
       @task_score = TaskScore.find(params[:task_score_id])
+
       @task_score.necessary_or_optional_for_form_rendering = params[:necessary_or_optional_for_form_rendering]
+      #if @task_score.necessary_or_optional_for_form_rendering matches "optional"
+        #@task_score.necessary_or_optional_score = CHECK MY PDF MOCKUP
+      #elsif @task_score.necessary_or_optional_for_form_rendering matches "necessary"
+        #@task_score.necessary_or_optional_score = CHECK MY PDF MOCKUP
+      #else
+        #@task_score.necessary_or_optional_score = CHECK MY PDF MOCKUP
+
       @task_score.quick_or_slow_for_form_rendering = params[:quick_or_slow_for_form_rendering]
+      #if @task_score.quick_or_slow_for_form_rendering matches "optional"
+        #@task_score.quick_or_slow_score = CHECK MY PDF MOCKUP
+      #elsif @task_score.quick_or_slow_for_form_rendering matches "necessary"
+          #@task_score.quick_or_slow_score = CHECK MY PDF MOCKUP
+      #else
+        #@task_score.quick_or_slow_score = CHECK MY PDF MOCKUP
+
       @task_score.easy_or_hard_for_form_rendering = params[:easy_or_hard_for_form_rendering]
+      #if @task_score.easy_or_hard_for_form_rendering matches "optional"
+        #@task_score.easy_or_hard_score = CHECK MY PDF MOCKUP
+      #elsif @task_score.easy_or_hard_for_form_rendering matches "necessary"
+          #@task_score.easy_or_hard_score = CHECK MY PDF MOCKUP
+      #else
+        #@task_score.easy_or_hard_score = CHECK MY PDF MOCKUP
+
       @task_score.save
       if (@task_score.necessary_or_optional_for_form_rendering != "unknown") && (@task_score.quick_or_slow_for_form_rendering != "unknown") && (@task_score.easy_or_hard_for_form_rendering != "unknown")
         @task.golem = "questions complete"
@@ -77,6 +99,7 @@ class PhaseTwoController < ApplicationController
   get '/phase_2_complete/:project_id' do
     if logged_in?
       @user = current_user
+      @project = Project.find(params[:project_id])
       erb :"/inside_the_maze/adventures/phase_2/phase_2_complete_with_data"
     else
       redirect '/no_access'
