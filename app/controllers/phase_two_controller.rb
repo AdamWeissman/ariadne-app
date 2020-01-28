@@ -74,7 +74,7 @@ class PhaseTwoController < ApplicationController
     end
   end
 
-  get '/phase_2_complete' do
+  get '/phase_2_complete/:project_id' do
     if logged_in?
       @user = current_user
       erb :"/inside_the_maze/adventures/phase_2/phase_2_complete_with_data"
