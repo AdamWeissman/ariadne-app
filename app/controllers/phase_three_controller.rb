@@ -14,6 +14,10 @@ class PhaseThreeController < ApplicationController
     if logged_in?
       @user = current_user
       @project = Project.find(params[:project_id])
+      binding.pry
+      @project.tasks.order(:calculated_rank).each do |task|
+        task.segment = params[:project][][tasks]
+      end
       # this is what's incoming name="project[tasks][][segment]"
       #need to make sure this hash is parsed and applied correctly...
       #

@@ -58,9 +58,11 @@
   <tr>
 <% @project.tasks.order(:calculated_rank).each do |task| %>
   <td><%=task.calculated_rank%></td>
+  <input type="hidden" name="project[tasks][][calculated_rank]" value=<%=task.calculated_rank%>>
   <td><%=task.the_action_description%>
   <br><br>
   <%=task.comment_or_measure%></td>
+  <input type="hidden" name="project[tasks][][task_id]" value=<%=task.id%>>
   <td><center><select name="project[tasks][][segment]">
     <option value="D">--Please choose segment--</option>
     <option value="A">FOUNDATIONAL</option>
