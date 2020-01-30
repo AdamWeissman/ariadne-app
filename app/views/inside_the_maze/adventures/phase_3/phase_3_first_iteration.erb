@@ -46,7 +46,9 @@
 <div class="typewriter"><br><h1 class="glow"><font color="red"> &#x26a0;WARNING&#x26a0;</font></h1><br><h3 class="glowsmall"><font color="red">THIS IS JUST FOR TESTING</font></h3></div></center>
 <br>
 
-<form>
+
+<form class="" action="/phase_3_complete_with_data/<%=@project.id%>" method="post">
+  <input type="hidden" name="_method" value="patch">
 <table>
   <tr>
     <th>TOTAL</th>
@@ -68,7 +70,7 @@
   </tr>
     <% end %>
 </table>
-
+<input type="submit">
 </form>
 
 <br>
