@@ -1,13 +1,69 @@
-<li><a href="/account_home" title="Home General">Home Main</a></li>
-<li><a href="/projects" title="PROJECTS">PROJECTS HOME</a></li>
-<li><a href="/about2" title="About">About</a></li>
-<li><a href="/logout" title="LOGOUT"><strong>LOGOUT</strong></a></li>
-<li><a href="/contact" title="Contact">Contact</a></li>
+<style>
+  table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+  }
 
-<h3>Project Name which is Editable</h3>
-<h3>Project Summary which is Editable</h3>
-<h3>Phase III TABLE </h3>
+  td, th {
+    border: 1px solid #F9F5F1;
+    text-align: left;
+    padding: 8px;
+  }
 
+  tr:nth-child(odd) {
+    background-color: #E5DCD2;
+    animation: odd-cell 15s infinite;
+  }
+
+  @keyframes odd-cell
+    {
+      50% {
+        background-color: #E6D7B9;
+      }
+    }
+
+  tr:nth-child(even) {
+    background-color: #E6D7B9;
+    animation: even-cell 15s infinite;
+  }
+
+  @keyframes even-cell
+    {
+      50% {
+        background-color: #E5DCD2;
+      }
+    }
+  }
+</style>
+
+<br>
+<div class="glowsmall"><center>
+  <br>
+ <a href="/projects" title="Projects">Projects</a> | <a href="/about2" title="About">About</a> | <a href="/contact" title="Contact">Contact</a> | <a href="/logout" title="Logout">Logout</a><br>
+</center></div><br>
+<center>
+<div class="typewriter"><br><h1 class="glow"><font color="red"> &#x26a0;WARNING&#x26a0;</font></h1><br><h3 class="glowsmall"><font color="red">THIS IS JUST FOR TESTING</font></h3></div></center>
+<br>
+
+<table>
+  <tr>
+    <th>TOTAL</th>
+    <th>ACTION DESCRIPTION</th>
+    <th>SEGMENT DROP DOWN</th>
+  </tr>
+  <tr>
+<% @project.tasks.order(:calculated_rank).each do |task| %>
+  <td><%=task.calculated_rank%></td>
+  <td><%=task.the_action_description%>
+  <br><br>
+  <%=task.comment_or_measure%></td>
+  <td>THIS IS AN INPUT</td>
+  </tr>
+    <% end %>
+</table>
+<br>
+<center>a message from ariadne</center><br>
  NOTE: won't need buttons for adding rows etc... (maybe as a bonus feature)
  more realistically, and more easily... can give the user the ability to delete a row and also add a new row.
  IF they add a new row, they could be bounced to a temporary phase 3 view which is the equivalent of both the comment or measure
@@ -17,17 +73,6 @@ If a user can delete a row, and likewise if they can add a new one, then that ma
 
 A bigger issue/problem might be to create an iterative form that will submit and unknown number of segments.
 I really don't want to have this done on individual pages, because it's important to see the context.
-
-ACTION/DESCRIPTION (sorted using secret logic) |....SEGMENT..|.BUTTONS<br>
-sorted task from phase 2.......................|...Dropdown..|add row above task AND delete<br>
-sorted task from phase 2.......................|...Dropdown..|add row above task AND delete<br>
-sorted task from phase 2.......................|...Dropdown..|add row above task AND delete<br>
-sorted task from phase 2.......................|...Dropdown..|add row above task AND delete<br>
-sorted task from phase 2.......................|...Dropdown..|add row above task AND delete<br>
-sorted task from phase 2.......................|...Dropdown..|add row above task AND delete<br>
-sorted task from phase 2.......................|...Dropdown..|add row above task AND delete<br>
-sorted task from phase 2.......................|...Dropdown..|add row above task AND delete<br>
-sorted task from phase 2.......................|...Dropdown..|add row above task AND delete<br>
 
 <li><a href="/phase_3_saved" title="Phase 3 Complete">SAVE FOR NOW</a></li>
 <li><a href="/phase_4" title="Phase 3 Complete">SAVE AND CONTINUE TO PHASE IV</a></li>
