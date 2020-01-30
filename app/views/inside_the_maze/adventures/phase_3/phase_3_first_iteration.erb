@@ -46,6 +46,7 @@
 <div class="typewriter"><br><h1 class="glow"><font color="red"> &#x26a0;WARNING&#x26a0;</font></h1><br><h3 class="glowsmall"><font color="red">THIS IS JUST FOR TESTING</font></h3></div></center>
 <br>
 
+<form>
 <table>
   <tr>
     <th>TOTAL</th>
@@ -58,10 +59,18 @@
   <td><%=task.the_action_description%>
   <br><br>
   <%=task.comment_or_measure%></td>
-  <td>THIS IS AN INPUT</td>
+  <td><center><select name="this_doesnt_matter">
+    <option value="">--Please choose an option--</option>
+    <option value="foundational">FOUNDATIONAL</option>
+    <option value="INTERMEDIARY">INTERMEDIARY</option>
+    <option value="final">FINAL</option>
+</select></center></td>
   </tr>
     <% end %>
 </table>
+
+</form>
+
 <br>
 <center>a message from ariadne</center><br>
  NOTE: won't need buttons for adding rows etc... (maybe as a bonus feature)
