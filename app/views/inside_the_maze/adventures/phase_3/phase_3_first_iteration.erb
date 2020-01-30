@@ -61,11 +61,11 @@
   <td><%=task.the_action_description%>
   <br><br>
   <%=task.comment_or_measure%></td>
-  <td><center><select name="this_doesnt_matter">
-    <option value="">--Please choose an option--</option>
-    <option value="foundational">FOUNDATIONAL</option>
-    <option value="INTERMEDIARY">INTERMEDIARY</option>
-    <option value="final">FINAL</option>
+  <td><center><select name="project[tasks][][segment]">
+    <option value="D">--Please choose segment--</option>
+    <option value="A">FOUNDATIONAL</option>
+    <option value="B">INTERMEDIARY</option>
+    <option value="C">FINAL</option>
 </select></center></td>
   </tr>
     <% end %>

@@ -1,15 +1,75 @@
-<li><a href="/account_home" title="Home General">Home Main</a></li>
-<li><a href="/projects" title="PROJECTS">PROJECTS HOME</a></li>
-<li><a href="/about2" title="About">About</a></li>
-<li><a href="/logout" title="LOGOUT"><strong>LOGOUT</strong></a></li>
-<li><a href="/contact" title="Contact">Contact</a></li>
+<style>
+  table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+  }
+
+  td, th {
+    border: 1px solid #F9F5F1;
+    text-align: left;
+    padding: 8px;
+  }
+
+  tr:nth-child(odd) {
+    background-color: #E5DCD2;
+    animation: odd-cell 15s infinite;
+  }
+
+  @keyframes odd-cell
+    {
+      50% {
+        background-color: #E6D7B9;
+      }
+    }
+
+  tr:nth-child(even) {
+    background-color: #E6D7B9;
+    animation: even-cell 15s infinite;
+  }
+
+  @keyframes even-cell
+    {
+      50% {
+        background-color: #E5DCD2;
+      }
+    }
+  }
+</style>
+
+<br>
+<div class="glowsmall"><center>
+  <br>
+ <a href="/projects" title="Projects">Projects</a> | <a href="/about2" title="About">About</a> | <a href="/contact" title="Contact">Contact</a> | <a href="/logout" title="Logout">Logout</a><br>
+</center></div><br>
+<center>
+<div class="typewriter"><br><h1 class="glow"><font color="red"> &#x26a0;WARNING&#x26a0;</font></h1><br><h3 class="glowsmall"><font color="red">  NOTE WILL NEED TO CHAIN ORDER TO CALL ORDER ON SEGMENT. SHOULD TRY BEFORE AND AFTER SORT ON calculated_rank
+  NOTE: segment is also a string which means it will alphabetize improperly.</font></h3></div></center>
+<br>
 
 <h1>THIS IS YOUR MOST RECENT SAVED DATA FOR PHASE III</h1>
 
-<h3>Project Name which is Editable</h3>
-<h3>Project Summary which is Editable</h3>
-<h3>Phase III TABLE </h3>
+<table>
+  <tr>
+    <th>TOTAL</th>
+    <th>ACTION DESCRIPTION</th>
+    <th>SEGMENT</th>
+  </tr>
+  <tr>
 
+<% @project.tasks.order(:calculated_rank).each do |task| %>
+  <td><%=task.calculated_rank%></td>
+  <td><%=task.the_action_description%>
+  <br><br>
+  <%=task.comment_or_measure%></td>
+  <td>
+  <% @THISWILLBEANARRAYOFTASKS.each.with_index do |THISISTASKID, THISISSEGMENT| %>
+  <%= @THISISTASKID[THISISSEGMENT] %>
+<% end %>
+  </td>
+  </tr>
+    <% end %>
+</table>
 ACTION/DESCRIPTION (sorted using secret logic) |....SEGMENT..|.BUTTONS<br>
 sorted task from phase 2.......................|...Dropdown..|add row above task AND delete<br>
 sorted task from phase 2.......................|...Dropdown..|add row above task AND delete<br>

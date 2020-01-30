@@ -14,6 +14,9 @@ class PhaseThreeController < ApplicationController
     if logged_in?
       @user = current_user
       @project = Project.find(params[:project_id])
+      # this is what's incoming name="project[tasks][][segment]"
+      #need to make sure this hash is parsed and applied correctly...
+      #
       redirect "/phase_3_complete_with_data/#{@project.id}"
     else
       redirect '/no_access'
