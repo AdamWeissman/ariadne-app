@@ -14,13 +14,24 @@ class PhaseThreeController < ApplicationController
     if logged_in?
       @user = current_user
       @project = Project.find(params[:project_id])
-      binding.pry
+
+      @tasks = []
       @project.tasks.order(:calculated_rank).each do |task|
-        task.segment = params[:project][][tasks]
+        @tasks << task
       end
-      # this is what's incoming name="project[tasks][][segment]"
-      #need to make sure this hash is parsed and applied correctly...
-      #
+
+      @segments = []
+      params[:project][:tasks].each do |seg_val|
+        @segments << seg_val[:segment]
+      end
+
+      #@tasks.zip @segments
+
+      @tasks.zip(@segments).each do |the_task, the_segment|
+        the_task.segment = "#{the_segment}"
+        the_task.save
+      end
+      
       redirect "/phase_3_complete_with_data/#{@project.id}"
     else
       redirect '/no_access'

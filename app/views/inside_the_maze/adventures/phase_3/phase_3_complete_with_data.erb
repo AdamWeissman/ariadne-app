@@ -56,20 +56,19 @@
     <th>SEGMENT</th>
   </tr>
   <tr>
-
-<% @project.tasks.order(:calculated_rank).each do |task| %>
+<% @project.tasks.order(:segment).order(:calculated_rank).each do |task| %>
   <td><%=task.calculated_rank%></td>
   <td><%=task.the_action_description%>
   <br><br>
   <%=task.comment_or_measure%></td>
   <td>
-  <% @THISWILLBEANARRAYOFTASKS.each.with_index do |THISISTASKID, THISISSEGMENT| %>
-  <%= @THISISTASKID[THISISSEGMENT] %>
-<% end %>
+  <%= task.segment %>
   </td>
   </tr>
-    <% end %>
+
+  <% end %>
 </table>
+
 ACTION/DESCRIPTION (sorted using secret logic) |....SEGMENT..|.BUTTONS<br>
 sorted task from phase 2.......................|...Dropdown..|add row above task AND delete<br>
 sorted task from phase 2.......................|...Dropdown..|add row above task AND delete<br>
@@ -80,6 +79,3 @@ sorted task from phase 2.......................|...Dropdown..|add row above task
 sorted task from phase 2.......................|...Dropdown..|add row above task AND delete<br>
 sorted task from phase 2.......................|...Dropdown..|add row above task AND delete<br>
 sorted task from phase 2.......................|...Dropdown..|add row above task AND delete<br>
-
-<li><a href="/phase_3_saved" title="Phase 3 Complete">SAVE AGAIN</a></li>
-<li><a href="/phase_4" title="Phase 3 Complete">SAVE AND CONTINUE TO PHASE IV</a></li>
