@@ -54,11 +54,51 @@
     <th>RELEVANT BUTTONS</th>
   </tr>
 
+
+  <% @the_whole_enchilada = [] %>
+
+  <% @project.tasks.order(:segment).order(:calculated_rank).each_cons(2) do |task, next_task| %>
+    <% @the_whole_enchilada << [task.segment, next_task.segment] %>
+  <% end %>
+
+
 <% @table_formatting_array_for_segments = [] %>
+<% @table_formatting_counter = 0 %>
+
 <% @project.tasks.order(:segment).order(:calculated_rank).each_cons(2) do |task, next_task| %>
-  <% @table_formatting_array_for_segments << task %>
-  <% table_formatting_counter = @table_formatting_array_for_segments.size %>
-  <% if task.segment == "A" && (table_formatting_counter == 1) %>
+  <% @table_formatting_array_for_segments << [task.segment, next_task.segment] %>
+  <% @table_formatting_counter += 1 %>
+
+  <% if task.segment == "A" && (@table_formatting_counter == 1) && (next_task.segment == "B") %>
+  <tr><td></td><td></td><td></td><td></td></tr>
+  <tr>
+    <td></td>
+    <td><center><strong>FOUNDATIONAL</strong></center></td>
+    <td></td>
+    <td>ADD A TASK</td>
+  </tr>
+
+  <tr>
+  <td><%=task.calculated_rank%></td>
+  <td>ACTION: <%=task.the_action_description%>
+  <br><br>
+  COMMENT: <%=task.comment_or_measure%></td>
+  <td><center>
+  <%= task.segment %>
+  </center>
+  </td>
+  <td>EDIT/DELETE</td>
+  </tr>
+
+  <tr><td></td><td></td><td></td><td></td></tr>
+  <tr>
+    <td></td>
+    <td><center><strong>INTERMEDIARY</strong></center></td>
+    <td></td>
+    <td>ADD A TASK</td>
+  </tr>
+
+  <% elsif task.segment == "A" && (@table_formatting_counter == 1) %>
   <tr><td></td><td></td><td></td><td></td></tr>
   <tr>
     <td></td>
@@ -143,29 +183,45 @@
     <td>ADD A TASK</td>
   </tr>
 
-  <% elsif task.segment == "C" %>
-  <tr>
-  <td><%=task.calculated_rank%></td>
-  <td>ACTION: <%=task.the_action_description%>
-  <br><br>
-  COMMENT: <%=task.comment_or_measure%></td>
-  <td><center>
-  <%= task.segment %></center>
-  </td>
-  <td>EDIT/DELETE</td>
-  </tr>
+  <% elsif (task.segment == "C" && (next_task.segment == "C")) %>
+      <%if @table_formatting_counter == @the_whole_enchilada.size %>
+      <tr>
+      <td><%=task.calculated_rank%></td>
+      <td>ACTION: <%=task.the_action_description%>
+      <br><br>
+      COMMENT: <%=task.comment_or_measure%></td>
+      <td><center>
+      <%= task.segment %></center>
+      </td>
+      <td>EDIT/DELETE</td>
+      </tr>
 
+      <tr>
+      <td><%=next_task.calculated_rank%></td>
+      <td>ACTION: <%=next_task.the_action_description%>
+      <br><br>
+      COMMENT: <%=next_task.comment_or_measure%></td>
+      <td><center>
+      <%= next_task.segment %></center>
+      </td>
+      <td>EDIT/DELETE</td>
+      </tr>
+
+      <% else %>
+      <tr>
+      <td><%=task.calculated_rank%></td>
+      <td>ACTION: <%=task.the_action_description%>
+      <br><br>
+      COMMENT: <%=task.comment_or_measure%></td>
+      <td><center>
+      <%= task.segment %></center>
+      </td>
+      <td>EDIT/DELETE</td>
+      </tr>
+    <% end %>
 
   <% else %>
-  <tr>
-  <td><%=task.calculated_rank%></td>
-  <td>ACTION: <%=task.the_action_description%>
-  <br><br>
-  COMMENT: <%=task.comment_or_measure%></td>
-  <td><center>
-  <%= task.segment %></center>
-  </td>
-  <td>EDIT/DELETE</td>
+   <tr>
     <% end %>
   </tr>
 
