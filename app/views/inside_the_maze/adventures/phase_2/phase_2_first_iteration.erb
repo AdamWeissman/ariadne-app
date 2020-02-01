@@ -1,18 +1,14 @@
 <br>
-<h1 class="glow">PHASE II</h1>
+<!--<h1 class="glow">PHASE II</h1>-->
 <br>
 
-<center><%=@task.the_action_description%><center>
+<center><h2><%=@task.the_action_description%></h2><center>
   <br>
 
 <form class="" action="/phase_2/<%= @project.id %>/<%= @task.id%>" method="post">
     <input type="hidden" name="_method" value="patch">
-    <h3>What could possibly go wrong with this task?<br>
-    Is there anything you haven't considered?<br>
-    Will it be obvious when you've completed this task?<br>
-    Can it be measured?<br>
-    Or is it not worthy of further consideration?<br></h3>
-  </center>
+    <% helpful_messages = ["What could possibly go wrong with this task?", "Is there anything you haven't considered about this?", "Will it be obvious when you've completed this task?", "Can it be measured?"]%>
+  <center>helpful_message.sample </center>
     <textarea style="resize: none" rows="3" cols="60" type="string" name="comment_or_measure"><%= @task.comment_or_measure %></textarea>
 <center class="glowblue"><input type="submit" value="SUBMIT THIS COMMENT"></center>
 </form>
