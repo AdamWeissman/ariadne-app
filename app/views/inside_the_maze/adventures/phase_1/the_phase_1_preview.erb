@@ -1,16 +1,16 @@
 <center class="glow"><h2><%=@user.first_name.upcase%>, DOES EVERYTHING LOOK OKAY?</h2></center>
 <form class="" action="/phase_1_preview_something_sucked_let_me_fix_it/<%=@project.id%>" method="get">
-  <div>THIS IS WHAT YOU'RE WORKING ON:<br><strong><%= @project.project_name %></strong><br><br></div>
-  <div>THIS IS WHY YOU ARE WORKING ON IT: <br><strong> <%= @project.project_summary %></strong><br><br></div>
-  <div>THESE ARE THE TASKS YOU HAVE CHOSEN TO EXTRACT FROM THE COLLABORATION WITH YOU SUBCONSCIOUS:<br>
-  <strong><%= @project.the_initial_blob_to_parse.scan(/\b(t:)(.*?)(:e)\b/i).collect {|the_task, the_content, the_end| the_content}.join("<br><br>") %></strong></div><br>
+  <div><strong>THIS IS WHAT YOU'RE WORKING ON:</strong><br><%= @project.project_name %><br><br></div>
+  <div><strong>THIS IS WHY YOU ARE WORKING ON IT:</strong> <br> <%= @project.project_summary %><br><br></div>
+  <div><strong>THESE ARE THE TASKS YOU HAVE CHOSEN TO EXTRACT FROM THE COLLABORATION WITH YOU SUBCONSCIOUS:</strong><br>
+  <%= @project.the_initial_blob_to_parse.scan(/\b(t:)(.*?)(:e)\b/i).collect {|the_task, the_content, the_end| the_content}.join("<br>") %></div><br>
   <input type="hidden" name="the_initial_blob_to_parse" value=<%= @project.the_initial_blob_to_parse %>>
   <input type="hidden" name="user_id" value=<%=@user.id%>>
   <input type="hidden" name="project_id" value=<%=@project.id%>>
   <input type="hidden" name="current_phase" value="1">
   <input type="hidden" name="project_name" value=<%=@project.project_name%>>
   <input type="hidden" name="project_summary" value=<%=@project.project_summary%>>
-  <center><label><i>LOOK CLOSELY.  IS THERE ANYTHING MISSING?<br>ANYTHING YOU WOULD LIKE TO REPHRASE?<br>ANYTHING YOU WANT TO CHANGE?</i></label><br>
+  <center><label><i>Did your tasks parse correctly? If not...</i></label><br>
   <input type="submit" value="MAKE ADJUSTMENTS"></center>
 </form>
 <br>

@@ -62,7 +62,7 @@
   <tr><td></td><td></td><td></td><td></td></tr>
   <tr>
     <td></td>
-    <td><strong><center>FOUNDATIONAL</strong></center></td>
+    <td><center><strong>FOUNDATIONAL</strong></center></td>
     <td></td>
     <td>ADD A TASK</td>
   </tr>
@@ -75,6 +75,18 @@
   <td><center>
   <%= task.segment %>
   </center>
+  </td>
+  <td>EDIT/DELETE</td>
+  </tr>
+
+  <% elsif task.segment == "A" && (next_task.segment == "A") %>
+  <tr>
+  <td><%=task.calculated_rank%></td>
+  <td>ACTION: <%=task.the_action_description%>
+  <br><br>
+  COMMENT: <%=task.comment_or_measure%></td>
+  <td><center>
+  <%= task.segment %></center>
   </td>
   <td>EDIT/DELETE</td>
   </tr>
@@ -94,9 +106,21 @@
   <tr><td></td><td></td><td></td><td></td></tr>
   <tr>
     <td></td>
-    <td><strong><center>INTERMEDIARY</strong></center></td>
+    <td><center><strong>INTERMEDIARY</strong></center></td>
     <td></td>
     <td>ADD A TASK</td>
+  </tr>
+
+  <% elsif task.segment == "B" && (next_task.segment == "B") %>
+  <tr>
+  <td><%=task.calculated_rank%></td>
+  <td>ACTION: <%=task.the_action_description%>
+  <br><br>
+  COMMENT: <%=task.comment_or_measure%></td>
+  <td><center>
+  <%= task.segment %></center>
+  </td>
+  <td>EDIT/DELETE</td>
   </tr>
 
   <% elsif task.segment == "B" && (next_task.segment == "C") %>
@@ -114,30 +138,23 @@
   <tr><td></td><td></td><td></td><td></td></tr>
   <tr>
     <td></td>
-    <td><strong><center>FINAL</strong></center></td>
+    <td><center><strong>FINAL</strong></center></td>
     <td></td>
     <td>ADD A TASK</td>
   </tr>
 
-  <% elsif task.segment == "C" && (next_task.segment == "D") %>
+  <% elsif task.segment == "C" %>
   <tr>
   <td><%=task.calculated_rank%></td>
-  <td><%=task.the_action_description%>
+  <td>ACTION: <%=task.the_action_description%>
   <br><br>
-  <%=task.comment_or_measure%></td>
+  COMMENT: <%=task.comment_or_measure%></td>
   <td><center>
   <%= task.segment %></center>
   </td>
   <td>EDIT/DELETE</td>
   </tr>
 
-  <tr><td></td><td></td><td></td><td></td></tr>
-  <tr>
-    <td></td>
-    <td><strong><center>THESE HAVE NOT BEEN CATEGORIZED</strong></center></td>
-    <td></td>
-    <td></td>
-  </tr>
 
   <% else %>
   <tr>

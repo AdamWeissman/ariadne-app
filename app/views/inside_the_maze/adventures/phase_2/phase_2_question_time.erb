@@ -44,39 +44,43 @@
   <br>
  <a href="/projects" title="Projects">Projects</a> | <a href="/about2" title="About">About</a> | <a href="/contact" title="Contact">Contact</a> | <a href="/logout" title="Logout">Logout</a><br>
 </center></div><br>
-<center class="glowsmall"><br>
-CONSIDER YOUR TASK AND ANSWER THE QUESTIONS BELOW...<br>
-</center>
-<h2 class="glowblue"><%= @task.the_action_description %></h2>
-<br>
-<br>
+<h2>Consider your task: <strong class="glowsmall">"<%= @task.the_action_description.gsub(/(\[" )|( "]|\[")|("])/, '')%>"</strong></h2>
 
 <form class="" action="/phase_2_question_time/<%=@project.id%>/<%=@task.id%>/<%=@task_score.id%>" method="post">
   <input type="hidden" name="_method" value="patch">
   <table>
     <tr>
-      <th><center>how fast can you get this done?</center></th>
-      <th><center>how much effort might this take?</center></th>
-      <th><center>how important is it?</center></th>
+      <th><center class="glowblue">how fast can you get it done?</center></th>
+      <th><center class="glowblue">how much effort might it take?</center></th>
+      <th><center class="glowblue">how important is it to the goal?</center></th>
     </tr>
     <tr>
     <td>
+      <% q_o_s_phrases = [["it's probably quick!", "in a jiffy.", "I'm already almost done", "probably fast.", "I won't lose sleep over it."],
+      ["it could take a while.", "probably time consuming.", "too long to contemplate", "eternity is shorter.", "I don't have the time I need.", "I'd rather sort salt from sugar."],
+      ["it's a toss up", "could go either way.", "it depends on something else.", "I have no idea.", "it's ambiguous."]] %>
       <input type="hidden" name="quick_or_slow_for_form_rendering" value="<%= @task_score.quick_or_slow_for_form_rendering%>">
-      <INPUT type="radio" name="quick_or_slow_for_form_rendering" value="quick"> I can do this quickly!<br><br>
-      <INPUT type="radio" name="quick_or_slow_for_form_rendering" value="slow"> This could take a while.<br><br>
-      <INPUT type="radio" name="quick_or_slow_for_form_rendering" value="uncertain"> I'm not sure.<br><br>
+      <INPUT type="radio" name="quick_or_slow_for_form_rendering" value="quick"> <%=q_o_s_phrases[0].sample %><br><br>
+      <INPUT type="radio" name="quick_or_slow_for_form_rendering" value="slow"> <%=q_o_s_phrases[1].sample %><br><br>
+      <INPUT type="radio" name="quick_or_slow_for_form_rendering" value="uncertain"> <%=q_o_s_phrases[2].sample %><br><br>
     </td>
     <td>
+      <% e_o_h_phrases = [["it's probably easy.", "easy peasy.", "can do it with my eyes closed!", "practically no effort.", "my dog could to this."],
+      ["it's probably difficult.", "it appears to be mindnumbing.", "its weight is already crushing my willpower.", "the task is somewhat intimidating.", "I'm concerned if it's even possible."],
+      ["it's hard to say.", "I'm not certain.", "there are other factors involved.", "it's too ambiguous.", "I haven't fully defined the task."]]%>
       <input type="hidden" name="easy_or_hard_for_form_rendering" value="<%=@task_score.easy_or_hard_for_form_rendering%>">
-      <INPUT type="radio" name="easy_or_hard_for_form_rendering" value="easy"> This is probably easy.<br><br>
-      <INPUT type="radio" name="easy_or_hard_for_form_rendering" value="difficult"> This may be difficult.<br><br>
-      <INPUT type="radio" name="easy_or_hard_for_form_rendering" value="uncertain"> It's hard to say.<br><br>
+      <INPUT type="radio" name="easy_or_hard_for_form_rendering" value="easy"> <%=e_o_h_phrases[0].sample%><br><br>
+      <INPUT type="radio" name="easy_or_hard_for_form_rendering" value="difficult"> <%=e_o_h_phrases[1].sample%><br><br>
+      <INPUT type="radio" name="easy_or_hard_for_form_rendering" value="uncertain"> <%=e_o_h_phrases[2].sample%><br><br>
     </td>
     <td>
+      <% n_o_o_phrases = [["this is absolutely necessary.", "I can't live without this.", "it's more valuable than my thumb.", "it's kind of like my hand.", "I NEED this."],
+      ["it would be nice if there's time.", "it's more of a luxury.", "it's optional.", "it's a flu shot: mostly useless with a chance of causing permanent paralysis.", "it would be a joyful procrastination."],
+      ["it's a toss up.", "it's ambiguous.", "it isn't necessary exactly, but my goal might fall short without it.", "I don't know if I want it or need it.", "I'm on the fence."]]%>
       <input type="hidden" name="necessary_or_optional_for_form_rendering" value="<%= @task_score.necessary_or_optional_for_form_rendering %>">
-      <INPUT type="radio" name="necessary_or_optional_for_form_rendering" value="necessary"> This is absolutely necessary.<br><br>
-      <INPUT type="radio" name="necessary_or_optional_for_form_rendering" value="optional"> It would be nice if there's time.<br><br>
-      <INPUT type="radio" name="necessary_or_optional_for_form_rendering" value="uncertain"> I can't tell.<br><br>
+      <INPUT type="radio" name="necessary_or_optional_for_form_rendering" value="necessary"> <%=n_o_o_phrases[0].sample%><br><br>
+      <INPUT type="radio" name="necessary_or_optional_for_form_rendering" value="optional"> <%=n_o_o_phrases[1].sample%><br><br>
+      <INPUT type="radio" name="necessary_or_optional_for_form_rendering" value="uncertain"> <%=n_o_o_phrases[2].sample%><br><br>
     </td>
   </table>
   <center>
@@ -84,8 +88,8 @@ CONSIDER YOUR TASK AND ANSWER THE QUESTIONS BELOW...<br>
   <input type="submit" value="LET'S CONTINUE."></center>
 </form>
 <br>
-<center class="glowsmall">
+<center>
 IF YOU'RE HAVING TROUBLE DECIDING, REFLECT BELOW...<br>
 </center>
-<h3 class="glowblue"><%= @task.comment_or_measure %></h3>
+<h3 class="glowsmall"><%= @task.comment_or_measure %></h3>
 <br>
