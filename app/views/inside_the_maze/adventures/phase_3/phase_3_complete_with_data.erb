@@ -164,24 +164,55 @@
   </tr>
 
   <% elsif task.segment == "B" && (next_task.segment == "C") %>
-  <tr>
-  <td><%=task.calculated_rank%></td>
-  <td>ACTION: <%=task.the_action_description%>
-  <br><br>
-  COMMENT: <%=task.comment_or_measure%></td>
-  <td><center>
-  <%= task.segment %></center>
-  </td>
-  <td>EDIT/DELETE</td>
-  </tr>
+    <%if @table_formatting_counter == @the_whole_enchilada.size %>
+      <tr>
+      <td><%=task.calculated_rank%></td>
+      <td>ACTION: <%=task.the_action_description%>
+      <br><br>
+      COMMENT: <%=task.comment_or_measure%></td>
+      <td><center>
+      <%= task.segment %></center>
+      </td>
+      <td>EDIT/DELETE</td>
+      </tr>
+      <tr><td></td><td></td><td></td><td></td></tr>
+      <tr>
+        <td></td>
+        <td><center><strong>FINAL</strong></center></td>
+        <td></td>
+        <td>ADD A TASK</td>
+      </tr>
+      <tr>
+      <td><%=next_task.calculated_rank%></td>
+      <td>ACTION: <%=next_task.the_action_description%>
+      <br><br>
+      COMMENT: <%=next_task.comment_or_measure%></td>
+      <td><center>
+      <%= next_task.segment %></center>
+      </td>
+      <td>EDIT/DELETE</td>
+      </tr>
+      <% else %>
+      <tr>
+      <td><%=task.calculated_rank%></td>
+      <td>ACTION: <%=task.the_action_description%>
+      <br><br>
+      COMMENT: <%=task.comment_or_measure%></td>
+      <td><center>
+      <%= task.segment %></center>
+      </td>
+      <td>EDIT/DELETE</td>
+      </tr>
 
-  <tr><td></td><td></td><td></td><td></td></tr>
-  <tr>
-    <td></td>
-    <td><center><strong>FINAL</strong></center></td>
-    <td></td>
-    <td>ADD A TASK</td>
-  </tr>
+      <tr><td></td><td></td><td></td><td></td></tr>
+      <tr>
+        <td></td>
+        <td><center><strong>FINAL</strong></center></td>
+        <td></td>
+        <td>ADD A TASK</td>
+      </tr>
+    <%end %>
+
 
   <% elsif (task.segment == "C" && (next_task.segment == "C")) %>
       <%if @table_formatting_counter == @the_whole_enchilada.size %>
