@@ -1,16 +1,18 @@
-class PhaseThreeController < ApplicationController
+class PhaseFourController < ApplicationController
 
-  get '/phase_3/:project_id' do
+  get '/phase_4/:project_id' do
     if logged_in?
       @user = current_user
       @project = Project.find(params[:project_id])
-      erb :"/inside_the_maze/adventures/phase_3/phase_3_first_iteration"
+      erb :"/inside_the_maze/adventures/phase_4/phase_4_first_iteration"
     else
       redirect '/no_access'
     end
   end
 
-  patch '/phase_3_complete_with_data/:project_id' do
+  #below this line is incomplete
+
+  patch '/phase_4_complete_with_data/:project_id' do
     if logged_in?
       @user = current_user
       @project = Project.find(params[:project_id])
@@ -24,6 +26,8 @@ class PhaseThreeController < ApplicationController
       params[:project][:tasks].each do |seg_val|
         @segments << seg_val[:segment]
       end
+
+      #@tasks.zip @segments
 
       @tasks.zip(@segments).each do |the_task, the_segment|
         the_task.segment = "#{the_segment}"
@@ -39,7 +43,7 @@ class PhaseThreeController < ApplicationController
     end
   end
 
-  get '/phase_3_complete_with_data/:project_id' do
+  get '/phase_4_complete_with_data/:project_id' do
     if logged_in?
       @user = current_user
       @project = Project.find(params[:project_id])
