@@ -31,7 +31,10 @@ class PhaseThreeController < ApplicationController
         the_task.segment = "#{the_segment}"
         the_task.save
       end
-      
+
+      @project.current_phase = 3
+      @project.save
+
       redirect "/phase_3_complete_with_data/#{@project.id}"
     else
       redirect '/no_access'
