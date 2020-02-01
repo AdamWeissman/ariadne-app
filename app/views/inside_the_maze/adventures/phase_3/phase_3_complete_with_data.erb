@@ -42,40 +42,121 @@
   <br>
  <a href="/projects" title="Projects">Projects</a> | <a href="/about2" title="About">About</a> | <a href="/contact" title="Contact">Contact</a> | <a href="/logout" title="Logout">Logout</a><br>
 </center></div><br>
-<center>
-<div class="typewriter"><br><h1 class="glow"><font color="red"> &#x26a0;WARNING&#x26a0;</font></h1><br><h3 class="glowsmall"><font color="red">  NOTE WILL NEED TO CHAIN ORDER TO CALL ORDER ON SEGMENT. SHOULD TRY BEFORE AND AFTER SORT ON calculated_rank
-  NOTE: segment is also a string which means it will alphabetize improperly.</font></h3></div></center>
 <br>
 
 <h1>THIS IS YOUR MOST RECENT SAVED DATA FOR PHASE III</h1>
 
 <table>
   <tr>
-    <th>TOTAL</th>
-    <th>ACTION DESCRIPTION</th>
-    <th>SEGMENT</th>
+    <th>delete this column for final</th>
+    <th>ACTION DESCRIPTION AND COMMENTS</th>
+    <th><center>SEGMENT</center></th>
+    <th>RELEVANT BUTTONS</th>
   </tr>
+
+<% @table_formatting_array_for_segments = [] %>
+<% @project.tasks.order(:segment).order(:calculated_rank).each_cons(2) do |task, next_task| %>
+  <% @table_formatting_array_for_segments << task %>
+  <% table_formatting_counter = @table_formatting_array_for_segments.size %>
+  <% if task.segment == "A" && (table_formatting_counter == 1) %>
+  <tr><td></td><td></td><td></td><td></td></tr>
   <tr>
-<% @project.tasks.order(:segment).order(:calculated_rank).each do |task| %>
+    <td></td>
+    <td><strong><center>FOUNDATIONAL</strong></center></td>
+    <td></td>
+    <td>ADD A TASK</td>
+  </tr>
+
+  <tr>
+  <td><%=task.calculated_rank%></td>
+  <td>ACTION: <%=task.the_action_description%>
+  <br><br>
+  COMMENT: <%=task.comment_or_measure%></td>
+  <td><center>
+  <%= task.segment %>
+  </center>
+  </td>
+  <td>EDIT/DELETE</td>
+  </tr>
+
+  <% elsif task.segment == "A" && (next_task.segment == "B") %>
+  <tr>
+  <td><%=task.calculated_rank%></td>
+  <td>ACTION: <%=task.the_action_description%>
+  <br><br>
+  COMMENT: <%=task.comment_or_measure%></td>
+  <td><center>
+  <%= task.segment %></center>
+  </td>
+  <td>EDIT/DELETE</td>
+  </tr>
+
+  <tr><td></td><td></td><td></td><td></td></tr>
+  <tr>
+    <td></td>
+    <td><strong><center>INTERMEDIARY</strong></center></td>
+    <td></td>
+    <td>ADD A TASK</td>
+  </tr>
+
+  <% elsif task.segment == "B" && (next_task.segment == "C") %>
+  <tr>
+  <td><%=task.calculated_rank%></td>
+  <td>ACTION: <%=task.the_action_description%>
+  <br><br>
+  COMMENT: <%=task.comment_or_measure%></td>
+  <td><center>
+  <%= task.segment %></center>
+  </td>
+  <td>EDIT/DELETE</td>
+  </tr>
+
+  <tr><td></td><td></td><td></td><td></td></tr>
+  <tr>
+    <td></td>
+    <td><strong><center>FINAL</strong></center></td>
+    <td></td>
+    <td>ADD A TASK</td>
+  </tr>
+
+  <% elsif task.segment == "C" && (next_task.segment == "D") %>
+  <tr>
   <td><%=task.calculated_rank%></td>
   <td><%=task.the_action_description%>
   <br><br>
   <%=task.comment_or_measure%></td>
-  <td>
-  <%= task.segment %>
+  <td><center>
+  <%= task.segment %></center>
   </td>
+  <td>EDIT/DELETE</td>
+  </tr>
+
+  <tr><td></td><td></td><td></td><td></td></tr>
+  <tr>
+    <td></td>
+    <td><strong><center>THESE HAVE NOT BEEN CATEGORIZED</strong></center></td>
+    <td></td>
+    <td></td>
+  </tr>
+
+  <% else %>
+  <tr>
+  <td><%=task.calculated_rank%></td>
+  <td>ACTION: <%=task.the_action_description%>
+  <br><br>
+  COMMENT: <%=task.comment_or_measure%></td>
+  <td><center>
+  <%= task.segment %></center>
+  </td>
+  <td>EDIT/DELETE</td>
+    <% end %>
   </tr>
 
   <% end %>
+
 </table>
 
-ACTION/DESCRIPTION (sorted using secret logic) |....SEGMENT..|.BUTTONS<br>
-sorted task from phase 2.......................|...Dropdown..|add row above task AND delete<br>
-sorted task from phase 2.......................|...Dropdown..|add row above task AND delete<br>
-sorted task from phase 2.......................|...Dropdown..|add row above task AND delete<br>
-sorted task from phase 2.......................|...Dropdown..|add row above task AND delete<br>
-sorted task from phase 2.......................|...Dropdown..|add row above task AND delete<br>
-sorted task from phase 2.......................|...Dropdown..|add row above task AND delete<br>
-sorted task from phase 2.......................|...Dropdown..|add row above task AND delete<br>
-sorted task from phase 2.......................|...Dropdown..|add row above task AND delete<br>
-sorted task from phase 2.......................|...Dropdown..|add row above task AND delete<br>
+<h1> if a new task is added, then post to same view.<br>
+  if a new task is edited, then patch to same view<br>
+  if a new test is deleted, then patch to same view<br>
+  OTHERWISE, continue to phase 4<br></h1>
