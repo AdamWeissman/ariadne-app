@@ -81,7 +81,7 @@
 
   .wrapper {
     background-color: #E4D8C3;
-    background-image: linear-gradient(to bottom right, #E4D8C3, #BEAD88);
+    /*background-image: linear-gradient(to bottom right, #E4D8C3, #BEAD88);*/
     -moz-box-shadow: 0px 5px 55px 0px rgba(190, 212, 229, 0.5);
     -webkit-box-shadow: 0px 5px 55px 0px rgba(190, 212, 229, 0.5);
     box-shadow: 0px 5px 55px 0px rgba(190, 212, 229, 0.3), inset 0px 0px 55px 0px rgba(246, 226, 226, .5);
@@ -101,7 +101,7 @@
 
   .wrapper-frame {
     background-color: #E4D8C3;
-    background-image: linear-gradient(to bottom right, #E4D8C3, #BEAD88);
+    /*background-image: linear-gradient(to bottom right, #E4D8C3, #BEAD88);*/
     -moz-box-shadow: 0px 5px 55px 0px rgba(190, 212, 229, 0.5);
     -webkit-box-shadow: 0px 5px 55px 0px rgba(190, 212, 229, 0.5);
     box-shadow: 0px 5px 55px 0px rgba(190, 212, 229, 0.8), inset 0px 0px 55px 0px rgba(246, 226, 226, .5);
