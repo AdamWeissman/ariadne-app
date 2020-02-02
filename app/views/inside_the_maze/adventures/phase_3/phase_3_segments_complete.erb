@@ -72,7 +72,17 @@
   <tr>
     <td></td>
     <td><center><strong>FOUNDATIONAL</strong></center></td>
-    <td>ADD A TASK</td>
+    <td style="background-color:red;">
+    <form class="" action="/phase_3_segments_complete/<%= @project.id %>" method="post">
+      <input type="hidden" name="project_id" value=<%=@project.id%>>
+      <input type="hidden" name="the_action_description" value="THIS IS YOUR NEW TASK">
+      <input type="hidden" name="comment_or_measure" value="unnecessary">
+      <input type="hidden" name="segment" value="A">
+      <input type="hidden" name="calculated_rank" value= 0.0 >
+      <input type="hidden" name="golem" value="questions complete">
+      <center class="glowblue"><input type="submit" value="ADD A TASK"></center>
+      </form>
+    </td>
     <td></td>
   </tr>
   <tr>
@@ -97,7 +107,17 @@
   <tr>
     <td></td>
     <td><center><strong>INTERMEDIARY</strong></center></td>
-    <td>ADD A TASK</td>
+    <td style="background-color:red;">
+    <form class="" action="/phase_3_segments_complete/<%= @project.id %>" method="post">
+      <input type="hidden" name="project_id" value=<%=@project.id%>>
+      <input type="hidden" name="the_action_description" value="THIS IS YOUR NEW TASK">
+      <input type="hidden" name="comment_or_measure" value="unnecessary">
+      <input type="hidden" name="segment" value="B">
+      <input type="hidden" name="calculated_rank" value= 0.0 >
+      <input type="hidden" name="golem" value="questions complete">
+      <center class="glowblue"><input type="submit" value="ADD A TASK"></center>
+      </form>
+    </td><td></td>
   </tr>
 
   <% elsif task.segment == "A" && (@table_formatting_counter == 1) %>
@@ -105,7 +125,17 @@
   <tr>
     <td></td>
     <td><center><strong>FOUNDATIONAL</strong></center></td>
-    <td>ADD A TASK</td>
+    <<td style="background-color:red;">
+    <form class="" action="/phase_3_segments_complete/<%= @project.id %>" method="post">
+      <input type="hidden" name="project_id" value=<%=@project.id%>>
+      <input type="hidden" name="the_action_description" value="THIS IS YOUR NEW TASK">
+      <input type="hidden" name="comment_or_measure" value="unnecessary">
+      <input type="hidden" name="segment" value="A">
+      <input type="hidden" name="calculated_rank" value= 0.0 >
+      <input type="hidden" name="golem" value="questions complete">
+      <center class="glowblue"><input type="submit" value="ADD A TASK"></center>
+      </form>
+    </td><td></td>
   </tr>
 
   <tr>
@@ -171,7 +201,17 @@
   <tr>
     <td></td>
     <td><center><strong>INTERMEDIARY</strong></center></td>
-    <td>ADD A TASK</td>
+    <td style="background-color:red;">
+    <form class="" action="/phase_3_segments_complete/<%= @project.id %>" method="post">
+      <input type="hidden" name="project_id" value=<%=@project.id%>>
+      <input type="hidden" name="the_action_description" value="THIS IS YOUR NEW TASK">
+      <input type="hidden" name="comment_or_measure" value="unnecessary">
+      <input type="hidden" name="segment" value="B">
+      <input type="hidden" name="calculated_rank" value= 0.0 >
+      <input type="hidden" name="golem" value="questions complete">
+      <center class="glowblue"><input type="submit" value="ADD A TASK"></center>
+      </form>
+    </td><td></td>
   </tr>
 
   <% elsif task.segment == "B" && (next_task.segment == "B") %>
@@ -218,7 +258,17 @@
       <tr>
         <td></td>
         <td><center><strong>FINAL</strong></center></td>
-        <td>ADD A TASK</td>
+        <td style="background-color:red;">
+        <form class="" action="/phase_3_segments_complete/<%= @project.id %>" method="post">
+          <input type="hidden" name="project_id" value=<%=@project.id%>>
+          <input type="hidden" name="the_action_description" value="THIS IS YOUR NEW TASK">
+          <input type="hidden" name="comment_or_measure" value="unnecessary">
+          <input type="hidden" name="segment" value="C">
+          <input type="hidden" name="calculated_rank" value= 0.0 >
+          <input type="hidden" name="golem" value="questions complete">
+          <center class="glowblue"><input type="submit" value="ADD A TASK"></center>
+          </form>
+        </td><td></td>
       </tr>
       <tr>
       <td><%=next_task.base_rank%></td>
@@ -262,7 +312,17 @@
       <tr>
         <td></td>
         <td><center><strong>FINAL</strong></center></td>
-        <td>ADD A TASK</td>
+        <td style="background-color:red;">
+        <form class="" action="/phase_3_segments_complete/<%= @project.id %>" method="post">
+          <input type="hidden" name="project_id" value=<%=@project.id%>>
+          <input type="hidden" name="the_action_description" value="THIS IS YOUR NEW TASK">
+          <input type="hidden" name="comment_or_measure" value="unnecessary">
+          <input type="hidden" name="segment" value="C">
+          <input type="hidden" name="calculated_rank" value= 0.0 >
+          <input type="hidden" name="golem" value="questions complete">
+          <center class="glowblue"><input type="submit" value="ADD A TASK"></center>
+          </form>
+        </td><td></td>
       </tr>
     <%end %>
 

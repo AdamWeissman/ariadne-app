@@ -48,6 +48,14 @@ class PhaseThreeController < ApplicationController
     if logged_in?
       @user = current_user
       @project = Project.find(params[:the_project_id])
+      @project.tasks.each do |x|
+        if x.the_action_description != "THIS IS YOUR NEW TASK"
+          x.calculated_rank += 100.0
+          x.save
+        else
+          x.save
+        end
+      end
       @project.tasks.order(:segment).order(:calculated_rank).each_with_index do |task, index|
         task.base_rank = index.to_f
         task.save
@@ -83,6 +91,17 @@ class PhaseThreeController < ApplicationController
       @task.save
       @project.save
       erb :"/inside_the_maze/adventures/phase_3/phase_3_segments_complete"
+    else
+      redirect '/no_access'
+    end
+  end
+
+  post '/phase_3_segments_complete/:scrubadub' do
+    if logged_in?
+      @user = current_user
+      @project = Project.find(params[:scrubadub])
+      Task.find_or_create_by(params.except!(:scrubadub))
+      redirect "/phase_3_segments_complete/#{@project.id}"
     else
       redirect '/no_access'
     end
