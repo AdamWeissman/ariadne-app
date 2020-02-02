@@ -2,7 +2,7 @@
 <form class="" action="/phase_1_preview_something_sucked_let_me_fix_it/<%=@project.id%>" method="get">
   <div><strong>THIS IS WHAT YOU'RE WORKING ON:</strong><br><%= @project.project_name %><br><br></div>
   <div><strong>THIS IS WHY YOU ARE WORKING ON IT:</strong> <br> <%= @project.project_summary %><br><br></div>
-  <div><strong>THESE ARE THE TASKS YOU HAVE CHOSEN TO EXTRACT FROM THE COLLABORATION WITH YOU SUBCONSCIOUS:</strong><br>
+  <div><strong>THESE ARE THE TASKS YOU HAVE CHOSEN TO EXTRACT:</strong><br>
   <%= @project.the_initial_blob_to_parse.scan(/\b(t:)(.*?)(:e)\b/i).collect {|the_task, the_content, the_end| "&#127919;" + the_content}.join("<br>") %></div><br>
   <input type="hidden" name="the_initial_blob_to_parse" value=<%= @project.the_initial_blob_to_parse %>>
   <input type="hidden" name="user_id" value=<%=@user.id%>>

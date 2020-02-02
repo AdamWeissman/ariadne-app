@@ -44,15 +44,52 @@ class PhaseThreeController < ApplicationController
     end
   end
 
-  get '/phase_3_segments_complete/:project_id' do
+  get '/phase_3_segments_complete/:the_project_id' do
     if logged_in?
       @user = current_user
-      @project = Project.find(params[:project_id])
+      @project = Project.find(params[:the_project_id])
+      @project.tasks.order(:segment).order(:calculated_rank).each_with_index do |task, index|
+        task.base_rank = index.to_f
+        task.save
+      end
       erb :"/inside_the_maze/adventures/phase_3/phase_3_segments_complete"
     else
       redirect '/no_access'
     end
   end
+
+  delete '/phase_3_segments_complete/:the_task_id/:the_project_id' do
+    if logged_in?
+      @user = current_user
+      @task = Task.find(params[:the_task_id])
+      @project = Project.find(params[:the_project_id])
+      @task.destroy
+      @project.tasks.order(:segment).order(:calculated_rank).each_with_index do |task, index|
+        task.base_rank = index.to_f
+        task.save
+      end
+      redirect "/phase_3_segments_complete/#{@project.id}"
+    else
+      redirect '/no_access'
+    end
+  end
+
+  patch '/phase_3_segments_saved/:the_task_id/:the_project_id' do
+    if logged_in?
+      @user = current_user
+      @task = Task.find(params[:the_task_id])
+      @project = Project.find(params[:the_project_id])
+      @task.the_action_description = params[:the_action_description]
+      @task.save
+      @project.save
+      erb :"/inside_the_maze/adventures/phase_3/phase_3_segments_complete"
+    else
+      redirect '/no_access'
+    end
+  end
+
+
+
 
 # YOU'RE WORKING ABVOE THIS LINE
 

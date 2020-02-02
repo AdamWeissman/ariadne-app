@@ -6,9 +6,8 @@
 
 <form class="" action="/phase_2/<%= @project.id %>/<%= @task.id%>" method="post">
     <input type="hidden" name="_method" value="patch">
-    <% helpful_messages = ["What could possibly go wrong with this task?", "Is there anything you haven't considered about this task? If so, what?", "Will it be obvious when you've completed this task? Why?", "Can this task be measured? If not, can you make it measurable?", "Have you thought about how much effort this task will require? Why?", "Have you thought about how fast you can complete this task?  Why?", "How does solving this task address your overall goal?", "Why this?", "What is the most important thing about this task?", "No comment?", "Why might this task be irrelevant? Can you solve something else to solve this quicker?", "What are you missing about this task?", "Can this task be measured qualitatively or quantitatively, how?", "Is this task more of a chicken or more of an egg?", "Why did the chicken cross the road?"]%>
+    <% helpful_messages = ["What could possibly go wrong with this task?", "Is there anything you haven't considered about this task? If so, what?", "Will it be obvious when you've completed this task? Why?", "Can this task be measured? If not, can you make it measurable?", "Have you thought about how much effort this task will require? Why?", "Have you thought about how fast you can complete this task?  Why?", "How does solving this task address your overall goal?", "Why this?", "What is the most important thing about this task?", "Why might this task be irrelevant? Can you solve something else to solve this quicker?", "If you were missing or forgetting something with this task, what would it be?", "Can this task be measured qualitatively or quantitatively, how?"]%>
   <center><h3><strong>SUGGESTION PROMPT:</strong><br><i> <%=helpful_messages.sample%></i></h3> </center>
-  <br><br>
     <textarea style="resize: none" rows="3" cols="60" type="string" name="comment_or_measure"><%= @task.comment_or_measure %></textarea>
 <center class="glowblue"><input type="submit" value="SUBMIT THIS COMMENT"></center>
 </form>
