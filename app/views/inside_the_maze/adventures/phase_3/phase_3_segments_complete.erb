@@ -1,0 +1,266 @@
+<style>
+  table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+  }
+
+  td, th {
+    border: 1px solid #F9F5F1;
+    text-align: left;
+    padding: 8px;
+  }
+
+  tr:nth-child(odd) {
+    background-color: #E5DCD2;
+    animation: odd-cell 15s infinite;
+  }
+
+  @keyframes odd-cell
+    {
+      50% {
+        background-color: #E6D7B9;
+      }
+    }
+
+  tr:nth-child(even) {
+    background-color: #E6D7B9;
+    animation: even-cell 15s infinite;
+  }
+
+  @keyframes even-cell
+    {
+      50% {
+        background-color: #E5DCD2;
+      }
+    }
+  }
+</style>
+
+<br>
+<div class="glowsmall"><center>
+  <br>
+ <a href="/projects" title="Projects">Projects</a> | <a href="/about2" title="About">About</a> | <a href="/contact" title="Contact">Contact</a> | <a href="/logout" title="Logout">Logout</a><br>
+</center></div><br>
+<br>
+
+<h1>THIS IS YOUR MOST RECENT SAVED DATA FOR PHASE III</h1>
+
+<table>
+  <tr>
+    <th>base rank</th>
+    <th>ACTION DESCRIPTION AND COMMENTS</th>
+    <th><center>SEGMENT</center></th>
+    <th>RELEVANT BUTTONS</th>
+  </tr>
+
+
+  <% @the_whole_enchilada = [] %>
+
+  <% @project.tasks.order(:segment).order(:calculated_rank).each_cons(2) do |task, next_task| %>
+    <% @the_whole_enchilada << [task.segment, next_task.segment] %>
+  <% end %>
+
+
+<% @table_formatting_array_for_segments = [] %>
+<% @table_formatting_counter = 0 %>
+
+<% @project.tasks.order(:segment).order(:calculated_rank).each_cons(2) do |task, next_task| %>
+  <% @table_formatting_array_for_segments << [task.segment, next_task.segment] %>
+  <% @table_formatting_counter += 1 %>
+
+  <% if task.segment == "A" && (@table_formatting_counter == 1) && (next_task.segment == "B") %>
+  <tr><td></td><td></td><td></td><td></td></tr>
+  <tr>
+    <td></td>
+    <td><center><strong>FOUNDATIONAL</strong></center></td>
+    <td></td>
+    <td>ADD A TASK</td>
+  </tr>
+
+  <tr>
+  <td><%=task.base_rank%></td>
+  <td>ACTION: <%=task.the_action_description%>
+  <br><br>
+  COMMENT: <%=task.comment_or_measure%></td>
+  <td><center>
+  <%= task.segment %>
+  </center>
+  </td>
+  <td>EDIT/DELETE</td>
+  </tr>
+
+  <tr><td></td><td></td><td></td><td></td></tr>
+  <tr>
+    <td></td>
+    <td><center><strong>INTERMEDIARY</strong></center></td>
+    <td></td>
+    <td>ADD A TASK</td>
+  </tr>
+
+  <% elsif task.segment == "A" && (@table_formatting_counter == 1) %>
+  <tr><td></td><td></td><td></td><td></td></tr>
+  <tr>
+    <td></td>
+    <td><center><strong>FOUNDATIONAL</strong></center></td>
+    <td></td>
+    <td>ADD A TASK</td>
+  </tr>
+
+  <tr>
+  <td><%=task.base_rank%></td>
+  <td>ACTION: <%=task.the_action_description%>
+  <br><br>
+  COMMENT: <%=task.comment_or_measure%></td>
+  <td><center>
+  <%= task.segment %>
+  </center>
+  </td>
+  <td>EDIT/DELETE</td>
+  </tr>
+
+  <% elsif task.segment == "A" && (next_task.segment == "A") %>
+  <tr>
+  <td><%=task.base_rank%></td>
+  <td>ACTION: <%=task.the_action_description%>
+  <br><br>
+  COMMENT: <%=task.comment_or_measure%></td>
+  <td><center>
+  <%= task.segment %></center>
+  </td>
+  <td>EDIT/DELETE</td>
+  </tr>
+
+  <% elsif task.segment == "A" && (next_task.segment == "B") %>
+  <tr>
+  <td><%=task.base_rank%></td>
+  <td>ACTION: <%=task.the_action_description%>
+  <br><br>
+  COMMENT: <%=task.comment_or_measure%></td>
+  <td><center>
+  <%= task.segment %></center>
+  </td>
+  <td>EDIT/DELETE</td>
+  </tr>
+
+  <tr><td></td><td></td><td></td><td></td></tr>
+  <tr>
+    <td></td>
+    <td><center><strong>INTERMEDIARY</strong></center></td>
+    <td></td>
+    <td>ADD A TASK</td>
+  </tr>
+
+  <% elsif task.segment == "B" && (next_task.segment == "B") %>
+  <tr>
+  <td><%=task.base_rank%></td>
+  <td>ACTION: <%=task.the_action_description%>
+  <br><br>
+  COMMENT: <%=task.comment_or_measure%></td>
+  <td><center>
+  <%= task.segment %></center>
+  </td>
+  <td>EDIT/DELETE</td>
+  </tr>
+
+  <% elsif task.segment == "B" && (next_task.segment == "C") %>
+    <%if @table_formatting_counter == @the_whole_enchilada.size %>
+      <tr>
+      <td><%=task.base_rank%></td>
+      <td>ACTION: <%=task.the_action_description%>
+      <br><br>
+      COMMENT: <%=task.comment_or_measure%></td>
+      <td><center>
+      <%= task.segment %></center>
+      </td>
+      <td>EDIT/DELETE</td>
+      </tr>
+      <tr><td></td><td></td><td></td><td></td></tr>
+      <tr>
+        <td></td>
+        <td><center><strong>FINAL</strong></center></td>
+        <td></td>
+        <td>ADD A TASK</td>
+      </tr>
+      <tr>
+      <td><%=next_task.base_rank%></td>
+      <td>ACTION: <%=next_task.the_action_description%>
+      <br><br>
+      COMMENT: <%=next_task.comment_or_measure%></td>
+      <td><center>
+      <%= next_task.segment %></center>
+      </td>
+      <td>EDIT/DELETE</td>
+      </tr>
+      <% else %>
+      <tr>
+      <td><%=task.base_rank%></td>
+      <td>ACTION: <%=task.the_action_description%>
+      <br><br>
+      COMMENT: <%=task.comment_or_measure%></td>
+      <td><center>
+      <%= task.segment %></center>
+      </td>
+      <td>EDIT/DELETE</td>
+      </tr>
+
+      <tr><td></td><td></td><td></td><td></td></tr>
+      <tr>
+        <td></td>
+        <td><center><strong>FINAL</strong></center></td>
+        <td></td>
+        <td>ADD A TASK</td>
+      </tr>
+    <%end %>
+
+
+  <% elsif (task.segment == "C" && (next_task.segment == "C")) %>
+      <%if @table_formatting_counter == @the_whole_enchilada.size %>
+      <tr>
+      <td><%=task.base_rank%></td>
+      <td>ACTION: <%=task.the_action_description%>
+      <br><br>
+      COMMENT: <%=task.comment_or_measure%></td>
+      <td><center>
+      <%= task.segment %></center>
+      </td>
+      <td>EDIT/DELETE</td>
+      </tr>
+
+      <tr>
+      <td><%=next_task.base_rank%></td>
+      <td>ACTION: <%=next_task.the_action_description%>
+      <br><br>
+      COMMENT: <%=next_task.comment_or_measure%></td>
+      <td><center>
+      <%= next_task.segment %></center>
+      </td>
+      <td>EDIT/DELETE</td>
+      </tr>
+
+      <% else %>
+      <tr>
+      <td><%=task.base_rank%></td>
+      <td>ACTION: <%=task.the_action_description%>
+      <br><br>
+      COMMENT: <%=task.comment_or_measure%></td>
+      <td><center>
+      <%= task.segment %></center>
+      </td>
+      <td>EDIT/DELETE</td>
+      </tr>
+    <% end %>
+
+  <% else %>
+   <tr>
+    <% end %>
+  </tr>
+
+  <% end %>
+
+</table>
+
+<h1> if a new task is added, then post to same view.<br>
+  if a new task is edited, then patch to same view<br>
+  if a new test is deleted, then patch to same view<br>
+  OTHERWISE, continue to phase 4<br></h1>
