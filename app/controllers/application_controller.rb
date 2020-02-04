@@ -28,6 +28,10 @@ class ApplicationController < Sinatra::Base
       !!session[:your_session] #!! converts variable to its boolean value
     end
 
+    def authenticated_project?
+      @project.user_id == @user.id
+    end
+
   end
 
 
@@ -124,41 +128,10 @@ class ApplicationController < Sinatra::Base
 
 # PHASE III
 
-  get '/phase_3' do
-    if logged_in?
-      erb :'/inside_the_maze/adventures/phase_3/phase_3_first_iteration'
-    else
-      redirect '/no_access'
-    end
-  end
 
-  get '/phase_3_saved' do
-    if logged_in?
-      erb :'/inside_the_maze/adventures/phase_3/phase_3_complete_with_data'
-    else
-      redirect '/no_access'
-    end
-  end
+  # PHASE IV YOU ARE HERE...
 
-  # PHASE IV
-
-  get '/phase_4' do
-    if logged_in?
-      erb :'/inside_the_maze/adventures/phase_4/phase_4_first_iteration'
-    else
-      redirect '/no_access'
-    end
-  end
-
-  get '/phase_4_saved' do
-    if logged_in?
-      erb :'/inside_the_maze/adventures/phase_4/phase_4_complete_with_data'
-    else
-      redirect '/no_access'
-    end
-  end
-
-  # PHASE V YOU ARE HERE...
+  # PHASE V Y
 
   get '/phase_5' do
     if logged_in?

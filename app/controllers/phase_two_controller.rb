@@ -15,10 +15,10 @@ class PhaseTwoController < ApplicationController
     end
   end
 
-  patch '/phase_2/:project_id/:the_task_id' do
+  patch '/phase_2/:the_project_id/:the_task_id' do
     if logged_in?
       @user = current_user
-      @project = Project.find(params[:project_id])
+      @project = Project.find(params[:the_project_id])
       @task = Task.find(params[:the_task_id])
       @task.comment_or_measure = params[:comment_or_measure]
       @task.save
@@ -55,6 +55,7 @@ class PhaseTwoController < ApplicationController
       @project = Project.find(params[:project_id])
       @task = Task.find(params[:task_id])
       @task_score = TaskScore.find(params[:task_score_id])
+
 
       @task_score.necessary_or_optional_for_form_rendering = params[:necessary_or_optional_for_form_rendering]
         if @task_score.necessary_or_optional_for_form_rendering == "necessary"

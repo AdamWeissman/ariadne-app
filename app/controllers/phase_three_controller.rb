@@ -66,6 +66,7 @@ class PhaseThreeController < ApplicationController
     end
   end
 
+
   delete '/phase_3_segments_complete/:the_task_id/:the_project_id' do
     if logged_in?
       @user = current_user
@@ -96,7 +97,7 @@ class PhaseThreeController < ApplicationController
     end
   end
 
-  post '/phase_3_segments_complete/:scrubadub' do
+  post '/phase_3_segments_complete/:scrubadub' do  
     if logged_in?
       @user = current_user
       @project = Project.find(params[:scrubadub])

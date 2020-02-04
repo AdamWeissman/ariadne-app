@@ -4,7 +4,11 @@ class PhaseOneController < ApplicationController
     if logged_in?
       @user = current_user
       @project = Project.find(params[:id])
-      erb :'/inside_the_maze/adventures/phase_1/the_phase_1_preview'
+      if authenticated_project?
+        erb :'/inside_the_maze/adventures/phase_1/the_phase_1_preview'
+      else
+        redirect '/no_access'
+      end
     else
       redirect '/no_access'
     end
