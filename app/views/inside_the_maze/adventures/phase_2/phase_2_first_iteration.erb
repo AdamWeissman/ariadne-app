@@ -2,7 +2,7 @@
 <!--<h1 class="glow">PHASE II</h1>-->
 <br>
 
-<center><h2> Your task: <strong class="glowsmall"> <%=@task.the_action_description.gsub(/(\[" )|( "]|\[")|("])/, '')%></strong></h2><center>
+<center><h2> YOUR TASK:<br><strong> "<%=@task.the_action_description.gsub(/(\[" )|( "]|\[")|("])/, '')%>"</strong></h2><center>
 
 <form class="" action="/phase_2/<%= @project.id %>/<%= @task.id%>" method="post">
     <input type="hidden" name="_method" value="patch">
