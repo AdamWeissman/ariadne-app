@@ -4,7 +4,11 @@ class PhaseThreeController < ApplicationController
     if logged_in?
       @user = current_user
       @project = Project.find(params[:project_id])
-      erb :"/inside_the_maze/adventures/phase_3/phase_3_first_iteration"
+      if authenticated_project?
+        erb :"/inside_the_maze/adventures/phase_3/phase_3_first_iteration"
+      else
+        redirect '/no_access'
+      end
     else
       redirect '/no_access'
     end
@@ -14,31 +18,37 @@ class PhaseThreeController < ApplicationController
     if logged_in?
       @user = current_user
       @project = Project.find(params[:project_id])
+      if authenticated_project?
 
-      @tasks = []
-      @project.tasks.order(:calculated_rank).each do |task|
-        @tasks << task
+        @tasks = []
+        @project.tasks.order(:calculated_rank).each do |task|
+          @tasks << task
+        end
+
+        @segments = []
+        params[:project][:tasks].each do |seg_val|
+          @segments << seg_val[:segment]
+        end
+
+        @tasks.zip(@segments).each do |the_task, the_segment|
+          the_task.segment = "#{the_segment}"
+          the_task.save
+        end
+
+        @project.tasks.order(:segment).order(:calculated_rank).each_with_index do |task, index|
+          task.base_rank = index.to_f
+          task.save
+        end
+
+        @project.current_phase = 3
+        @project.save
+
+        redirect "/phase_3_segments_complete/#{@project.id}"
+
+      else
+        redirect '/no_access'
       end
 
-      @segments = []
-      params[:project][:tasks].each do |seg_val|
-        @segments << seg_val[:segment]
-      end
-
-      @tasks.zip(@segments).each do |the_task, the_segment|
-        the_task.segment = "#{the_segment}"
-        the_task.save
-      end
-
-      @project.tasks.order(:segment).order(:calculated_rank).each_with_index do |task, index|
-        task.base_rank = index.to_f
-        task.save
-      end
-
-      @project.current_phase = 3
-      @project.save
-
-      redirect "/phase_3_segments_complete/#{@project.id}"
     else
       redirect '/no_access'
     end
@@ -48,19 +58,24 @@ class PhaseThreeController < ApplicationController
     if logged_in?
       @user = current_user
       @project = Project.find(params[:the_project_id])
-      @project.tasks.each do |x|
-        if x.the_action_description != "THIS IS YOUR NEW TASK"
-          x.calculated_rank += 100.0
-          x.save
-        else
-          x.save
+      if authenticated_project?
+        @project.tasks.each do |x|
+          if x.the_action_description != "THIS IS YOUR NEW TASK"
+            x.calculated_rank += 100.0
+            x.save
+          else
+            x.save
+          end
         end
+        @project.tasks.order(:segment).order(:calculated_rank).each_with_index do |task, index|
+          task.base_rank = index.to_f
+          task.save
+        end
+        erb :"/inside_the_maze/adventures/phase_3/phase_3_segments_complete"
+      else
+      redirect '/no_access'
       end
-      @project.tasks.order(:segment).order(:calculated_rank).each_with_index do |task, index|
-        task.base_rank = index.to_f
-        task.save
-      end
-      erb :"/inside_the_maze/adventures/phase_3/phase_3_segments_complete"
+
     else
       redirect '/no_access'
     end
@@ -72,12 +87,17 @@ class PhaseThreeController < ApplicationController
       @user = current_user
       @task = Task.find(params[:the_task_id])
       @project = Project.find(params[:the_project_id])
-      @task.destroy
-      @project.tasks.order(:segment).order(:calculated_rank).each_with_index do |task, index|
-        task.base_rank = index.to_f
-        task.save
+      if authenticated_project?
+        @task.destroy
+        @project.tasks.order(:segment).order(:calculated_rank).each_with_index do |task, index|
+          task.base_rank = index.to_f
+          task.save
+        end
+        redirect "/phase_3_segments_complete/#{@project.id}"
+      else
+        redirect '/no_access'
       end
-      redirect "/phase_3_segments_complete/#{@project.id}"
+
     else
       redirect '/no_access'
     end
@@ -88,30 +108,38 @@ class PhaseThreeController < ApplicationController
       @user = current_user
       @task = Task.find(params[:the_task_id])
       @project = Project.find(params[:the_project_id])
-      @task.the_action_description = params[:the_action_description]
-      @task.save
-      @project.save
-      erb :"/inside_the_maze/adventures/phase_3/phase_3_segments_complete"
+      if authenticated_project?
+        @task.the_action_description = params[:the_action_description]
+        @task.save
+        @project.save
+        erb :"/inside_the_maze/adventures/phase_3/phase_3_segments_complete"
+      else
+        redirect '/no_access'
+      end
+
     else
       redirect '/no_access'
     end
   end
 
-  post '/phase_3_segments_complete/:scrubadub' do  
+  post '/phase_3_segments_complete/:scrubadub' do
     if logged_in?
       @user = current_user
       @project = Project.find(params[:scrubadub])
-      Task.find_or_create_by(params.except!(:scrubadub))
-      redirect "/phase_3_segments_complete/#{@project.id}"
+      if authenticated_project?
+        Task.find_or_create_by(params.except!(:scrubadub))
+        redirect "/phase_3_segments_complete/#{@project.id}"
+      else
+        redirect '/no_access'
+      end
+
     else
       redirect '/no_access'
     end
   end
 
 
-
-
-# YOU'RE WORKING ABVOE THIS LINE
+# BELOW THIS LINE WORKS, BUT IS NOT BEING USED... THE SEGMENTS COMPLETE ITERATION HAS REPLACED IT.  COMPLETE WITH DATA WILL BE USEFUL FOR BEING ABLE TO EDIT FROM PROJECTS HOME.
 
 
 
@@ -119,26 +147,31 @@ class PhaseThreeController < ApplicationController
     if logged_in?
       @user = current_user
       @project = Project.find(params[:project_id])
+      if authenticated_project?
 
-      @tasks = []
-      @project.tasks.order(:calculated_rank).each do |task|
-        @tasks << task
+        @tasks = []
+        @project.tasks.order(:calculated_rank).each do |task|
+          @tasks << task
+        end
+
+        @segments = []
+        params[:project][:tasks].each do |seg_val|
+          @segments << seg_val[:segment]
+        end
+
+        @tasks.zip(@segments).each do |the_task, the_segment|
+          the_task.segment = "#{the_segment}"
+          the_task.save
+        end
+
+        @project.current_phase = 3
+        @project.save
+
+        redirect "/phase_3_complete_with_data/#{@project.id}"
+      else
+        redirect '/no_access'
       end
 
-      @segments = []
-      params[:project][:tasks].each do |seg_val|
-        @segments << seg_val[:segment]
-      end
-
-      @tasks.zip(@segments).each do |the_task, the_segment|
-        the_task.segment = "#{the_segment}"
-        the_task.save
-      end
-
-      @project.current_phase = 3
-      @project.save
-
-      redirect "/phase_3_complete_with_data/#{@project.id}"
     else
       redirect '/no_access'
     end
@@ -148,7 +181,12 @@ class PhaseThreeController < ApplicationController
     if logged_in?
       @user = current_user
       @project = Project.find(params[:project_id])
-      erb :"/inside_the_maze/adventures/phase_3/phase_3_complete_with_data"
+      if authenticated_project?
+        erb :"/inside_the_maze/adventures/phase_3/phase_3_complete_with_data"
+      else
+        redirect '/no_access'
+      end
+
     else
       redirect '/no_access'
     end
