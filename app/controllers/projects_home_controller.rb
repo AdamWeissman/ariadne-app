@@ -29,7 +29,12 @@ class ProjectsHomeController < ApplicationController
     if logged_in?
       @user = current_user
       @project = Project.find(params[:id])
-      erb :'/inside_the_maze/adventures/delete_a_project'
+      if authenticated_project?
+        erb :'/inside_the_maze/adventures/delete_a_project'
+      else
+        redirect '/no_access'
+      end
+
     else
       redirect '/no_access'
     end
@@ -39,8 +44,13 @@ class ProjectsHomeController < ApplicationController
     if logged_in?
       @user = current_user
       @project = Project.find(params[:id])
-      @project.destroy
-      redirect '/projects'
+      if authenticated_project?
+        @project.destroy
+        redirect '/projects'
+      else
+       redirect '/no_access'
+      end
+
     else
       redirect '/no_access'
     end
@@ -50,15 +60,20 @@ class ProjectsHomeController < ApplicationController
     if logged_in?
       @user = current_user
       @project = Project.find(params[:id])
-      if @project.current_phase == 1
-        redirect "/phase_1_saved/#{@project.id}"
-      elsif @project.current_phase == 2
-        redirect "/phase_2_complete/#{@project.id}"
-      elsif @project.current_phase == 3
-        redirect "/phase_2_complete/#{@project.id}"
+      if authenticated_project?
+        if @project.current_phase == 1
+          redirect "/phase_1_saved/#{@project.id}"
+        elsif @project.current_phase == 2
+          redirect "/phase_2_complete/#{@project.id}"
+        elsif @project.current_phase == 3
+          redirect "/phase_2_complete/#{@project.id}"
+        else
+          redirect "/projects"
+        end
       else
-        redirect "/projects"
+        redirect '/no_access'
       end
+
     else
       redirect '/no_access'
     end
