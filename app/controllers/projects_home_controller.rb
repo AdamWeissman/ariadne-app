@@ -3,7 +3,7 @@ class ProjectsHomeController < ApplicationController
   get '/projects' do
     if logged_in?
       @user = current_user
-      erb :'/inside_the_maze/adventures/projects_home'
+      erb :'/inside_the_maze/projects_home'
     else
       redirect '/no_access'
     end
@@ -12,7 +12,7 @@ class ProjectsHomeController < ApplicationController
   get '/create_a_new_project' do
     if logged_in?
       @user = current_user
-      erb :'/inside_the_maze/adventures/new_project'
+      erb :'/inside_the_maze/new_project'
     else
       redirect '/no_access'
     end
@@ -22,7 +22,6 @@ class ProjectsHomeController < ApplicationController
     @user = current_user
     @project = Project.create(params)
     redirect "/phase_1_preview/#{@project.id}"
-  #erb :'/inside_the_maze/adventures/phase_1/the_phase_1_preview'
   end
 
   get '/delete_a_project/:id' do
@@ -30,7 +29,7 @@ class ProjectsHomeController < ApplicationController
       @user = current_user
       @project = Project.find(params[:id])
       if authenticated_project?
-        erb :'/inside_the_maze/adventures/delete_a_project'
+        erb :'/inside_the_maze/delete_a_project'
       else
         redirect '/no_access'
       end

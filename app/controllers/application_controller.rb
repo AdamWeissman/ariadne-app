@@ -135,7 +135,7 @@ class ApplicationController < Sinatra::Base
 
   get '/phase_5' do
     if logged_in?
-      erb :'/inside_the_maze/adventures/phase_5/phase_5_first_iteration'
+      erb :'/inside_the_maze/phase_5/phase_5_first_iteration'
     else
       redirect '/no_access'
     end
@@ -143,7 +143,7 @@ class ApplicationController < Sinatra::Base
 
   get '/phase_5_saved' do
     if logged_in?
-      erb :'/inside_the_maze/adventures/phase_5/phase_5_complete_with_data'
+      erb :'/inside_the_maze/phase_5/phase_5_complete_with_data'
     else
       redirect '/no_access'
     end

@@ -6,7 +6,7 @@ class PhaseFourController < ApplicationController
       @project = Project.find(params[:project_id])
       if authenticated_project?
 
-      erb :"/inside_the_maze/adventures/phase_4/phase_4_first_iteration"
+      erb :"/inside_the_maze/phase_4/phase_4_first_iteration"
       else
         redirect '/no_access'
       end

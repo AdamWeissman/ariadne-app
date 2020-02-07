@@ -5,7 +5,7 @@ class PhaseThreeController < ApplicationController
       @user = current_user
       @project = Project.find(params[:project_id])
       if authenticated_project?
-        erb :"/inside_the_maze/adventures/phase_3/phase_3_first_iteration"
+        erb :"/inside_the_maze/phase_3/phase_3_first_iteration"
       else
         redirect '/no_access'
       end
@@ -71,7 +71,7 @@ class PhaseThreeController < ApplicationController
           task.base_rank = index.to_f
           task.save
         end
-        erb :"/inside_the_maze/adventures/phase_3/phase_3_segments_complete"
+        erb :"/inside_the_maze/phase_3/phase_3_segments_complete"
       else
       redirect '/no_access'
       end
@@ -112,7 +112,7 @@ class PhaseThreeController < ApplicationController
         @task.the_action_description = params[:the_action_description]
         @task.save
         @project.save
-        erb :"/inside_the_maze/adventures/phase_3/phase_3_segments_complete"
+        erb :"/inside_the_maze/phase_3/phase_3_segments_complete"
       else
         redirect '/no_access'
       end
@@ -182,7 +182,7 @@ class PhaseThreeController < ApplicationController
       @user = current_user
       @project = Project.find(params[:project_id])
       if authenticated_project?
-        erb :"/inside_the_maze/adventures/phase_3/phase_3_complete_with_data"
+        erb :"/inside_the_maze/phase_3/phase_3_complete_with_data"
       else
         redirect '/no_access'
       end

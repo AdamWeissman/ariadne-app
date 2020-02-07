@@ -9,7 +9,7 @@ class PhaseTwoController < ApplicationController
         if @task.nil?
           redirect "/phase_2_question_time/#{@project.id}"
         else
-          erb :'/inside_the_maze/adventures/phase_2/phase_2_first_iteration'
+          erb :'/inside_the_maze/phase_2/phase_2_first_iteration'
         end
       else
         redirect '/no_access'
@@ -47,7 +47,7 @@ class PhaseTwoController < ApplicationController
         @task = Task.find_by(project_id: params[:project_id], golem: "questions incomplete")
         unless @task.nil?
           @task_score = TaskScore.find_by(task_id: "#{@task.id}".to_i) if ((@task.task_score.necessary_or_optional_for_form_rendering == "unknown") || (@task.task_score.quick_or_slow_for_form_rendering == "unknown") || (@task.task_score.easy_or_hard_for_form_rendering == "unknown"))
-          erb :"/inside_the_maze/adventures/phase_2/phase_2_question_time"
+          erb :"/inside_the_maze/phase_2/phase_2_question_time"
         else
           redirect "/phase_3/#{@project.id}"
         end
@@ -127,7 +127,7 @@ class PhaseTwoController < ApplicationController
       @user = current_user
       @project = Project.find(params[:project_id])
       if authenticated_project?
-        erb :"/inside_the_maze/adventures/phase_2/phase_2_complete_with_data"
+        erb :"/inside_the_maze/phase_2/phase_2_complete_with_data"
         # better to just redirect to phase 3... especially if all data is populating
       else
         redirect '/no_access'
