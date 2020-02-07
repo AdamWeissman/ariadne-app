@@ -1,51 +1,37 @@
 class PhaseFourController < ApplicationController
 
-  get '/phase_4/:project_id' do
-    if logged_in?
-      @user = current_user
-      @project = Project.find(params[:project_id])
-      if authenticated_project?
+  get '/phase_4/:the_project_id' do
+      if logged_in?
+        @user = current_user
+        @project = Project.find(params[:the_project_id])
+        if authenticated_project?
+          erb :"/user_is_logged_in/phase_4/phase_4_first_iteration"
+        else
+        redirect '/no_access'
+        end
 
-      erb :"/user_is_logged_in/phase_4/phase_4_first_iteration"
       else
         redirect '/no_access'
       end
-    else
-      redirect '/no_access'
     end
-  end
 
-  #below this line is incomplete
+  patch '/phase_4/:the_project_id' do
+      if logged_in?
+        @user = current_user
+        @project = Project.find(params[:the_project_id])
+        if authenticated_project?
+          @project.tasks.order(:base_rank).each do |task|
+            task.base_rank += 1.0
+            task.save
+          end
+          redirect :"/phase_4/#{@project.id}"
+        else
+        redirect '/no_access'
+        end
 
-  patch '/phase_4_complete_with_data/:project_id' do
-    if logged_in?
-      @user = current_user
-      @project = Project.find(params[:project_id])
-
-      @tasks = []
-      @project.tasks.order(:calculated_rank).each do |task|
-        @tasks << task
+      else
+        redirect '/no_access'
       end
-
-      @segments = []
-      params[:project][:tasks].each do |seg_val|
-        @segments << seg_val[:segment]
-      end
-
-      #@tasks.zip @segments
-
-      @tasks.zip(@segments).each do |the_task, the_segment|
-        the_task.segment = "#{the_segment}"
-        the_task.save
-      end
-
-      @project.current_phase = 3
-      @project.save
-
-      redirect "/phase_4_complete_with_data/#{@project.id}"
-    else
-      redirect '/no_access'
     end
-  end
 
 end

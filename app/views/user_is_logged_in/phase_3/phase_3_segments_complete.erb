@@ -398,6 +398,7 @@
 </table>
 
 
-<form class="" action="/phase_4/<%=@project.id %>" method="get">
+<form class="" action="/phase_4/<%=@project.id %>" method="post">
+  <input type="hidden" name="_method" value="patch">
 <center><input type="submit" value="LOOKS GOOD! CONTINUE"></center>
 </form>
