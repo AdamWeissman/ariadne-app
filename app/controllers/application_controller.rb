@@ -14,7 +14,7 @@ class ApplicationController < Sinatra::Base
     if logged_in?
       redirect '/account_home'
     else
-      erb :'/outside_the_maze/start'
+      erb :'/not_logged_in/start'
     end
   end
 
@@ -39,7 +39,7 @@ class ApplicationController < Sinatra::Base
     if logged_in?
       redirect '/about2'
     else
-      erb :'/outside_the_maze/about'
+      erb :'/not_logged_in/about'
     end
   end
 
@@ -53,25 +53,24 @@ class ApplicationController < Sinatra::Base
 
   get '/signup' do
     if !session[:your_session]
-      erb :'/outside_the_maze/signup'
+      erb :'/not_logged_in/signup'
     else
       redirect '/you_signedup'
     end
   end
 
   get '/you_signedup' do
-    erb :'/outside_the_maze/you_signedup'
+    erb :'/not_logged_in/you_signedup'
   end
 
   post '/you_signedup' do
     @user = User.create(params)
     redirect '/login'
-    #erb :'/outside_the_maze/you_signedup'
   end
 
   get '/login' do
     if !session[:your_session]
-      erb :'/outside_the_maze/login'
+      erb :'/not_logged_in/login'
     else
       redirect '/account_home'
     end
@@ -83,7 +82,7 @@ class ApplicationController < Sinatra::Base
       session[:your_session] = @user.id
       redirect '/projects'
     else
-      erb :'/outside_the_maze/minotaur'
+      erb :'/not_logged_in/minotaur'
     end
   end
 
@@ -112,12 +111,12 @@ class ApplicationController < Sinatra::Base
       @user = current_user
       erb :'/inside_the_maze/contact'
     else
-      erb :'/outside_the_maze/contact'
+      erb :'/not_logged_in/contact'
     end
   end
 
   get '/no_access' do
-    erb :'/outside_the_maze/minotaur2'
+    erb :'/not_logged_in/minotaur2'
   end
 
 # DO NOT DO WORK BELOW THIS LINE UNTIL ALL ABOVE ARE WORKING.
