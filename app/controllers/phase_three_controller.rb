@@ -122,7 +122,7 @@ class PhaseThreeController < ApplicationController
     end
   end
 
-  post '/phase_3_segments_complete/:scrubadub' do
+  post '/phase_3_segments_complete/:scrubadub' do #scrubadub is really project_id
     if logged_in?
       @user = current_user
       @project = Project.find(params[:scrubadub])
