@@ -47,3 +47,5 @@ class PhaseFourController < ApplicationController
       redirect '/no_access'
     end
   end
+
+end

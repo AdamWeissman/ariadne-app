@@ -63,9 +63,9 @@ class ProjectsHomeController < ApplicationController
         if @project.current_phase == 1
           redirect "/phase_1_saved/#{@project.id}"
         elsif @project.current_phase == 2
-          redirect "/phase_2_complete/#{@project.id}"
+            redirect "/phase_2_question_time/#{@project.id}"
         elsif @project.current_phase == 3
-          redirect "/phase_2_complete/#{@project.id}"
+          redirect "/phase_3_segments_complete/#{@project.id}"
         else
           redirect "/projects"
         end
