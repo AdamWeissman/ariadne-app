@@ -1,6 +1,6 @@
 class User < ActiveRecord::Base
   has_many :ariadne_messages
-  has_many :projects
+  has_many :projects, :dependent => :destroy
 
 
   validates :first_name, :email, presence: true
