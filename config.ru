@@ -13,4 +13,5 @@ use ProjectsHomeController
 use PhaseOneController
 use PhaseTwoController
 use PhaseThreeController
+use PhaseFourController
 run ApplicationController

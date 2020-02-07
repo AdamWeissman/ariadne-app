@@ -4,7 +4,12 @@ class PhaseFourController < ApplicationController
     if logged_in?
       @user = current_user
       @project = Project.find(params[:project_id])
+      if authenticated_project?
+
       erb :"/inside_the_maze/adventures/phase_4/phase_4_first_iteration"
+      else
+        redirect '/no_access'
+      end
     else
       redirect '/no_access'
     end
@@ -42,15 +47,3 @@ class PhaseFourController < ApplicationController
       redirect '/no_access'
     end
   end
-
-  get '/phase_4_complete_with_data/:project_id' do
-    if logged_in?
-      @user = current_user
-      @project = Project.find(params[:project_id])
-      erb :"/inside_the_maze/adventures/phase_3/phase_4_complete_with_data"
-    else
-      redirect '/no_access'
-    end
-  end
-
-end
