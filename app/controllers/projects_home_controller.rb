@@ -3,7 +3,7 @@ class ProjectsHomeController < ApplicationController
   get '/projects' do
     if logged_in?
       @user = current_user
-      erb :'/inside_the_maze/projects_home'
+      erb :'/user_is_logged_in/projects_home'
     else
       redirect '/no_access'
     end
@@ -12,7 +12,7 @@ class ProjectsHomeController < ApplicationController
   get '/create_a_new_project' do
     if logged_in?
       @user = current_user
-      erb :'/inside_the_maze/new_project'
+      erb :'/user_is_logged_in/new_project'
     else
       redirect '/no_access'
     end
@@ -29,7 +29,7 @@ class ProjectsHomeController < ApplicationController
       @user = current_user
       @project = Project.find(params[:id])
       if authenticated_project?
-        erb :'/inside_the_maze/delete_a_project'
+        erb :'/user_is_logged_in/delete_a_project'
       else
         redirect '/no_access'
       end

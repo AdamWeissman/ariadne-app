@@ -45,7 +45,7 @@ class ApplicationController < Sinatra::Base
 
   get '/about2' do
     if logged_in?
-      erb :'/inside_the_maze/about2'
+      erb :'/user_is_logged_in/about2'
     else
       redirect '/about'
     end
@@ -53,14 +53,14 @@ class ApplicationController < Sinatra::Base
 
   get '/signup' do
     if !session[:your_session]
-      erb :'/not_logged_in/signup'
+      erb :'/user_is_logged_in/signup'
     else
       redirect '/you_signedup'
     end
   end
 
   get '/you_signedup' do
-    erb :'/not_logged_in/you_signedup'
+    erb :'/user_is_logged_in/you_signedup'
   end
 
   post '/you_signedup' do
@@ -89,7 +89,7 @@ class ApplicationController < Sinatra::Base
   get '/account_home' do
     if logged_in?
       @user = current_user
-      erb :'/inside_the_maze/account_home'
+      erb :'/user_is_logged_in/account_home'
     else
       redirect '/login'
     end
@@ -100,16 +100,16 @@ class ApplicationController < Sinatra::Base
       @user = current_user
       @user = nil
       session.destroy
-      erb :'/inside_the_maze/logout'
+      erb :'/user_is_logged_in/logout'
     else
-      erb :'/inside_the_maze/logout'
+      erb :'/user_is_logged_in/logout'
     end
   end
 
   get '/contact' do
     if logged_in?
       @user = current_user
-      erb :'/inside_the_maze/contact'
+      erb :'/user_is_logged_in/contact'
     else
       erb :'/not_logged_in/contact'
     end
@@ -134,7 +134,7 @@ class ApplicationController < Sinatra::Base
 
   get '/phase_5' do
     if logged_in?
-      erb :'/inside_the_maze/phase_5/phase_5_first_iteration'
+      erb :'/user_is_logged_in/phase_5/phase_5_first_iteration'
     else
       redirect '/no_access'
     end
@@ -142,7 +142,7 @@ class ApplicationController < Sinatra::Base
 
   get '/phase_5_saved' do
     if logged_in?
-      erb :'/inside_the_maze/phase_5/phase_5_complete_with_data'
+      erb :'/user_is_logged_in/phase_5/phase_5_complete_with_data'
     else
       redirect '/no_access'
     end

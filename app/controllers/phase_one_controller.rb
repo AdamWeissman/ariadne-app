@@ -5,7 +5,7 @@ class PhaseOneController < ApplicationController
       @user = current_user
       @project = Project.find(params[:id])
       if authenticated_project?
-        erb :'/inside_the_maze/phase_1/the_phase_1_preview'
+        erb :'/user_is_logged_in/phase_1/the_phase_1_preview'
       else
         redirect '/no_access'
       end
@@ -19,7 +19,7 @@ class PhaseOneController < ApplicationController
       @user = current_user
       @project = Project.find(params[:id])
       if authenticated_project?
-        erb :'/inside_the_maze/phase_1/phase_1_fix_the_preview'
+        erb :'/user_is_logged_in/phase_1/phase_1_fix_the_preview'
       else
         redirect '/no_access'
       end
@@ -36,7 +36,7 @@ class PhaseOneController < ApplicationController
       @project.project_summary = params[:project_summary]
       @project.the_initial_blob_to_parse = params[:the_initial_blob_to_parse]
       @project.save
-      erb :'/inside_the_maze/phase_1/the_phase_1_preview'
+      erb :'/user_is_logged_in/phase_1/the_phase_1_preview'
     else
       redirect '/no_access'
     end
@@ -54,7 +54,7 @@ class PhaseOneController < ApplicationController
         Task.find_or_create_by(project_id: @project.id, the_action_description: "#{make_this_a_task}", comment_or_measure: "you must change this to continue.", golem: "questions incomplete")
       end
 
-      erb :'/inside_the_maze/phase_1/phase_1_complete_with_data'
+      erb :'/user_is_logged_in/phase_1/phase_1_complete_with_data'
     else
       redirect '/no_access'
     end
@@ -65,7 +65,7 @@ class PhaseOneController < ApplicationController
       @project = Project.find(params[:id])
       if authenticated_project?
         if @project.tasks.count >= 1
-          erb :'/inside_the_maze/phase_1/phase_1_complete_with_data'
+          erb :'/user_is_logged_in/phase_1/phase_1_complete_with_data'
         else
           redirect '/projects'
         end
@@ -81,7 +81,7 @@ class PhaseOneController < ApplicationController
       @project = Project.find(params[:project_id])
       if authenticated_project?
         @task.destroy
-        erb :'/inside_the_maze/phase_1/phase_1_complete_with_data'
+        erb :'/user_is_logged_in/phase_1/phase_1_complete_with_data'
       else
         redirect '/no_access'
       end
@@ -99,7 +99,7 @@ class PhaseOneController < ApplicationController
         @task.the_action_description = params[:the_action_description]
         @task.comment_or_measure = params[:comment_or_measure]
         @task.save
-        erb :'/inside_the_maze/phase_1/phase_1_complete_with_data'
+        erb :'/user_is_logged_in/phase_1/phase_1_complete_with_data'
       else
         redirect '/no_access'
       end
