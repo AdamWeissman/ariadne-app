@@ -40,10 +40,6 @@
 <br>
 <h1 class="glow">QUESTION TIME.</h1>
 <br>
-<div class="glowsmall"><center>
-  <br>
- <a href="/projects" title="Projects">Projects</a> | <a href="/about2" title="About">About</a> | <a href="/contact" title="Contact">Contact</a> | <a href="/logout" title="Logout">Logout</a><br>
-</center></div><br>
 <h2>CONSIDER YOUR TASK:<br><strong>"<%= @task.the_action_description.gsub(/(\[" )|( "]|\[")|("])/, '')%>"</strong></h2>
 
 <form class="" action="/phase_2_question_time/<%=@project.id%>/<%=@task.id%>/<%=@task_score.id%>" method="post">
