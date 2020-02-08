@@ -69,6 +69,7 @@ class ApplicationController < Sinatra::Base
       redirect '/login'
     else
       redirect "/not_valid"
+    end
   end
 
   get "/not_valid"
