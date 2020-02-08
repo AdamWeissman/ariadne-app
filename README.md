@@ -11,6 +11,8 @@ IN SHORT:
   or...
 -You can treat your finished project outline as the basis for a new iteration.
 
+CLONE, BUNDLE, SHOTGUN
+
 COLORS
 F3EEE9
 E4D8C3

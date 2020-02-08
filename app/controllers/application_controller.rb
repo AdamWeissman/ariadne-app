@@ -99,7 +99,7 @@ class ApplicationController < Sinatra::Base
       @user = current_user
       erb :'/user_is_logged_in/account_home'
     else
-      redirect '/login'
+      redirect '/login' 
     end
   end
 
