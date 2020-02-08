@@ -49,15 +49,54 @@
 <table>
   <tr>
     <th>SUGGESTED ORDER</th>
-    <th>ACTION DESCRIPTION AND COMMENTS</th>
+    <th>TASK BY SEGMENT</th>
     <th>USER DEFINED ORDER</th>
   </tr>
+  <% @counter_for_segments = 0 %>
   <% @project.tasks.order(:base_rank).each do |task|%>
-  <tr>
-    <td><%= task.base_rank %></td>
-    <td><%= task.the_action_description%></td>
-    <td><input type="integer" name="project[tasks][][user_rank]" value=<%=task.user_rank%>></td>
-  </tr>
+      <% if @counter_for_segments == 0 && task.segment == "A"%>
+      <tr>
+        <td></td>
+        <td><center>FOUNDATIONAL</center></td>
+        <td></td>
+      </tr>
+      <% @counter_for_segments += 1%>
+      <tr>
+        <td><%= task.base_rank %></td>
+        <td><%= task.the_action_description.gsub(/(\[" )|( "]|\[")|("])/, '')%></td>
+        <td><input type="integer" name="project[tasks][][user_rank]" value=<%=task.user_rank%>></td>
+      </tr>
+      <% elsif @counter_for_segments == 1 && task.segment == "B"%>
+      <tr>
+        <td></td>
+        <td><center>INTERMEDIARY</center></td>
+        <td></td>
+      </tr>
+      <% @counter_for_segments += 1%>
+      <tr>
+        <td><%= task.base_rank %></td>
+        <td><%= task.the_action_description.gsub(/(\[" )|( "]|\[")|("])/, '')%></td>
+        <td><input type="integer" name="project[tasks][][user_rank]" value=<%=task.user_rank%>></td>
+      </tr>
+      <% elsif @counter_for_segments == 2 && task.segment == "C"%>
+      <tr>
+        <td></td>
+        <td><center>FINAL</center></td>
+        <td></td>
+      </tr>
+      <% @counter_for_segments += 1%>
+      <tr>
+        <td><%= task.base_rank %></td>
+        <td><%= task.the_action_description.gsub(/(\[" )|( "]|\[")|("])/, '')%></td>
+        <td><input type="integer" name="project[tasks][][user_rank]" value=<%=task.user_rank%>></td>
+      </tr>
+      <% else %>
+    <tr>
+      <td><%= task.base_rank %></td>
+      <td><%= task.the_action_description.gsub(/(\[" )|( "]|\[")|("])/, '')%></td>
+      <td><input type="integer" name="project[tasks][][user_rank]" value=<%=task.user_rank%>></td>
+    </tr>
+      <%end%>
   <%end%>
 </table>
 <br>

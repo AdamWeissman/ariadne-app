@@ -52,7 +52,7 @@
   <% @project.tasks.order(:user_rank).each do |task|%>
   <tr>
     <td><%= task.user_rank.to_i %></td>
-    <td><%= task.the_action_description%></td>
+    <td><%= task.the_action_description.gsub(/(\[" )|( "]|\[")|("])/, '')%></td>
   </tr>
   <%end%>
 </table>
