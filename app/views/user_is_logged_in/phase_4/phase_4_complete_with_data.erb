@@ -42,16 +42,17 @@
   <br>
  <a href="/projects" title="Projects">Projects</a> | <a href="/about2" title="About">About</a> | <a href="/contact" title="Contact">Contact</a> | <a href="/logout" title="Logout">Logout</a><br>
 </center></div><br>
-<br>
+  <center><div class="typewriter"><h3><center><strong class="glowblue">CONGRATULATIONS, YOU'RE DONE<br>THIS IS YOUR RECOMMENDED ORDER.</strong></center></div>
+  <br>
 
 <table>
   <tr>
-    <th>USER DEFINED ORDER</th>
-    <th>ACTION DESCRIPTION</th>
+    <th><center>YOUR ORDER</center></th>
+    <th><center>YOUR TASKS</center></th>
   </tr>
   <% @project.tasks.order(:user_rank).each do |task|%>
   <tr>
-    <td><%= task.user_rank.to_i %></td>
+    <td><center><%= task.user_rank.to_i %></center></td>
     <td><%= task.the_action_description.gsub(/(\[" )|( "]|\[")|("])/, '')%></td>
   </tr>
   <%end%>

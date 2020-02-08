@@ -42,8 +42,11 @@
   <br>
  <a href="/projects" title="Projects">Projects</a> | <a href="/about2" title="About">About</a> | <a href="/contact" title="Contact">Contact</a> | <a href="/logout" title="Logout">Logout</a><br>
 </center></div><br>
-<center>
-<div class="typewriter"><br><h1 class="glow"><font color="red"> &#x26a0;WARNING&#x26a0;</font></h1><br><h3 class="glowsmall"><font color="red">THIS IS JUST FOR TESTING</font></h3></div></center>
+
+
+<center><div class="typewriter"><h3><center><strong class="glowsmall">SEGMENT YOUR TASKS.</strong></center><ul class="glowblue"><li>FOUNDATIONAL means NO task comes before.</li>
+<li>INTERMEDIARY means tasks will come before and after.</li>
+<li>FINAL means NO task comes after.</li></ul></h3></div></center>
 <br>
 
 
@@ -51,32 +54,27 @@
   <input type="hidden" name="_method" value="patch">
 <table>
   <tr>
-    <th>TOTAL</th>
-    <th>ACTION DESCRIPTION</th>
-    <th>SEGMENT DROP DOWN</th>
+    <th><center>YOUR TASKS WITH A SUGGESTED ORDER</center></th>
+    <th><center>CHOOSE THE LIKELY SEGMENT</center></th>
   </tr>
   <tr>
 <% @project.tasks.order(:calculated_rank).each do |task| %>
-  <td><%=task.calculated_rank%></td>
   <input type="hidden" name="project[tasks][][calculated_rank]" value=<%=task.calculated_rank%>>
-  <td><%=task.the_action_description%>
-  <br><br>
-  <%=task.comment_or_measure%></td>
+  <td><%=task.the_action_description.gsub(/(\[" )|( "]|\[")|("])/, '')%>
   <input type="hidden" name="project[tasks][][task_id]" value=<%=task.id%>>
   <td><center><select name="project[tasks][][segment]">
-    <option value="D">--Please choose segment--</option>
+    <option value="D">--You MUST choose one of each--</option>
     <option value="A">FOUNDATIONAL</option>
     <option value="B">INTERMEDIARY</option>
     <option value="C">FINAL</option>
 </select></center></td>
   </tr>
     <% end %>
-</table>
-<input type="submit">
+</table><center>
+  <br>
+<input type="submit" value="NEXT">
+</center>
 </form>
 
 <br>
 <center>a message from ariadne</center><br>
-
-<li><a href="/phase_3_saved" title="Phase 3 Complete">SAVE FOR NOW</a></li>
-<li><a href="/phase_4" title="Phase 3 Complete">SAVE AND CONTINUE TO PHASE IV</a></li>

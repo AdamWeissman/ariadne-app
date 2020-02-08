@@ -47,8 +47,8 @@
 
 <table>
   <tr>
-    <th>base rank</th>
-    <th><center>THE EDITABLE TASK</center></th>
+    <th><center></center></th>
+    <th><center></center></th>
     <th></th>
     <th></th>
   </tr>
@@ -86,7 +86,7 @@
     <td></td>
   </tr>
   <tr>
-  <td><%=task.base_rank%></td>
+  <td><%=task.base_rank.to_i + 1%></td>
     <td>
     <form class="" action="/phase_3_segments_saved/<%=task.id%>/<%= @project.id %>" method="post">
       <input type="hidden" name="_method" value="patch">
@@ -139,7 +139,7 @@
   </tr>
 
   <tr>
-  <td><%=task.base_rank%></td>
+  <td><%=task.base_rank.to_i + 1%></td>
   <td>
   <form class="" action="/phase_3_segments_saved/<%=task.id%>/<%= @project.id %>" method="post">
     <input type="hidden" name="_method" value="patch">
@@ -159,7 +159,7 @@
 
   <% elsif task.segment == "A" && (next_task.segment == "A") %>
   <tr>
-  <td><%=task.base_rank%></td>
+  <td><%=task.base_rank.to_i + 1%></td>
   <td>
   <form class="" action="/phase_3_segments_saved/<%=task.id%>/<%= @project.id %>" method="post">
     <input type="hidden" name="_method" value="patch">
@@ -181,7 +181,7 @@
 
   <% elsif task.segment == "A" && (next_task.segment == "B") %>
   <tr>
-  <td><%=task.base_rank%></td>
+  <td><%=task.base_rank.to_i + 1%></td>
   <td>
   <form class="" action="/phase_3_segments_saved/<%=task.id%>/<%= @project.id %>" method="post">
     <input type="hidden" name="_method" value="patch">
@@ -218,7 +218,7 @@
 
   <% elsif task.segment == "B" && (next_task.segment == "B") %>
   <tr>
-  <td><%=task.base_rank%></td>
+  <td><%=task.base_rank.to_i + 1%></td>
   <td>
   <form class="" action="/phase_3_segments_saved/<%=task.id%>/<%= @project.id %>" method="post">
     <input type="hidden" name="_method" value="patch">
@@ -239,7 +239,7 @@
   <% elsif task.segment == "B" && (next_task.segment == "C") %>
     <%if @table_formatting_counter == @the_whole_enchilada.size %>
       <tr>
-      <td><%=task.base_rank%></td>
+      <td><%=task.base_rank.to_i + 1%></td>
       <td>
       <form class="" action="/phase_3_segments_saved/<%=task.id%>/<%= @project.id %>" method="post">
         <input type="hidden" name="_method" value="patch">
@@ -273,7 +273,7 @@
         </td><td></td>
       </tr>
       <tr>
-      <td><%=next_task.base_rank%></td>
+      <td><%=next_task.base_rank.to_i + 1%></td>
       <td>
       <form class="" action="/phase_3_segments_saved/<%=next_task.id%>/<%= @project.id %>" method="post">
         <input type="hidden" name="_method" value="patch">
@@ -292,7 +292,7 @@
       </tr>
       <% else %>
       <tr>
-      <td><%=task.base_rank%></td>
+      <td><%=task.base_rank.to_i + 1%></td>
       <td>
       <form class="" action="/phase_3_segments_saved/<%=task.id%>/<%= @project.id %>" method="post">
         <input type="hidden" name="_method" value="patch">
@@ -332,7 +332,7 @@
   <% elsif (task.segment == "C" && (next_task.segment == "C")) %>
       <%if @table_formatting_counter == @the_whole_enchilada.size %>
       <tr>
-      <td><%=task.base_rank%></td>
+      <td><%=task.base_rank.to_i + 1%></td>
       <td>
       <form class="" action="/phase_3_segments_saved/<%=task.id%>/<%= @project.id %>" method="post">
         <input type="hidden" name="_method" value="patch">
@@ -351,7 +351,7 @@
       </tr>
 
       <tr>
-      <td><%=next_task.base_rank%></td>
+      <td><%=next_task.base_rank.to_i + 1%></td>
       <td>
       <form class="" action="/phase_3_segments_saved/<%=next_task.id%>/<%= @project.id %>" method="post">
         <input type="hidden" name="_method" value="patch">
@@ -371,7 +371,7 @@
 
       <% else %>
       <tr>
-      <td><%=task.base_rank%></td>
+      <td><%=task.base_rank.to_i + 1%></td>
       <td>
       <form class="" action="/phase_3_segments_saved/<%=task.id%>/<%= @project.id %>" method="post">
         <input type="hidden" name="_method" value="patch">

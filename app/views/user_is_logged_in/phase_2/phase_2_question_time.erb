@@ -38,9 +38,7 @@
 </style>
 
 <br>
-<h1 class="glow">QUESTION TIME.</h1>
-<br>
-<h2>CONSIDER YOUR TASK:<br><strong>"<%= @task.the_action_description.gsub(/(\[" )|( "]|\[")|("])/, '')%>"</strong></h2>
+<center><h2><strong class="glowsmall">CONSIDER YOUR TASK:</strong><br><strong>"<%= @task.the_action_description.gsub(/(\[" )|( "]|\[")|("])/, '')%>"</strong></h2></center>
 
 <form class="" action="/phase_2_question_time/<%=@project.id%>/<%=@task.id%>/<%=@task_score.id%>" method="post">
   <input type="hidden" name="_method" value="patch">
@@ -84,8 +82,7 @@
   <input type="submit" value="LET'S CONTINUE."></center>
 </form>
 <br>
-<center>
-IF YOU'RE HAVING TROUBLE DECIDING, REFLECT BELOW...<br>
-</center>
-<h3 class="glowsmall"><%= @task.comment_or_measure %></h3>
+<center><h2><strong class="glowsmall">
+IF YOU'RE HAVING TROUBLE DECIDING, CONSIDER:</strong><br>
+"<%=@task.comment_or_measure %>"</center></h2>
 <br>

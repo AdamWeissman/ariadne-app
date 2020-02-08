@@ -37,64 +37,64 @@
   }
 </style>
 
-<br>
 <div class="glowsmall"><center>
   <br>
  <a href="/projects" title="Projects">Projects</a> | <a href="/about2" title="About">About</a> | <a href="/contact" title="Contact">Contact</a> | <a href="/logout" title="Logout">Logout</a><br>
 </center></div><br>
-<br>
+  <center><div class="typewriter"><h3><center><strong class="glowsmall">CHOOSE YOUR PREFERRED ORDER</strong></center></div>
+  <br>
 
 <form class="" action="/phase_4_complete_with_data/<%=@project.id%>" method="post">
   <input type="hidden" name="_method" value="patch">
 <table>
   <tr>
-    <th>SUGGESTED ORDER</th>
-    <th>TASK BY SEGMENT</th>
-    <th>USER DEFINED ORDER</th>
+    <th><center>AUTO RANK</center></th>
+    <th> </th>
+    <th><center>REORDER TO YOUR PREFERENCE</center></th>
   </tr>
   <% @counter_for_segments = 0 %>
   <% @project.tasks.order(:base_rank).each do |task|%>
       <% if @counter_for_segments == 0 && task.segment == "A"%>
       <tr>
         <td></td>
-        <td><center>FOUNDATIONAL</center></td>
+        <td><center><h3>FOUNDATIONAL TASKS</h3></center></td>
         <td></td>
       </tr>
       <% @counter_for_segments += 1%>
       <tr>
-        <td><%= task.base_rank %></td>
+        <td><center><%= task.base_rank.to_i %></center></td>
         <td><%= task.the_action_description.gsub(/(\[" )|( "]|\[")|("])/, '')%></td>
-        <td><input type="integer" name="project[tasks][][user_rank]" value=<%=task.user_rank%>></td>
+        <td><center><input type="integer" name="project[tasks][][user_rank]" value=<%=task.user_rank%>></center></td>
       </tr>
       <% elsif @counter_for_segments == 1 && task.segment == "B"%>
       <tr>
         <td></td>
-        <td><center>INTERMEDIARY</center></td>
+        <td><center><h3>INTERMEDIARY TASKS</h3></center></td>
         <td></td>
       </tr>
       <% @counter_for_segments += 1%>
       <tr>
-        <td><%= task.base_rank %></td>
+        <td><center><%= task.base_rank.to_i %></center></td>
         <td><%= task.the_action_description.gsub(/(\[" )|( "]|\[")|("])/, '')%></td>
-        <td><input type="integer" name="project[tasks][][user_rank]" value=<%=task.user_rank%>></td>
+        <td><center><input type="integer" name="project[tasks][][user_rank]" value=<%=task.user_rank%>></center></td>
       </tr>
       <% elsif @counter_for_segments == 2 && task.segment == "C"%>
       <tr>
         <td></td>
-        <td><center>FINAL</center></td>
+        <td><center><h3>FINAL TASKS</h3></center></td>
         <td></td>
       </tr>
       <% @counter_for_segments += 1%>
       <tr>
-        <td><%= task.base_rank %></td>
+        <td><center><%= task.base_rank.to_i %></center></td>
         <td><%= task.the_action_description.gsub(/(\[" )|( "]|\[")|("])/, '')%></td>
-        <td><input type="integer" name="project[tasks][][user_rank]" value=<%=task.user_rank%>></td>
+        <td><center><input type="integer" name="project[tasks][][user_rank]" value=<%=task.user_rank%>></center></td>
       </tr>
       <% else %>
     <tr>
-      <td><%= task.base_rank %></td>
+      <td><center><%= task.base_rank.to_i %></center></td>
       <td><%= task.the_action_description.gsub(/(\[" )|( "]|\[")|("])/, '')%></td>
-      <td><input type="integer" name="project[tasks][][user_rank]" value=<%=task.user_rank%>></td>
+      <td><center><input type="integer" name="project[tasks][][user_rank]" value=<%=task.user_rank%>></center></td>
     </tr>
       <%end%>
   <%end%>
