@@ -122,7 +122,7 @@ class PhaseThreeController < ApplicationController
     end
   end
 
-  post '/phase_3_segments_complete/:scrubadub' do #scrubadub is really project_id
+  post '/phase_3_segments_complete/:scrubadub' do #scrubadub is really project_id... keeping it in here as a reminder that it gets added to params, frequently don't realize this because am defining the params individually... but when grabbing everything, this will screw things up.
     if logged_in?
       @user = current_user
       @project = Project.find(params[:scrubadub])

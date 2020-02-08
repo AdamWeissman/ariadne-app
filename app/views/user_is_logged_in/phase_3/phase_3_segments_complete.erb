@@ -120,6 +120,59 @@
     </td><td></td>
   </tr>
 
+  <% elsif task.segment == "A" && (@table_formatting_counter == 1) && (next_task.segment == "C") %>
+  <tr><td></td><td></td><td></td><td></td></tr>
+  <tr>
+    <td></td>
+    <td><center><strong>FOUNDATIONAL</strong></center></td>
+    <td style="background-color:red;">
+    <form class="" action="/phase_3_segments_complete/<%= @project.id %>" method="post">
+      <input type="hidden" name="project_id" value=<%=@project.id%>>
+      <input type="hidden" name="the_action_description" value="THIS IS YOUR NEW TASK">
+      <input type="hidden" name="comment_or_measure" value="unnecessary">
+      <input type="hidden" name="segment" value="A">
+      <input type="hidden" name="calculated_rank" value= 0.0 >
+      <input type="hidden" name="golem" value="questions complete">
+      <center class="glowblue"><input type="submit" value="ADD A TASK"></center>
+      </form>
+    </td>
+    <td></td>
+  </tr>
+  <tr>
+  <td><%=task.base_rank%></td>
+    <td>
+    <form class="" action="/phase_3_segments_saved/<%=task.id%>/<%= @project.id %>" method="post">
+      <input type="hidden" name="_method" value="patch">
+      <textarea style="resize: none" rows="3" cols="60" type="text" name="the_action_description"><%= task.the_action_description.gsub(/(\[" )|( "]|\[")|("])/, '')%></textarea>
+    </td>
+    <td>
+    <center><input type="submit" value="SAVE"></center>
+    </form>
+    </td>
+  <td>
+    <form class="" action="/phase_3_segments_complete/<%=task.id%>/<%=@project.id %>" method="post">
+      <input type="hidden" name="_method" value="delete">
+      <center><input type="submit" value="DELETE"></center>
+    </form>
+  </td>
+  </tr>
+  <tr><td></td><td></td><td></td><td></td></tr>
+  <tr>
+    <td></td>
+    <td><center><strong>FINAL</strong></center></td>
+    <td style="background-color:red;">
+    <form class="" action="/phase_3_segments_complete/<%= @project.id %>" method="post">
+      <input type="hidden" name="project_id" value=<%=@project.id%>>
+      <input type="hidden" name="the_action_description" value="THIS IS YOUR NEW TASK">
+      <input type="hidden" name="comment_or_measure" value="unnecessary">
+      <input type="hidden" name="segment" value="C">
+      <input type="hidden" name="calculated_rank" value= 0.0 >
+      <input type="hidden" name="golem" value="questions complete">
+      <center class="glowblue"><input type="submit" value="ADD A TASK"></center>
+      </form>
+    </td><td></td>
+  </tr>
+
   <% elsif task.segment == "A" && (@table_formatting_counter == 1) %>
   <tr><td></td><td></td><td></td><td></td></tr>
   <tr>
@@ -176,6 +229,70 @@
   </form>
   </td>
   </tr>
+
+  <% elsif (task.segment == "A" && (next_task.segment == "C")) %>
+      <%if @table_formatting_counter == @the_whole_enchilada.size %>
+      <tr>
+      <td><%=task.base_rank%></td>
+      <td>
+      <form class="" action="/phase_3_segments_saved/<%=task.id%>/<%= @project.id %>" method="post">
+        <input type="hidden" name="_method" value="patch">
+        <textarea style="resize: none" rows="3" cols="60" type="text" name="the_action_description"><%= task.the_action_description.gsub(/(\[" )|( "]|\[")|("])/, '')%></textarea>
+      </td>
+      <td>
+      <center><input type="submit" value="SAVE"></center>
+      </form>
+      </td>
+      <td>
+        <form class="" action="/phase_3_segments_complete/<%=task.id%>/<%=@project.id %>" method="post">
+        <input type="hidden" name="_method" value="delete">
+        <center><input type="submit" value="DELETE"></center>
+      </form>
+    </td>
+      </tr>
+
+      <tr>
+      <td><%=next_task.base_rank%></td>
+      <td>
+      <form class="" action="/phase_3_segments_saved/<%=next_task.id%>/<%= @project.id %>" method="post">
+        <input type="hidden" name="_method" value="patch">
+        <textarea style="resize: none" rows="3" cols="60" type="text" name="the_action_description"><%= next_task.the_action_description.gsub(/(\[" )|( "]|\[")|("])/, '')%></textarea>
+      </td>
+      <td>
+      <center><input type="submit" value="SAVE"></center>
+      </form>
+      </td>
+      <td>
+        <form class="" action="/phase_3_segments_complete/<%=next_task.id%>/<%=@project.id %>" method="post">
+        <input type="hidden" name="_method" value="delete">
+        <center><input type="submit" value="DELETE"></center>
+      </form>
+      </td>
+      </tr>
+
+      <% else %>
+      <tr>
+      <td><%=task.base_rank%></td>
+      <td>
+      <form class="" action="/phase_3_segments_saved/<%=task.id%>/<%= @project.id %>" method="post">
+        <input type="hidden" name="_method" value="patch">
+        <textarea style="resize: none" rows="3" cols="60" type="text" name="the_action_description"><%= task.the_action_description.gsub(/(\[" )|( "]|\[")|("])/, '')%></textarea>
+      </td>
+      <td>
+      <center><input type="submit" value="SAVE"></center>
+      </form>
+      </td>
+      <td>
+        <form class="" action="/phase_3_segments_complete/<%=task.id%>/<%=@project.id %>" method="post">
+        <input type="hidden" name="_method" value="delete">
+        <center><input type="submit" value="DELETE"></center>
+      </form>
+      </td>
+      </tr>
+    <% end %>
+
+
+
 
   <% elsif task.segment == "A" && (next_task.segment == "B") %>
   <tr>
