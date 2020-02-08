@@ -53,14 +53,14 @@ class ApplicationController < Sinatra::Base
 
   get '/signup' do
     if !session[:your_session]
-      erb :'/user_is_logged_in/signup'
+      erb :'/not_logged_in/signup'
     else
       redirect '/you_signedup'
     end
   end
 
   get '/you_signedup' do
-    erb :'/user_is_logged_in/you_signedup'
+    erb :'/not_logged_in/you_signedup'
   end
 
   post '/you_signedup' do
