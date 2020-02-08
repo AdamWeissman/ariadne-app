@@ -72,8 +72,9 @@ class ApplicationController < Sinatra::Base
     end
   end
 
-  get "/not_valid"
-    erb: "/not_logged_in/something_wrong"
+  get '/not_valid' do
+    erb :"/not_logged_in/something_wrong"
+  end
 
   get '/login' do
     if !session[:your_session]
