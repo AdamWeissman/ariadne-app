@@ -5,6 +5,7 @@ class CreateUsersTable < ActiveRecord::Migration
       t.string "email"
       t.string "first_name"
       t.datetime "created_at"
+      t.string "beta_key"
 
       t.timestamps null: false
     end

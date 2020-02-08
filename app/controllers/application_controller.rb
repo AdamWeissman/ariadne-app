@@ -64,9 +64,15 @@ class ApplicationController < Sinatra::Base
   end
 
   post '/you_signedup' do
-    @user = User.create(params)
-    redirect '/login'
+    if params[:beta_key] == "flatiron"
+      @user = User.create(params)
+      redirect '/login'
+    else
+      redirect "/not_valid"
   end
+
+  get "/not_valid"
+    erb: "/not_logged_in/something_wrong"
 
   get '/login' do
     if !session[:your_session]
