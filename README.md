@@ -17,5 +17,16 @@ Anyone that has a problem (or project) with multiple steps.  Since the human min
 7) SEMI-IRRELEVANT NOTE IF YOU AREN'T EDITING ANYTHING: If this isn't your first time using the program, or if you edit the HTML/CSS code etc., you will probably want to clear your browsing history before checking out visual updates.  Some of the text and backgrounds pulse/glow so your local browser will cache that stuff to save on memory; thus if you make changes to colors or other visuals, it may not grab the newest appearance.
 8) That's it!  Feel free to use the program.
 
+# OOPS WAIT!!! IMPORTANT INFO FOR LOGIN.
+When you're on the the signup page you will need to type "flatiron" (no quotes, just: flatiron) into the "enter the key you received field", otherwise you won't be able to setup a user.
+
+## HOW TO USE ARIADNE
+1) type in your first name, type in your email... it can be fake as long as it follows convention, type in a password, type in "flatiron" to the "enter the key" field.
+2) Login with your email and your password
+3) Click create a project.
+4) 
+
+
+
 ### LICENSE
 This project is licensed under the MIT License - see the <a href="https://github.com/AdamWeissman/ariadne-app/blob/master/LICENSE.md">license file</a> for details.
