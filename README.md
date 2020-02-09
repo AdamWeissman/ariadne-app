@@ -23,4 +23,4 @@ Anyone that has a problem (or project) with multiple steps.  Since the human min
 8) That's it!  Feel free to use the program.
 
 #LICENSE
-This project is licensed under the MIT License - see the <a href="app/LICENSE.md">license file</a> for details.
+This project is licensed under the MIT License - see the <a href="https://github.com/AdamWeissman/ariadne-app/blob/master/LICENSE.md">license file</a> for details.
