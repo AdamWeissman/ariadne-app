@@ -52,7 +52,7 @@ When you're on the the signup page you will need to type "flatiron" (no quotes, 
 
 <!-- blank line -->
 <figure class="video_container">
-  <video src="https://www.youtube.com/embed/fE5frcJ7C04" frameborder="0" allowfullscreen="true"> </video>
+  <iframe src="https://www.youtube.com/embed/fE5frcJ7C04" frameborder="0" allowfullscreen="true"> </iframe>
 </figure>
 <!-- blank line -->
 
