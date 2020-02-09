@@ -46,9 +46,13 @@ When you're on the the signup page you will need to type "flatiron" (no quotes, 
 14) Click LOOKS GOOD, CONTINUE.
 15) Ariadne has your suggested order of tasks listed in the auto rank column.  You then type integers in the "reorder to your preference" column to correct anything the program did wrong.
 16) That's it.  THE END.
-17) or... you could just watch the walkthrough video posted here.
+17) or... you could just watch the walkthrough video posted here.  
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/fE5frcJ7C04" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<figure class="video_container">
+  <iframe src="https://www.youtube.com/embed/fE5frcJ7C04" frameborder="0" allowfullscreen="true"> </iframe>
+</figure>
+
+
 
 
 ### LICENSE
