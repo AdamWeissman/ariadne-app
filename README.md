@@ -48,5 +48,8 @@ When you're on the the signup page you will need to type "flatiron" (no quotes, 
 16) That's it.  THE END.
 17) or... you could just watch the walkthrough video posted here.
 
+<iframe width="560" height="315" src="https://www.youtube.com/embed/fE5frcJ7C04" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+
 ### LICENSE
 This project is licensed under the MIT License - see the <a href="https://github.com/AdamWeissman/ariadne-app/blob/master/LICENSE.md">license file</a> for details.
