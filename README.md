@@ -48,6 +48,8 @@ When you're on the the signup page you will need to type "flatiron" (no quotes, 
 16) That's it.  THE END.
 17) or... you could just watch the walkthrough video posted here.  
 
+# embedded video below
+
 <!-- blank line -->
 <figure class="video_container">
   <iframe src="https://www.youtube.com/embed/fE5frcJ7C04" frameborder="0" allowfullscreen="true"> </iframe>
