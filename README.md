@@ -11,8 +11,8 @@ Anyone that has a problem (or project) with multiple steps.  Since the human min
 
 # HOW DOES IT WORK?
 
-# ........................................YOU:  "So like... <i>WHEN CAN I USE USE IT?</i>"
-# ARIADNE "<i>N O W.  U S E  I T  N O W ! ! !</i> also the instructions are below...
+# ..............................YOU:  "So... <i>WHEN CAN I USE USE IT?</i>"
+# ARIADNE: "<i>N O W.  U S E  I T  N O W ! ! !</i> also the instructions are below...
 1) Visit https://github.com/AdamWeissman/ariadne-app (you're probably there right now)
 2) Clone it down to your computer.  You can also FORK it first, and then clone it (depending on your purposes).
 3) Open your terminal, "cd" to the "ariadne-app" root folder.
